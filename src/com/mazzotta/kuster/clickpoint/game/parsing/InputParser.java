@@ -1,8 +1,5 @@
 package com.mazzotta.kuster.clickpoint.game.parsing;
 
-import com.mazzotta.kuster.clickpoint.game.commands.ActionIdentifier;
-import com.mazzotta.kuster.clickpoint.game.commands.ActionType;
-import com.mazzotta.kuster.clickpoint.game.commands.Command;
 import com.mazzotta.kuster.clickpoint.game.commands.CommandAction;
 
 import java.util.Scanner;
@@ -14,7 +11,6 @@ public class InputParser {
 
     public InputParser(String messageToAskUser) {
         this.messageToAskUser = messageToAskUser;
-        this.commandAction = new CommandAction(Command.NONE, ActionType.NONE, ActionIdentifier.NONE);
     }
 
     public void askUser() throws InvalidUserInputException {
