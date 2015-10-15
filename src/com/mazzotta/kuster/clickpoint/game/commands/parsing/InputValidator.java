@@ -1,4 +1,4 @@
-package com.mazzotta.kuster.clickpoint.game.parsing;
+package com.mazzotta.kuster.clickpoint.game.commands.parsing;
 
 import com.mazzotta.kuster.clickpoint.game.commands.ActionIdentifier;
 import com.mazzotta.kuster.clickpoint.game.commands.ActionType;

@@ -1,7 +1,7 @@
 package com.mazzotta.kuster.clickpoint.game.commands;
 
-import com.mazzotta.kuster.clickpoint.game.parsing.InputValidator;
-import com.mazzotta.kuster.clickpoint.game.parsing.InvalidUserInputException;
+import com.mazzotta.kuster.clickpoint.game.commands.parsing.InputValidator;
+import com.mazzotta.kuster.clickpoint.game.commands.parsing.InvalidUserInputException;
 
 public class CommandAction {
 
