@@ -56,9 +56,6 @@ public class Game {
         } catch (InvalidUserInputException e) {
             Queue.getInstance().addGameOutput(e.getMessage());
         }
-
-
-
     }
 
     public static void main(String[] args) {
