@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Queue {
     private static Queue instance;
-    private static ArrayList<String> outStandingUserInput;
-    private static ArrayList<String> outStandingGameOutput;
+    private static ArrayList<String> pendingUserInput;
+    private static ArrayList<String> pendingGameOutput;
 
     public static Queue getInstance() {
         if(instance == null) {
@@ -15,22 +15,34 @@ public class Queue {
     }
 
     private Queue() {
-        outStandingUserInput = new ArrayList<String>();
-        outStandingGameOutput = new ArrayList<String>();
+        pendingUserInput = new ArrayList<String>();
+        pendingGameOutput = new ArrayList<String>();
     }
 
-    public ArrayList<String> getOutStandingUserInput() {
-        return outStandingUserInput;
+    public void clearUserInputCache() {
+        if(!pendingUserInput.isEmpty()) {
+            pendingUserInput.clear();
+        }
     }
 
-    public ArrayList<String> getOutStandingGameOutput() {
-        return outStandingGameOutput;
+    public void clearGameOutputCache() {
+        if(!pendingGameOutput.isEmpty()) {
+            pendingGameOutput.clear();
+        }
+    }
+
+    public ArrayList<String> getPendingUserInput() {
+        return pendingUserInput;
+    }
+
+    public ArrayList<String> getPendingGameOutput() {
+        return pendingGameOutput;
     }
 
     public void addUserInput(String userInput) {
-        outStandingUserInput.add(userInput);
+        pendingUserInput.add(userInput);
     }
     public void addGameOutput(String userInput) {
-        outStandingUserInput.add(userInput);
+        pendingGameOutput.add(userInput);
     }
 }

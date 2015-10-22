@@ -39,11 +39,11 @@ public class GUI extends JFrame {
     }
     // random comment
     private void initUI() {
-        frame = new JFrame("Point & Click by Emanuele");
+        frame = new JFrame("Point & Click by Emanuele & Leandro");
         Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension frameSize=new Dimension((int)(screenSize.width/2),(int)(screenSize.height/2));
-        int x = (int)(frameSize.width/2);
-        int y = (int)(frameSize.height/2);
+        Dimension frameSize=new Dimension((screenSize.width/2),(screenSize.height/2));
+        int x = (frameSize.width/2);
+        int y = (frameSize.height/2);
         frame.setBounds(x, y, frameSize.width, frameSize.height);
 
         gameOutput = new JTextArea();
@@ -57,14 +57,23 @@ public class GUI extends JFrame {
         userInput.addActionListener(action);
 
         frame.setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     Action action = new AbstractAction() {
-        @Override
         public void actionPerformed(ActionEvent actionEvent) {
             Queue.getInstance().addUserInput(actionEvent.getActionCommand());
+            gameOutput.append(formatInputText(actionEvent.getActionCommand())); // TODO this needs to be done after parsing the input and should add the parsed text
             userInput.setText("");
         }
+
     };
+    private String formatInputText(String textToFormat) {
+        StringBuilder formatedText = new StringBuilder();
+        formatedText.append("Input: ");
+        formatedText.append("[" + textToFormat + "]");
+        formatedText.append("\n");
+
+        return formatedText.toString();
+    }
 }

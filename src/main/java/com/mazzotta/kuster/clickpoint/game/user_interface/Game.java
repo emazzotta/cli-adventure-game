@@ -18,7 +18,7 @@ public class Game {
     private Game() {
         inputParser = new InputParser();
         running = false;
-        currentQueueSize = Queue.getInstance().getOutStandingUserInput().size();
+        currentQueueSize = Queue.getInstance().getPendingUserInput().size();
         checkInput = getThread();
         gui = new GUI();
     }
@@ -30,10 +30,13 @@ public class Game {
                 while (running) {
                     try {
                         Thread.sleep(100);
-                        System.out.println("Test");
-                        if (Queue.getInstance().getOutStandingUserInput().size() > currentQueueSize) {
-                            currentQueueSize = Queue.getInstance().getOutStandingUserInput().size();
+                        if (Queue.getInstance().getPendingUserInput().size() > currentQueueSize) {
+                            System.out.println("Input: " + Queue.getInstance().getPendingUserInput());
+                            currentQueueSize = Queue.getInstance().getPendingUserInput().size();
                             Game.newQueueItemAvailable();
+                            System.out.println("Output: " + Queue.getInstance().getPendingGameOutput());
+                            Queue.getInstance().clearUserInputCache();
+                            Queue.getInstance().clearGameOutputCache();
                         }
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
@@ -44,21 +47,15 @@ public class Game {
     }
 
     public static void newQueueItemAvailable() {
-        ArrayList userInputs = Queue.getInstance().getOutStandingUserInput();
+        ArrayList userInputs = Queue.getInstance().getPendingUserInput();
         InputParser inputParser = new InputParser();
-        CommandAction commandAction = new CommandAction();
-
         try {
             inputParser.createCommandActionFrom((String) userInputs.get(currentQueueSize-1));
-            commandAction = inputParser.getCommandAction();
+            CommandAction commandAction = inputParser.getCommandAction();
             Queue.getInstance().addGameOutput("All good with [" + commandAction.getCommand() + "] [" + commandAction.getActionType() + "] [" + commandAction.getActionIdentifier() + "]!");
-
         } catch (InvalidUserInputException e) {
             Queue.getInstance().addGameOutput(e.getMessage());
         }
-
-
-
     }
 
     public static void main(String[] args) {
