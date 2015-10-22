@@ -45,15 +45,19 @@ public class Game {
 
     public static void newQueueItemAvailable() {
         ArrayList userInputs = Queue.getInstance().getOutStandingUserInput();
+        InputParser inputParser = new InputParser();
+        CommandAction commandAction = new CommandAction();
 
         try {
             inputParser.createCommandActionFrom((String) userInputs.get(currentQueueSize-1));
+            commandAction = inputParser.getCommandAction();
+            Queue.getInstance().addGameOutput("All good with [" + commandAction.getCommand() + "] [" + commandAction.getActionType() + "] [" + commandAction.getActionIdentifier() + "]!");
+
         } catch (InvalidUserInputException e) {
             Queue.getInstance().addGameOutput(e.getMessage());
         }
 
-        CommandAction commandAction = inputParser.getCommandAction();
-        Queue.getInstance().addGameOutput("All good with [" + commandAction.getCommand() + "] [" + commandAction.getActionType() + "] [" + commandAction.getActionIdentifier() + "]!");
+
 
     }
 
