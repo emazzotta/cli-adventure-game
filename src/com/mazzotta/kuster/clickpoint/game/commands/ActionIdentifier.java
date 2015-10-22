@@ -3,7 +3,7 @@ package com.mazzotta.kuster.clickpoint.game.commands;
 import java.util.ArrayList;
 
 public enum ActionIdentifier {
-    NONE, X, Y, Z, SLIMEMONSTER, HANNIBAL, GRUNGE, THEWIZARDS;
+    NONE, RED, BLUE, GREEN, YELLOW, WHITE, ALL;
 
     public static ActionIdentifier convertToActionIdentifier(String actionIdentifierText) {
         for (ActionIdentifier actionIdentifier : ActionIdentifier.values()) {

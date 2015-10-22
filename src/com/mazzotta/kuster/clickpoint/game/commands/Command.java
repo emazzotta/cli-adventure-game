@@ -3,7 +3,7 @@ package com.mazzotta.kuster.clickpoint.game.commands;
 import java.util.ArrayList;
 
 public enum Command {
-    NONE, OPEN, CLOSE, SHOOT, KILL, WALK, CROUCH, COLLECT;
+    NONE, OPEN, CLOSE, SHOOT, KILL, WALK, CROUCH, COLLECT, TAKE;
 
     public static Command convertToCommand(String commandText) {
         for (Command command : Command.values()) {

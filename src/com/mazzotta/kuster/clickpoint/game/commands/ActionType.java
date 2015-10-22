@@ -3,7 +3,7 @@ package com.mazzotta.kuster.clickpoint.game.commands;
 import java.util.ArrayList;
 
 public enum ActionType {
-    NONE, DOOR, BOOK, SHELVE, GUN, ENEMY;
+    NONE, DOOR, BOOK, GUN, ENEMY, POTION, ROOM, KEY, BOX;
 
     public static ActionType convertToActionType(String actionTypeText) {
         for (ActionType actionType : ActionType.values()) {
