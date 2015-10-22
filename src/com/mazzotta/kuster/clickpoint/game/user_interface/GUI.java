@@ -37,7 +37,7 @@ public class GUI extends JFrame {
             }
         };
     }
-
+    // random comment
     private void initUI() {
         frame = new JFrame("Point & Click by Emanuele");
         Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
