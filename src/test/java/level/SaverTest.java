@@ -28,7 +28,7 @@ public class SaverTest {
     public void testThatCurrentHistoryCanBeSaved() throws IOException {
         String expectedString = "history: [{\"command\":\"COLLECT\",\"actionType\":\"POTION\",\"actionIdentifier\":\"ALL\"},{\"command\":\"SHOOT\",\"actionType\":\"ENEMY\",\"actionIdentifier\":\"RED\"},]";
         saver.saveAs("test");
-        assertEquals(expectedString, FileUtils.readFileToString(new File(saver.getSavePath("test"))));
+        assertEquals(expectedString, FileUtils.readFileToString(saver.getSavePath("test")));
     }
 
     public CommandAction getShootCommand() throws InvalidUserInputException {
