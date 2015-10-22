@@ -48,4 +48,8 @@ public class CommandAction {
         InputValidator.validateActionIdentifier(actionIdentifier.name());
         this.actionIdentifier = actionIdentifier;
     }
+
+    public String toString() {
+        return "command=" + command + ", actionType=" + actionType + ", actionIdentifier=" + actionIdentifier;
+    }
 }
