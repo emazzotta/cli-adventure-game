@@ -8,9 +8,9 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 
+import static com.mazzotta.kuster.clickpoint.game.level.FileOperationUtil.getSavePath;
 import static org.junit.Assert.assertEquals;
 
 public class SaverTest {
@@ -26,9 +26,9 @@ public class SaverTest {
 
     @Test
     public void testThatCurrentHistoryCanBeSaved() throws IOException {
-        String expectedString = "history: [{\"command\":\"COLLECT\",\"actionType\":\"POTION\",\"actionIdentifier\":\"ALL\"},{\"command\":\"SHOOT\",\"actionType\":\"ENEMY\",\"actionIdentifier\":\"RED\"},]";
+        String expectedString = "{\"History\":\"[{\\\"command\\\":\\\"COLLECT\\\",\\\"actionType\\\":\\\"POTION\\\",\\\"actionIdentifier\\\":\\\"ALL\\\"},{\\\"command\\\":\\\"SHOOT\\\",\\\"actionType\\\":\\\"ENEMY\\\",\\\"actionIdentifier\\\":\\\"RED\\\"}]\"}";
         saver.saveAs("test");
-        assertEquals(expectedString, FileUtils.readFileToString(saver.getSavePath("test")));
+        assertEquals(expectedString, FileUtils.readFileToString(getSavePath("test")));
     }
 
     public CommandAction getShootCommand() throws InvalidUserInputException {
