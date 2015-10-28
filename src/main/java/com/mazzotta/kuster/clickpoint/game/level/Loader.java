@@ -24,7 +24,7 @@ public class Loader {
         gson = new GsonBuilder().create();
     }
 
-    public void loadFrom(String filename) {
+    public void loadFromJsonFile(String filename) {
         try {
             String loadedJson = FileUtils.readFileToString(getSavePath(filename));
             JsonArray commandsAsJson = getStringAsJsonArray(loadedJson);
