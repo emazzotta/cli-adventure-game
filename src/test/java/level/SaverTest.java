@@ -26,7 +26,7 @@ public class SaverTest {
 
     @Test
     public void testThatCurrentHistoryCanBeSaved() throws IOException {
-        String expectedString = "{\"History\":\"[{\\\"command\\\":\\\"COLLECT\\\",\\\"actionType\\\":\\\"POTION\\\",\\\"actionIdentifier\\\":\\\"ALL\\\"},{\\\"command\\\":\\\"SHOOT\\\",\\\"actionType\\\":\\\"ENEMY\\\",\\\"actionIdentifier\\\":\\\"RED\\\"}]\"}";
+        String expectedString = "[{\"command\":\"COLLECT\",\"actionType\":\"POTION\",\"actionIdentifier\":\"ALL\"},{\"command\":\"SHOOT\",\"actionType\":\"ENEMY\",\"actionIdentifier\":\"RED\"}]";
         saver.saveAs("test");
         assertEquals(expectedString, FileUtils.readFileToString(getSavePath("test")));
     }
