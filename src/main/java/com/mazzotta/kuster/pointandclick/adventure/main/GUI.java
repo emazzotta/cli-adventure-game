@@ -3,7 +3,7 @@ package com.mazzotta.kuster.pointandclick.adventure.main;
 import com.mazzotta.kuster.pointandclick.adventure.commands.*;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputParser;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputValidator;
-import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InvalidUserInputException;
+import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.InvalidUserInputException;
 
 import javax.swing.*;
 import java.awt.*;
