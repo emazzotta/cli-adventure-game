@@ -4,6 +4,7 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputParser;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InvalidUserInputException;
+import com.mazzotta.kuster.pointandclick.adventure.level.Initialiser;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ public class Game {
         currentQueueSize = Queue.getInstance().getPendingUserInput().size();
         checkInput = getThread();
         gui = new GUI();
+        Initialiser.getInstance().initialise();
     }
 
     private Thread getThread() {
