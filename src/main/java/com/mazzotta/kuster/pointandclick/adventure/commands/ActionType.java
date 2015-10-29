@@ -24,10 +24,10 @@ public enum ActionType {
     }
 
     public static ArrayList<String> thatAreAvailable() {
-        ArrayList<String> availableactionTypes = new ArrayList<String>();
+        ArrayList<String> availableActionTypes = new ArrayList<String>();
         for (ActionType actionType : ActionType.values()) {
-            availableactionTypes.add(actionType.name());
+            availableActionTypes.add(actionType.name());
         }
-        return availableactionTypes;
+        return availableActionTypes;
     }
 }
