@@ -18,8 +18,12 @@ public class CommandAction {
     public CommandAction(String commandActionFragments[]) throws InvalidUserInputException {
         InputValidator.validateCommandActionFragments(commandActionFragments);
         command = Command.convertToCommand(commandActionFragments[0]);
-        actionType = ActionType.convertToActionType(commandActionFragments[1]);
-        actionIdentifier = ActionIdentifier.convertToActionIdentifier(commandActionFragments[2]);
+        if(commandActionFragments.length >= 2) {
+            actionType = ActionType.convertToActionType(commandActionFragments[1]);
+        }
+        if(commandActionFragments.length >= 3) {
+            actionIdentifier = ActionIdentifier.convertToActionIdentifier(commandActionFragments[2]);
+        }
     }
 
     public Command getCommand() {

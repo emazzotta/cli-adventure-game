@@ -10,12 +10,16 @@ public class InputValidator {
     public static void validateCommandActionFragments(String commandActionFragments[]) throws InvalidUserInputException {
         validateLength(commandActionFragments);
         validateCommand(commandActionFragments[0]);
-        validateActionType(commandActionFragments[1]);
-        validateActionIdentifier(commandActionFragments[2]);
+        if(commandActionFragments.length >= 2) {
+            validateActionType(commandActionFragments[1]);
+        }
+        if(commandActionFragments.length >= 3) {
+            validateActionIdentifier(commandActionFragments[2]);
+        }
     }
 
     public static void validateLength(String[] commandActionFragments) throws InvalidUserInputException {
-        if(commandActionFragments.length != 3) {
+        if(commandActionFragments.length < 1) {
             throw new InvalidUserInputException("Try entering commands in this pattern: SHOOT ENEMY SLIMEMONSTER");
         }
     }

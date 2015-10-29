@@ -12,6 +12,7 @@ public class InputParser {
 
     public void createCommandActionFrom(String userInput) throws InvalidUserInputException {
         String commandActionFragments[] = userInput.split("\\s+");
+        InputValidator.validateCommandActionFragments(commandActionFragments);
         commandAction = new CommandAction(commandActionFragments);
     }
 
