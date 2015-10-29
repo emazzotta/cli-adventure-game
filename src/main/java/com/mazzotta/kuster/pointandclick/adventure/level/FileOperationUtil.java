@@ -1,4 +1,4 @@
-package com.mazzotta.kuster.clickpoint.game.level;
+package com.mazzotta.kuster.pointandclick.adventure.level;
 
 import java.io.File;
 

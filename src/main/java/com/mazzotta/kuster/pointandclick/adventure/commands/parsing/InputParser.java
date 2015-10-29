@@ -1,8 +1,6 @@
-package com.mazzotta.kuster.clickpoint.game.commands.parsing;
+package com.mazzotta.kuster.pointandclick.adventure.commands.parsing;
 
-import com.mazzotta.kuster.clickpoint.game.commands.CommandAction;
-
-import java.util.Scanner;
+import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
 
 public class InputParser {
 

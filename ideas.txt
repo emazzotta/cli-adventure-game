@@ -1,0 +1,17 @@
+- Find trophies
+- Collect/Take Shovel -> Assume all if nothing passed as well as Collect without params = COLLECT ALL ALL
+- Consume/Use/Open without all
+- Implement save game and load game as commands
+- Intrduce concept of health, potions, challenge, leviosaaa
+- Implement queue fetcher
+- Meaningful errormessage if file or folder does not exist when saving or loading
+- Guns with Damage points
+- Boss with health
+- There's a monster, run away or fight
+
+Available Items:
+- Weapons
+    - Short Sword
+    - Long Sword
+    - Master Sword
+- Potions (health)

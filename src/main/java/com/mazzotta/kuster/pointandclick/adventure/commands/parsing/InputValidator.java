@@ -1,8 +1,8 @@
-package com.mazzotta.kuster.clickpoint.game.commands.parsing;
+package com.mazzotta.kuster.pointandclick.adventure.commands.parsing;
 
-import com.mazzotta.kuster.clickpoint.game.commands.ActionIdentifier;
-import com.mazzotta.kuster.clickpoint.game.commands.ActionType;
-import com.mazzotta.kuster.clickpoint.game.commands.Command;
+import com.mazzotta.kuster.pointandclick.adventure.commands.ActionIdentifier;
+import com.mazzotta.kuster.pointandclick.adventure.commands.ActionType;
+import com.mazzotta.kuster.pointandclick.adventure.commands.Command;
 
 public class InputValidator {
 

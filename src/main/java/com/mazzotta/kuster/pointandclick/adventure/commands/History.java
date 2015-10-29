@@ -1,4 +1,4 @@
-package com.mazzotta.kuster.clickpoint.game.commands;
+package com.mazzotta.kuster.pointandclick.adventure.commands;
 
 import java.util.ArrayList;
 
