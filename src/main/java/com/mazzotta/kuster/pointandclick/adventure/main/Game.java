@@ -3,7 +3,7 @@ package com.mazzotta.kuster.pointandclick.adventure.main;
 import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputParser;
-import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InvalidUserInputException;
+import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.InvalidUserInputException;
 import com.mazzotta.kuster.pointandclick.adventure.level.Initialiser;
 
 import java.util.ArrayList;

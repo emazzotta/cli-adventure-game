@@ -1,6 +1,7 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands.parsing;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
+import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.InvalidUserInputException;
 
 public class InputParser {
 
