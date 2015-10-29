@@ -1,6 +1,9 @@
 package com.mazzotta.kuster.pointandclick.adventure.user_interface;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.*;
+import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputParser;
+import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputValidator;
+import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InvalidUserInputException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -62,9 +65,17 @@ public class GUI extends JFrame {
 
     Action action = new AbstractAction() {
         public void actionPerformed(ActionEvent actionEvent) {
-            Queue.getInstance().addUserInput(actionEvent.getActionCommand());
+            InputParser inputParser = new InputParser();
+            try {
+                inputParser.createCommandActionFrom(actionEvent.getActionCommand());
+            } catch (InvalidUserInputException e) {
+                e.printStackTrace();
+            }
+            Queue.getInstance().addUserInput(inputParser.getCommandAction().getCommand().toString());
+
             gameOutput.append(formatInputText(actionEvent.getActionCommand())); // TODO this needs to be done after parsing the input and should add the parsed text
             userInput.setText("");
+
         }
 
     };
