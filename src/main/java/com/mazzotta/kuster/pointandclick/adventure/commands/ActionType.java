@@ -3,7 +3,7 @@ package com.mazzotta.kuster.pointandclick.adventure.commands;
 import java.util.ArrayList;
 
 public enum ActionType {
-    NONE, DOOR, BOOK, GUN, ENEMY, POTION, ROOM, KEY, BOX;
+    NONE, DOOR, BOOK, GUN, ENEMY, POTION, ROOM, KEY, BOX, ALL;
 
     public static ActionType convertToActionType(String actionTypeText) {
         for (ActionType actionType : ActionType.values()) {
