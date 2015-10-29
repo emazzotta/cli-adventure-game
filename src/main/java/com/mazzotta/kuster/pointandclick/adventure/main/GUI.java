@@ -64,6 +64,7 @@ public class GUI extends JFrame {
     }
 
     public void updateGUI() {
+        // TODO If GUI should show more / different data this will need to be added here might also need more complex logic depending on what needs to be displayed.
         gameOutput.append("Input: " + formatOutputText(Queue.getInstance().getPendingUserInput().toString()));
         gameOutput.append("Output: " + formatOutputText(Queue.getInstance().getPendingGameOutput().toString()));
     }
