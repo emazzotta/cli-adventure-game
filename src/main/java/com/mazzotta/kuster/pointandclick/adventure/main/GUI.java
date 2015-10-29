@@ -39,13 +39,14 @@ public class GUI extends JFrame {
             }
         };
     }
+
     // random comment
     private void initUI() {
         frame = new JFrame("Point & Click by Emanuele & Leandro");
-        Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension frameSize=new Dimension((screenSize.width/2),(screenSize.height/2));
-        int x = (frameSize.width/2);
-        int y = (frameSize.height/2);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = new Dimension((screenSize.width / 2), (screenSize.height / 2));
+        int x = (frameSize.width / 2);
+        int y = (frameSize.height / 2);
         frame.setBounds(x, y, frameSize.width, frameSize.height);
 
         gameOutput = new JTextArea();
@@ -62,6 +63,11 @@ public class GUI extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
+    public void updateGUI() {
+        gameOutput.append("Input: " + formatOutputText(Queue.getInstance().getPendingUserInput().toString()));
+        gameOutput.append("Output: " + formatOutputText(Queue.getInstance().getPendingGameOutput().toString()));
+    }
+
     Action action = new AbstractAction() {
         public void actionPerformed(ActionEvent actionEvent) {
             InputParser inputParser = new InputParser();
@@ -71,14 +77,12 @@ public class GUI extends JFrame {
                 e.printStackTrace();
             }
             Queue.getInstance().addUserInput(inputParser.getCommandAction().getCommand().toString());
-
-            gameOutput.append(formatOutputText(actionEvent.getActionCommand())); // TODO this needs to be done after parsing the input and should add the parsed text
-            gameOutput.append(formatOutputText(Queue.getInstance().getPendingGameOutput().toString()));
             userInput.setText("");
 
         }
 
     };
+
     private String formatOutputText(String textToFormat) {
         StringBuilder formatedText = new StringBuilder();
         formatedText.append("Input: ");

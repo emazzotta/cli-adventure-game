@@ -39,8 +39,12 @@ public class Game {
                             currentQueueSize = Queue.getInstance().getPendingUserInput().size();
                             Game.newQueueItemAvailable();
                             System.out.println("Output: " + Queue.getInstance().getPendingGameOutput());
+
+                            gui.updateGUI();
+
                             Queue.getInstance().clearUserInputCache();
                             Queue.getInstance().clearGameOutputCache();
+
                         }
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
