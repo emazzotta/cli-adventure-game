@@ -1,4 +1,4 @@
-package com.mazzotta.kuster.pointandclick.adventure.game.elements;
+package com.mazzotta.kuster.pointandclick.adventure.game.elements.items;
 
 public class Weapon {
 
