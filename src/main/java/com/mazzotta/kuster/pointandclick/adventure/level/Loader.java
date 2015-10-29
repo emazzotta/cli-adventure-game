@@ -7,7 +7,7 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.IOException;
 
-import static com.mazzotta.kuster.pointandclick.adventure.level.FileOperationUtil.getSavePath;
+import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.getSavePath;
 
 public class Loader {
 
