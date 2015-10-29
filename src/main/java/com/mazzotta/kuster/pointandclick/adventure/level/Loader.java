@@ -1,20 +1,13 @@
-package com.mazzotta.kuster.clickpoint.game.level;
+package com.mazzotta.kuster.pointandclick.adventure.level;
 
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.mazzotta.kuster.clickpoint.game.commands.CommandAction;
-import com.mazzotta.kuster.clickpoint.game.commands.History;
+import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
+import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import org.apache.commons.io.FileUtils;
 
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import static com.mazzotta.kuster.clickpoint.game.level.FileOperationUtil.getSavePath;
+import static com.mazzotta.kuster.pointandclick.adventure.level.FileOperationUtil.getSavePath;
 
 public class Loader {
 

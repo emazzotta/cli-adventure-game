@@ -1,7 +1,7 @@
-package com.mazzotta.kuster.clickpoint.game.commands;
+package com.mazzotta.kuster.pointandclick.adventure.commands;
 
-import com.mazzotta.kuster.clickpoint.game.commands.parsing.InputValidator;
-import com.mazzotta.kuster.clickpoint.game.commands.parsing.InvalidUserInputException;
+import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputValidator;
+import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InvalidUserInputException;
 
 public class CommandAction {
 

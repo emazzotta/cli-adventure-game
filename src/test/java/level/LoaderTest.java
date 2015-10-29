@@ -1,14 +1,14 @@
 package level;
 
-import com.mazzotta.kuster.clickpoint.game.commands.History;
-import com.mazzotta.kuster.clickpoint.game.level.Loader;
+import com.mazzotta.kuster.pointandclick.adventure.commands.History;
+import com.mazzotta.kuster.pointandclick.adventure.level.Loader;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 
-import static com.mazzotta.kuster.clickpoint.game.level.FileOperationUtil.getSavePath;
+import static com.mazzotta.kuster.pointandclick.adventure.level.FileOperationUtil.getSavePath;
 import static org.junit.Assert.assertEquals;
 
 public class LoaderTest {

@@ -1,16 +1,16 @@
 package level;
 
-import com.mazzotta.kuster.clickpoint.game.commands.CommandAction;
-import com.mazzotta.kuster.clickpoint.game.commands.History;
-import com.mazzotta.kuster.clickpoint.game.commands.parsing.InvalidUserInputException;
-import com.mazzotta.kuster.clickpoint.game.level.Saver;
+import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
+import com.mazzotta.kuster.pointandclick.adventure.commands.History;
+import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InvalidUserInputException;
+import com.mazzotta.kuster.pointandclick.adventure.level.Saver;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 
-import static com.mazzotta.kuster.clickpoint.game.level.FileOperationUtil.getSavePath;
+import static com.mazzotta.kuster.pointandclick.adventure.level.FileOperationUtil.getSavePath;
 import static org.junit.Assert.assertEquals;
 
 public class SaverTest {

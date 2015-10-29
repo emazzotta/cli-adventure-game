@@ -1,6 +1,6 @@
-package com.mazzotta.kuster.clickpoint.game.user_interface;
+package com.mazzotta.kuster.pointandclick.adventure.user_interface;
 
-import com.mazzotta.kuster.clickpoint.game.commands.*;
+import com.mazzotta.kuster.pointandclick.adventure.commands.*;
 
 import javax.swing.*;
 import java.awt.*;

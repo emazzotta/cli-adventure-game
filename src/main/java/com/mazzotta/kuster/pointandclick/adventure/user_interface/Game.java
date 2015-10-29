@@ -1,9 +1,9 @@
-package com.mazzotta.kuster.clickpoint.game.user_interface;
+package com.mazzotta.kuster.pointandclick.adventure.user_interface;
 
-import com.mazzotta.kuster.clickpoint.game.commands.CommandAction;
-import com.mazzotta.kuster.clickpoint.game.commands.Queue;
-import com.mazzotta.kuster.clickpoint.game.commands.parsing.InputParser;
-import com.mazzotta.kuster.clickpoint.game.commands.parsing.InvalidUserInputException;
+import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
+import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
+import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputParser;
+import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InvalidUserInputException;
 
 import java.util.ArrayList;
 
