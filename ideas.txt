@@ -50,5 +50,3 @@ Combat:
 - Flee
 - Do Damage / take damage
 - Die / drop loot (monster)
--
-
