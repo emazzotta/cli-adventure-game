@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static com.mazzotta.kuster.pointandclick.adventure.level.FileOperationUtil.getSavePath;
+import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.getSavePath;
 import static org.junit.Assert.assertEquals;
 
 public class LoaderTest {

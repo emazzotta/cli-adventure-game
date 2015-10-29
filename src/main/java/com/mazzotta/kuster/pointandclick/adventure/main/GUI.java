@@ -1,4 +1,4 @@
-package com.mazzotta.kuster.pointandclick.adventure.user_interface;
+package com.mazzotta.kuster.pointandclick.adventure.main;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.*;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputParser;

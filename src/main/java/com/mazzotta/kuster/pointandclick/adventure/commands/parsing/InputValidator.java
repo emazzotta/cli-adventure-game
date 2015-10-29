@@ -3,6 +3,7 @@ package com.mazzotta.kuster.pointandclick.adventure.commands.parsing;
 import com.mazzotta.kuster.pointandclick.adventure.commands.ActionIdentifier;
 import com.mazzotta.kuster.pointandclick.adventure.commands.ActionType;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Command;
+import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.InvalidUserInputException;
 
 public class InputValidator {
 
