@@ -2,7 +2,6 @@ package com.mazzotta.kuster.pointandclick.adventure.main;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.*;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputParser;
-import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputValidator;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.InvalidUserInputException;
 
 import javax.swing.*;
@@ -73,13 +72,14 @@ public class GUI extends JFrame {
             }
             Queue.getInstance().addUserInput(inputParser.getCommandAction().getCommand().toString());
 
-            gameOutput.append(formatInputText(actionEvent.getActionCommand())); // TODO this needs to be done after parsing the input and should add the parsed text
+            gameOutput.append(formatOutputText(actionEvent.getActionCommand())); // TODO this needs to be done after parsing the input and should add the parsed text
+            gameOutput.append(formatOutputText(Queue.getInstance().getPendingGameOutput().toString()));
             userInput.setText("");
 
         }
 
     };
-    private String formatInputText(String textToFormat) {
+    private String formatOutputText(String textToFormat) {
         StringBuilder formatedText = new StringBuilder();
         formatedText.append("Input: ");
         formatedText.append("[" + textToFormat + "]");

@@ -1,3 +1,7 @@
+Things to think about:
+Should we add the actions to the various game elements classes or create one class which has the whole game logic?
+
+
 - Find trophies (optional)
 - Collect/Take Shovel -> Assume all if nothing passed as well as Collect without params = COLLECT ALL ALL
 - Implement save game and load game as commands
@@ -24,10 +28,10 @@ Tasks:
 Use-Cases:
 
 General:
-- Write Commands from Queue into history.
 
-Map:
+Dungeon:
 - Create room
+- Class Dungeon (
 
 
 Navigation:

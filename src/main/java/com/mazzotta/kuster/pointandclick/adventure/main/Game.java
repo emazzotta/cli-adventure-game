@@ -1,6 +1,7 @@
 package com.mazzotta.kuster.pointandclick.adventure.main;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
+import com.mazzotta.kuster.pointandclick.adventure.commands.CommandHandler;
 import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputParser;
@@ -57,10 +58,11 @@ public class Game {
             CommandAction commandAction = inputParser.getCommandAction();
             Queue.getInstance().addGameOutput("All good with [" + commandAction.getCommand() + "] [" + commandAction.getActionType() + "] [" + commandAction.getActionIdentifier() + "]!");
             History.getInstance().addEnteredCommand(commandAction);
-            System.out.println(History.getInstance().getEnteredCommands());
+            new CommandHandler().executeCommand(commandAction);
         } catch (InvalidUserInputException e) {
             Queue.getInstance().addGameOutput(e.getMessage());
         }
+
     }
 
     public static void main(String[] args) {
