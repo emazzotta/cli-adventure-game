@@ -30,8 +30,6 @@ public class GUI extends JFrame {
                 while (running) {
                     try {
                         Thread.sleep(100);
-                        System.out.println("Test2222");
-                        gameOutput.setText("fewfaw");
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
                     }
@@ -79,9 +77,7 @@ public class GUI extends JFrame {
             }
             Queue.getInstance().addUserInput(inputParser.getCommandAction().getCommand().toString());
             userInput.setText("");
-
         }
-
     };
 
     private String formatOutputText(String textToFormat) {

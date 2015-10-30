@@ -35,9 +35,9 @@ public class Game {
                     try {
                         Thread.sleep(100);
                         if (Queue.getInstance().getPendingUserInput().size() > currentQueueSize) {
-                            System.out.println("Input: " + Queue.getInstance().getPendingUserInput());
                             currentQueueSize = Queue.getInstance().getPendingUserInput().size();
-                            Game.newQueueItemAvailable();
+                            Game.handleNewQueueItem();
+                            System.out.println("Input: " + Queue.getInstance().getPendingUserInput());
                             System.out.println("Output: " + Queue.getInstance().getPendingGameOutput());
 
                             gui.updateGUI();
@@ -53,7 +53,7 @@ public class Game {
         };
     }
 
-    public static void newQueueItemAvailable() {
+    public static void handleNewQueueItem() {
         ArrayList userInputs = Queue.getInstance().getPendingUserInput();
         InputParser inputParser = new InputParser();
         try {
