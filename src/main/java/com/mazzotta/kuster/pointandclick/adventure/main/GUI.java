@@ -73,7 +73,9 @@ public class GUI extends JFrame {
             try {
                 inputParser.createCommandActionFrom(actionEvent.getActionCommand());
             } catch (InvalidUserInputException e) {
+                inputParser.createInvalidCommandActionFrom(actionEvent.getActionCommand());
                 e.printStackTrace();
+
             }
             Queue.getInstance().addUserInput(inputParser.getCommandAction().getCommand().toString());
             userInput.setText("");
@@ -82,7 +84,6 @@ public class GUI extends JFrame {
 
     private String formatOutputText(String textToFormat) {
         StringBuilder formatedText = new StringBuilder();
-        formatedText.append("Input: ");
         formatedText.append("[" + textToFormat + "]");
         formatedText.append("\n");
 

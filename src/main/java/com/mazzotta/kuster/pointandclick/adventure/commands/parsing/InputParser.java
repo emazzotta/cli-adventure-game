@@ -16,6 +16,11 @@ public class InputParser {
         commandAction = new CommandAction(commandActionFragments);
     }
 
+    public void createInvalidCommandActionFrom(String userInput) {
+        String commandActionFragments[] = userInput.split("\\s+");
+        commandAction = new CommandAction(commandActionFragments);
+    }
+
     public CommandAction getCommandAction() {
         return commandAction;
     }

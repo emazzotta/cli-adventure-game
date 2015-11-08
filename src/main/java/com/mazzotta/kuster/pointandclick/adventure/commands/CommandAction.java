@@ -15,8 +15,8 @@ public class CommandAction {
         actionIdentifier = ActionIdentifier.NONE;
     }
 
-    public CommandAction(String commandActionFragments[]) throws InvalidUserInputException {
-        InputValidator.validateCommandActionFragments(commandActionFragments);
+    public CommandAction(String commandActionFragments[]) {
+        //InputValidator.validateCommandActionFragments(commandActionFragments);
         command = Command.convertToCommand(commandActionFragments[0]);
         if(commandActionFragments.length >= 2) {
             actionType = ActionType.convertToActionType(commandActionFragments[1]);
