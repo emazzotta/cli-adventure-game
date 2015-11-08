@@ -44,6 +44,7 @@ public class Game {
 
                             Queue.getInstance().clearUserInputCache();
                             Queue.getInstance().clearGameOutputCache();
+                            currentQueueSize = 0;
                         }
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
