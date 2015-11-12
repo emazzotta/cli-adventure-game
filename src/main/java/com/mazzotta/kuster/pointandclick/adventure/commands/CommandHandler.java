@@ -12,6 +12,8 @@ public class CommandHandler {
     public void executecommand(CommandAction commandAction) {
         System.out.println("Command executed(teststatement)");
 
+
+
         //TODO implement execution of the command. Also map available commands to actions.
     }
 }
