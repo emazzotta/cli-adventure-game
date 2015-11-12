@@ -39,5 +39,7 @@ Has all methods to change itself (e.g. open door etc.
 
 
 Class combat (handles combat related actions)
-- die
--
+ - die
+
+Class ActionIdentifier not needed as it would be accessed over index (e.g. use potion 3 where 3 refers to the potion index
+seen in the inventory.

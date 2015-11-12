@@ -60,7 +60,7 @@ public class Game {
             CommandAction commandAction = inputParser.getCommandAction();
             Queue.getInstance().addGameOutput("All good with [" + commandAction.getCommand() + "] [" + commandAction.getActionType() + "] [" + commandAction.getActionIdentifier() + "]!");
             History.getInstance().addEnteredCommand(commandAction);
-            new CommandHandler().executecommand(commandAction);
+            new CommandHandler(commandAction).executeCommand();
         } catch (InvalidUserInputException e) {
             Queue.getInstance().addGameOutput(e.getMessage());
         }

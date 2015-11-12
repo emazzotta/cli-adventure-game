@@ -1,7 +1,7 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
 import java.util.ArrayList;
-
+// TODO This class can be removed (view ideas.txt) as it isn't needed.
 public enum ActionIdentifier {
     NONE, RED, BLUE, GREEN, YELLOW, WHITE, ALL;
 
