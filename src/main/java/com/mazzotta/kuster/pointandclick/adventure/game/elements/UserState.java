@@ -31,7 +31,7 @@ public class UserState {
             currentRoom = currentRoom.getNextRoom();
         }
         else {
-            Queue.getInstance().addGameOutput();
+            Queue.getInstance().addGameOutput("");
         }
     }
 
