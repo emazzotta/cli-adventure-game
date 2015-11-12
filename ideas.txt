@@ -1,17 +1,11 @@
-- Collect/Take Shovel -> Assume all if nothing passed as well as Collect without params = COLLECT ALL ALL
+- Assume all if nothing passed as well as Collect without params = COLLECT ALL ALL
 - Implement save game and load game as commands
 - Implement queue fetcher
 
-Tasks:
-- Show output in GUI
-- Implement Fight-logic
-
-Navigation:
+Actions:
 - Show current position (which room are you in and path taken)
 - Change room
 - Show available doors
-
-Actions:
 - See room inventory
 - Collect items
 - Use Potion
