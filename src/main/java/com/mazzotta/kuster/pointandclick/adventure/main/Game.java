@@ -37,8 +37,6 @@ public class Game {
                         if (Queue.getInstance().getPendingUserInput().size() > currentQueueSize) {
                             currentQueueSize = Queue.getInstance().getPendingUserInput().size();
                             Game.handleNewQueueItem();
-                            System.out.println("Input: " + Queue.getInstance().getPendingUserInput());
-                            System.out.println("Output: " + Queue.getInstance().getPendingGameOutput());
 
                             gui.updateGUI();
 
@@ -62,7 +60,7 @@ public class Game {
             CommandAction commandAction = inputParser.getCommandAction();
             Queue.getInstance().addGameOutput("All good with [" + commandAction.getCommand() + "] [" + commandAction.getActionType() + "] [" + commandAction.getActionIdentifier() + "]!");
             History.getInstance().addEnteredCommand(commandAction);
-            new CommandHandler().executeCommand(commandAction);
+            new CommandHandler().executecommand(commandAction);
         } catch (InvalidUserInputException e) {
             Queue.getInstance().addGameOutput(e.getMessage());
         }
