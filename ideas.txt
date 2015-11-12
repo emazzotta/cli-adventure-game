@@ -1,6 +1,5 @@
 - Assume all if nothing passed as well as Collect without params = COLLECT ALL ALL
 - Implement save game and load game as commands
-- Implement queue fetcher
 
 Actions:
 - Show current position (which room are you in and path taken)
