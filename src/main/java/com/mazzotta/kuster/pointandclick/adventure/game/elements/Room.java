@@ -9,10 +9,12 @@ public class Room {
     private String name;
     private ArrayList<Item> items;
     private Monster monster;
+    private Room nextRoom;
 
-    public Room(String name) {
+    public Room(String name, Room nextRoom) {
         this.name = name;
-        items = new ArrayList<Item>();
+        this.nextRoom = nextRoom;
+        this.items = new ArrayList<Item>();
     }
 
     public void addItem(Item item) {
@@ -33,5 +35,9 @@ public class Room {
 
     public Monster getMonster() {
         return monster;
+    }
+
+    public Room getNextRoom() {
+        return nextRoom;
     }
 }
