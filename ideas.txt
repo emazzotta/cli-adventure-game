@@ -1,14 +1,7 @@
-Things to think about:
-Should we add the actions to the various game elements classes or create one class which has the whole game logic?
-
-
 - Collect/Take Shovel -> Assume all if nothing passed as well as Collect without params = COLLECT ALL ALL
 - Implement save game and load game as commands
 - Implement queue fetcher
 - Meaningful errormessage if file or folder does not exist when saving or loading
-- Guns with Damage points
-- Boss with health
-- There's a monster, run away or fight
 
 Tasks:
 - Show output in GUI
