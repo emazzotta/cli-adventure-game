@@ -10,15 +10,6 @@ Tasks:
 - Implement Potions
 - Implement Fight-logic
 
-Use-Cases:
-
-General:
-
-Dungeon:
-- Create room
-- Class Dungeon (
-
-
 Navigation:
 - Show current position (which room are you in and path taken)
 - Change room
@@ -37,3 +28,16 @@ Combat:
 - Flee
 - Do Damage / take damage
 - Die / drop loot (monster)
+
+UserStateclass:
+
+- Player
+- Room
+- Inventory
+
+Has all methods to change itself (e.g. open door etc.
+
+
+Class combat (handles combat related actions)
+- die
+-
