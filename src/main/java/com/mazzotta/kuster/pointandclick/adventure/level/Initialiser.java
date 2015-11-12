@@ -33,8 +33,14 @@ public class Initialiser {
 
     private void addMonstersToRooms() {
         Monster monsterEasy = new Monster("Bowaa", 12, 50);
+        Monster monsterMedium = new Monster("Zazinzongi", 12, 50);
+        Monster monsterHard = new Monster("ARGHHAKASH", 12, 50);
+        Monster monsterEndbaawwws = new Monster("BLOOOAAATTTOOON", 12, 50);
 
-        room.get(5).setMonster(monsterEasy);
+        room.get(3).setMonster(monsterEasy);
+        room.get(5).setMonster(monsterMedium);
+        room.get(7).setMonster(monsterHard);
+        room.get(8).setMonster(monsterEndbaawwws);
     }
 
     private void addItemsToRooms() {
@@ -55,14 +61,24 @@ public class Initialiser {
     }
 
     private void addRooms() {
-        room.add(new Room("Room 1"));
-        room.add(new Room("Room 2"));
-        room.add(new Room("Room 3"));
-        room.add(new Room("Room 4"));
-        room.add(new Room("Room 5"));
-        room.add(new Room("Room 6"));
-        room.add(new Room("Room 7"));
-        room.add(new Room("Room 8"));
-        room.add(new Room("Room 9"));
+        Room room9 = new Room("Final Room", null);
+        Room room8 = new Room("Room 8", room9);
+        Room room7 = new Room("Room 7", room8);
+        Room room6 = new Room("Room 6", room7);
+        Room room5 = new Room("Room 5", room6);
+        Room room4 = new Room("Room 4", room5);
+        Room room3 = new Room("Room 3", room4);
+        Room room2 = new Room("Room 2", room3);
+        Room room1 = new Room("Room 1", room2);
+
+        room.add(room1);
+        room.add(room2);
+        room.add(room3);
+        room.add(room4);
+        room.add(room5);
+        room.add(room6);
+        room.add(room7);
+        room.add(room8);
+        room.add(room9);
     }
 }
