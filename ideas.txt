@@ -1,7 +1,6 @@
 - Collect/Take Shovel -> Assume all if nothing passed as well as Collect without params = COLLECT ALL ALL
 - Implement save game and load game as commands
 - Implement queue fetcher
-- Meaningful errormessage if file or folder does not exist when saving or loading
 
 Tasks:
 - Show output in GUI

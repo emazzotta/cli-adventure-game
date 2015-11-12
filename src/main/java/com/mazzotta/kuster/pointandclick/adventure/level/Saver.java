@@ -3,6 +3,7 @@ package com.mazzotta.kuster.pointandclick.adventure.level;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mazzotta.kuster.pointandclick.adventure.commands.History;
+import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil;
 import org.apache.commons.io.FileUtils;
 
@@ -24,7 +25,7 @@ public class Saver {
         try {
             FileUtils.write(savePath, saveDataString);
         } catch (IOException e) {
-            // TODO Something went wrong --> add to queue
+            Queue.getInstance().addGameOutput("Error saving to file " + filename + "\n" + e.getMessage());
         }
     }
 }
