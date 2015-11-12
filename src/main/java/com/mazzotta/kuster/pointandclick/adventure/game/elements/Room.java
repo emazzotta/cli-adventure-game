@@ -1,5 +1,6 @@
 package com.mazzotta.kuster.pointandclick.adventure.game.elements;
 
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Monster;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Item;
 
 import java.util.ArrayList;

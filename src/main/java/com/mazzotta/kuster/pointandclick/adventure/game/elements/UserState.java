@@ -4,6 +4,8 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.main.GUI;
 
 
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Player;
+
 public class UserState {
 
     private static UserState instance;

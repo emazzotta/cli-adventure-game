@@ -1,45 +1,18 @@
-- Collect/Take Shovel -> Assume all if nothing passed as well as Collect without params = COLLECT ALL ALL
+- Assume all if nothing passed as well as Collect without params = COLLECT ALL ALL
 - Implement save game and load game as commands
-- Implement queue fetcher
-- Meaningful errormessage if file or folder does not exist when saving or loading
 
-Tasks:
-- Show output in GUI
-- Implement Rooms
-- Implement Weapons
-- Implement Potions
-- Implement Fight-logic
-
-Navigation:
+Actions:
 - Show current position (which room are you in and path taken)
 - Change room
 - Show available doors
-
-In-Room actions:
 - See room inventory
 - Collect items
-
-Player related actions:
 - Use Potion
 - Show inventory
 - Equip item
-
-Combat:
 - Flee
 - Do Damage / take damage
 - Die / drop loot (monster)
-
-UserStateclass:
-
-- Player
-- Room
-- Inventory
-
-Has all methods to change itself (e.g. open door etc.
-
-
-Class combat (handles combat related actions)
- - die
 
 Class ActionIdentifier not needed as it would be accessed over index (e.g. use potion 3 where 3 refers to the potion index
 seen in the inventory.
