@@ -79,7 +79,7 @@ public class GUI extends JFrame {
                 e.printStackTrace();
 
             }
-            Queue.getInstance().addUserInput(inputParser.getCommandAction().getCommand().toString());
+            Queue.getInstance().addUserInput(inputParser.getCommandAction().getCommand().toString() + inputParser.getCommandAction().getActionType().toString() + inputParser.getCommandAction().getActionIdentifier().toString());
             userInput.setText("");
         }
     };

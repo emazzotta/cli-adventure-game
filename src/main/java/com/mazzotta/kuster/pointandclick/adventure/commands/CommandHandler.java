@@ -54,7 +54,7 @@ public class CommandHandler {
     public void handleOpenCommand() {
         switch (commandAction.getActionType()) {
             case DOOR:
-                //UserState.getInstance().changeRoom();
+                UserState.getInstance().changeRoom();
                 break;
         }
     }

@@ -11,7 +11,7 @@ public class UserState {
     private Player player;
     private Dungeon dungeon;
 
-    public static UserState getInstance() throws Exception {
+    public static UserState getInstance() {
         return instance;
     }
 
@@ -30,10 +30,14 @@ public class UserState {
         if(currentRoom.monsterDefeated = true) {
             currentRoom = currentRoom.getNextRoom();
             Queue.getInstance().addGameOutput("You have advanced to the next room. ");
+            System.out.println("You have advanced to the next room. ");
             Queue.getInstance().addGameOutput("New Room: " + currentRoom.getName());
+            System.out.println("New Room: " + currentRoom.getName());
         }
         else {
             Queue.getInstance().addGameOutput("WARNING! You cannot advance to the next room before you have defeated: " + currentRoom.getMonster().getName() + "!!");
+            System.out.println("WARNING! You cannot advance to the next room before you have defeated: " + currentRoom.getMonster().getName() + "!!");
+
         }
     }
 
