@@ -1,9 +1,10 @@
-package com.mazzotta.kuster.pointandclick.adventure.game.elements;
+package com.mazzotta.kuster.pointandclick.adventure.game.elements.characters;
 
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.Inventory;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.exception.UserDiedException;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Weapon;
 
-public class Player {
+public class Player extends Character {
 
     private Weapon equippedWeapon;
     private Inventory inventory;
@@ -22,6 +23,10 @@ public class Player {
             throw new UserDiedException("Game Over! You died.");
         }
         reduceHealthPointsBy(damagePoints);
+    }
+
+    public int getAttackPoints() {
+        return equippedWeapon.getAttackPoints();
     }
 
     private void reduceHealthPointsBy(int damagePoints) {

@@ -1,5 +1,7 @@
 package com.mazzotta.kuster.pointandclick.adventure.game.elements;
 
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Player;
+
 public class UserState {
 
     private static UserState instance;

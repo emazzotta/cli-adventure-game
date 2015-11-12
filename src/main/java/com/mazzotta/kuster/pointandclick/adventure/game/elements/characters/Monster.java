@@ -1,6 +1,6 @@
-package com.mazzotta.kuster.pointandclick.adventure.game.elements;
+package com.mazzotta.kuster.pointandclick.adventure.game.elements.characters;
 
-public class Monster {
+public class Monster extends Character {
 
     private final String name;
     private final int attackPoints;

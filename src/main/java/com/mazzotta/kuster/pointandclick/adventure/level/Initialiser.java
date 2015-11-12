@@ -1,11 +1,10 @@
 package com.mazzotta.kuster.pointandclick.adventure.level;
 
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.*;
-import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Item;
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Monster;
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Player;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Potion;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Weapon;
-
-import java.util.ArrayList;
 
 public class Initialiser {
 
