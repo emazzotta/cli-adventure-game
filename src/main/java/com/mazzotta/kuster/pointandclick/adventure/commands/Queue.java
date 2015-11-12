@@ -42,7 +42,7 @@ public class Queue {
     public void addUserInput(String userInput) {
         pendingUserInput.add(userInput);
     }
-    public void addGameOutput(String userInput) {
-        pendingGameOutput.add(userInput);
+    public void addGameOutput(String gameOutput) {
+        pendingGameOutput.add(gameOutput);
     }
 }

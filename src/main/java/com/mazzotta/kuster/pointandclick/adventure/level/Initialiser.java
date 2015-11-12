@@ -47,9 +47,13 @@ public class Initialiser {
         Monster monsterEndbaawwws = new Monster("BLOOOAAATTTOOON", 12, 50);
 
         dungeon.getRooms().get(3).setMonster(monsterEasy);
+        dungeon.getRooms().get(3).monsterDefeated = false;
         dungeon.getRooms().get(5).setMonster(monsterMedium);
+        dungeon.getRooms().get(5).monsterDefeated = false;
         dungeon.getRooms().get(7).setMonster(monsterHard);
+        dungeon.getRooms().get(5).monsterDefeated = false;
         dungeon.getRooms().get(8).setMonster(monsterEndbaawwws);
+        dungeon.getRooms().get(5).monsterDefeated = false;
     }
 
     private void addItemsToRooms() {

@@ -11,6 +11,7 @@ public class Room {
     private ArrayList<Item> items;
     private Monster monster;
     private Room nextRoom;
+    public boolean monsterDefeated;
 
     public Room(String name, Room nextRoom) {
         this.name = name;

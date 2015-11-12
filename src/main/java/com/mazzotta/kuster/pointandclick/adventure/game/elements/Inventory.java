@@ -10,7 +10,10 @@ public class Inventory {
     private ArrayList<Weapon> weapons;
     private ArrayList<Potion> potions;
 
-    public Inventory() {}
+    public Inventory() {
+        weapons = new ArrayList<Weapon>();
+        potions = new ArrayList<Potion>();
+    }
 
     public void showInventory() {
         StringBuilder inventory = new StringBuilder();
