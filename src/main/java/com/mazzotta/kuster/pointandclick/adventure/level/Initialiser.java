@@ -1,5 +1,6 @@
 package com.mazzotta.kuster.pointandclick.adventure.level;
 
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.Monster;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.Room;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Item;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Potion;
@@ -27,6 +28,13 @@ public class Initialiser {
     public void initialise() {
         addRooms();
         addItemsToRooms();
+        addMonstersToRooms();
+    }
+
+    private void addMonstersToRooms() {
+        Monster monsterEasy = new Monster("Bowaa", 12, 50);
+
+        room.get(5).setMonster(monsterEasy);
     }
 
     private void addItemsToRooms() {
@@ -38,12 +46,12 @@ public class Initialiser {
         Potion healthPotion100 = new Potion("Health +100", 100);
         Potion healthPotion150 = new Potion("Health +150", 150);
 
-        room.get(0).addItem((Item)shortSword);
-        room.get(2).addItem((Item)healthPotion50);
-        room.get(2).addItem((Item)healthPotion100);
-        room.get(6).addItem((Item)longSword);
-        room.get(7).addItem((Item)healthPotion150);
-        room.get(8).addItem((Item)masterSword);
+        room.get(0).addItem(shortSword);
+        room.get(2).addItem(healthPotion50);
+        room.get(2).addItem(healthPotion100);
+        room.get(6).addItem(longSword);
+        room.get(7).addItem(healthPotion150);
+        room.get(8).addItem(masterSword);
     }
 
     private void addRooms() {

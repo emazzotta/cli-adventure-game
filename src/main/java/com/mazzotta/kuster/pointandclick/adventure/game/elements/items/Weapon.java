@@ -1,6 +1,6 @@
 package com.mazzotta.kuster.pointandclick.adventure.game.elements.items;
 
-public class Weapon {
+public class Weapon implements Item {
 
     private final int attackPoints;
     private final String name;

@@ -1,6 +1,6 @@
 package com.mazzotta.kuster.pointandclick.adventure.game.elements.items;
 
-public class Potion {
+public class Potion implements Item {
 
     private final String name;
     private final int healthRestorePoints;

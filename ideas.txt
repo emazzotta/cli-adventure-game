@@ -2,7 +2,6 @@ Things to think about:
 Should we add the actions to the various game elements classes or create one class which has the whole game logic?
 
 
-- Find trophies (optional)
 - Collect/Take Shovel -> Assume all if nothing passed as well as Collect without params = COLLECT ALL ALL
 - Implement save game and load game as commands
 - Implement queue fetcher
@@ -10,13 +9,6 @@ Should we add the actions to the various game elements classes or create one cla
 - Guns with Damage points
 - Boss with health
 - There's a monster, run away or fight
-
-Available Items:
-- Weapons
-    - Short Sword
-    - Long Sword
-    - Master Sword
-- Potions (health)
 
 Tasks:
 - Show output in GUI
