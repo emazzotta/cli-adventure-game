@@ -7,9 +7,14 @@ public class Player {
 
     private Weapon equippedWeapon;
     private Inventory inventory;
+    private String name;
     private int health;
 
-    public Player() {
+    public Player(String name, int health, Weapon equippedWeapon) {
+        inventory = new Inventory();
+        this.name = name;
+        this.health = health;
+        this.equippedWeapon = equippedWeapon;
     }
 
     public void takeDamage(int damagePoints) throws UserDiedException {
@@ -21,5 +26,25 @@ public class Player {
 
     private void reduceHealthPointsBy(int damagePoints) {
         health -= damagePoints;
+    }
+
+    public Weapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
+
+    public void setEquippedWeapon(Weapon equippedWeapon) {
+        this.equippedWeapon = equippedWeapon;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHealth() {
+        return health;
     }
 }

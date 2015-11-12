@@ -14,4 +14,8 @@ public class Dungeon {
         rooms.add(room);
     }
 
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
+
 }

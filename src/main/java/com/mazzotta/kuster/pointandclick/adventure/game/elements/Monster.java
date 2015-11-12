@@ -23,4 +23,19 @@ public class Monster {
     public int getAttackPoints() {
         return attackPoints;
     }
+
+    public void takeDamage(int damagePoints) {
+        if(health - damagePoints <= 0) {
+            System.out.printf("Monster is dead");
+        }
+        reduceHealthPointsBy(damagePoints);
+    }
+
+    private void reduceHealthPointsBy(int damagePoints) {
+        health -= damagePoints;
+    }
+
+    public boolean isAlive() {
+        return health > 0;
+    }
 }

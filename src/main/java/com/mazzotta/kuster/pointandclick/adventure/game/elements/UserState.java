@@ -1,16 +1,24 @@
 package com.mazzotta.kuster.pointandclick.adventure.game.elements;
 
-/**
- * Created by admin on 12.11.2015.
- */
 public class UserState {
 
-    private static UserState Instance;
+    private static UserState instance;
     private Room currentRoom;
     private Player player;
     private Dungeon dungeon;
 
-    public UserState(Player player, Dungeon dungeon) {
-        
+    public static UserState getInstance() throws Exception {
+        return instance;
+    }
+
+    public static UserState createInstance(Player player, Dungeon dungeon) {
+        instance = new UserState(player, dungeon);
+        return instance;
+    }
+
+    private UserState(Player player, Dungeon dungeon) {
+        this.player = player;
+        this.dungeon = dungeon;
+        this.currentRoom = dungeon.getRooms().get(0);
     }
 }
