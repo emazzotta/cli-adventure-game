@@ -5,9 +5,6 @@
 
 Tasks:
 - Show output in GUI
-- Implement Rooms
-- Implement Weapons
-- Implement Potions
 - Implement Fight-logic
 
 Navigation:
@@ -15,16 +12,12 @@ Navigation:
 - Change room
 - Show available doors
 
-In-Room actions:
+Actions:
 - See room inventory
 - Collect items
-
-Player related actions:
 - Use Potion
 - Show inventory
 - Equip item
-
-Combat:
 - Flee
 - Do Damage / take damage
 - Die / drop loot (monster)
@@ -36,8 +29,3 @@ UserStateclass:
 - Inventory
 
 Has all methods to change itself (e.g. open door etc.
-
-
-Class combat (handles combat related actions)
-- die
--
