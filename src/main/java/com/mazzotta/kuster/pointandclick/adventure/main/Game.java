@@ -12,11 +12,20 @@ import java.util.ArrayList;
 
 public class Game {
 
+    private static Game instance;
+
     private static GUI gui;
     private static InputParser inputParser;
     private static Thread checkInput;
     private static int currentQueueSize;
-    private static boolean running;
+    public static boolean running;
+
+    public static Game getInstance() {
+        if(instance == null) {
+            instance = new Game();
+        }
+        return instance;
+    }
 
     private Game() {
         inputParser = new InputParser();
@@ -53,22 +62,13 @@ public class Game {
     }
 
     public static void handleNewQueueItem() {
-        ArrayList userInputs = Queue.getInstance().getPendingUserInput();
-        InputParser inputParser = new InputParser();
-        try {
-            inputParser.createCommandActionFrom((String) userInputs.get(currentQueueSize-1));
-            CommandAction commandAction = inputParser.getCommandAction();
+            CommandAction commandAction = Queue.getInstance().getPendingUserInput().get(currentQueueSize-1);
             Queue.getInstance().addGameOutput("All good with [" + commandAction.getCommand() + "] [" + commandAction.getActionType() + "] [" + commandAction.getActionIdentifier() + "]!");
             History.getInstance().addEnteredCommand(commandAction);
             new CommandHandler(commandAction).executeCommand();
-        } catch (InvalidUserInputException e) {
-            Queue.getInstance().addGameOutput(e.getMessage());
-        }
-
     }
 
     public static void main(String[] args) {
-        Game game = new Game();
-        game.getThread().start();
+        getInstance().getThread().start();
     }
 }

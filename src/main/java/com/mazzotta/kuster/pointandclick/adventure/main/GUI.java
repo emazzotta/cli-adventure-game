@@ -7,6 +7,7 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.In
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 
 public class GUI extends JFrame {
@@ -73,13 +74,14 @@ public class GUI extends JFrame {
         public void actionPerformed(ActionEvent actionEvent) {
             InputParser inputParser = new InputParser();
             try {
+                System.out.println("ActionCommand from User input: " + actionEvent.getActionCommand());
                 inputParser.createCommandActionFrom(actionEvent.getActionCommand());
             } catch (InvalidUserInputException e) {
                 inputParser.createInvalidCommandActionFrom(actionEvent.getActionCommand());
                 e.printStackTrace();
 
             }
-            Queue.getInstance().addUserInput(inputParser.getCommandAction().getCommand().toString() + inputParser.getCommandAction().getActionType().toString() + inputParser.getCommandAction().getActionIdentifier().toString());
+            Queue.getInstance().addUserInput(inputParser.getCommandAction());
             userInput.setText("");
         }
     };

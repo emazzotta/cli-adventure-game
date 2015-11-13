@@ -1,10 +1,12 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
+import com.mazzotta.kuster.pointandclick.adventure.main.Game;
+
 import java.util.ArrayList;
 
 public class Queue {
     private static Queue instance;
-    private static ArrayList<String> pendingUserInput;
+    private static ArrayList<CommandAction> pendingUserInput;
     private static ArrayList<String> pendingGameOutput;
 
     public static Queue getInstance() {
@@ -15,7 +17,7 @@ public class Queue {
     }
 
     private Queue() {
-        pendingUserInput = new ArrayList<String>();
+        pendingUserInput = new ArrayList<CommandAction>();
         pendingGameOutput = new ArrayList<String>();
     }
 
@@ -31,7 +33,7 @@ public class Queue {
         }
     }
 
-    public ArrayList<String> getPendingUserInput() {
+    public ArrayList<CommandAction> getPendingUserInput() {
         return pendingUserInput;
     }
 
@@ -39,8 +41,10 @@ public class Queue {
         return pendingGameOutput;
     }
 
-    public void addUserInput(String userInput) {
-        pendingUserInput.add(userInput);
+    public void addUserInput(CommandAction userInput) {
+        Game.getInstance().running = false;
+            pendingUserInput.add(userInput);
+        Game.getInstance().running = true;
     }
     public void addGameOutput(String gameOutput) {
         pendingGameOutput.add(gameOutput);

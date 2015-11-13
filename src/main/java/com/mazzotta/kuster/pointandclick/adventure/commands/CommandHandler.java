@@ -1,7 +1,6 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
 
-import com.mazzotta.kuster.pointandclick.adventure.game.elements.Room;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.UserState;
 
 public class CommandHandler {
@@ -16,8 +15,10 @@ public class CommandHandler {
 
         switch (commandAction.getCommand()) {
             case NONE:
+                System.out.println("[Command = NONE] No Command available!");
                 return;
             case OPEN:
+                System.out.println("[Command = OPEN] Execute [OPEN] command");
                handleOpenCommand();
                 return;
             case CLOSE:
