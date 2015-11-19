@@ -4,7 +4,6 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
 import com.mazzotta.kuster.pointandclick.adventure.commands.CommandHandler;
 import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
-import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputParser;
 import com.mazzotta.kuster.pointandclick.adventure.level.Initialiser;
 
 public class Game {
@@ -12,8 +11,6 @@ public class Game {
     private static Game instance;
 
     private static GUI gui;
-    private static InputParser inputParser;
-    private static Thread checkInput;
     private static boolean showInitialText;
     private static int currentQueueSize;
     public static boolean running;
@@ -26,11 +23,9 @@ public class Game {
     }
 
     private Game() {
-        inputParser = new InputParser();
         running = false;
         showInitialText = true;
         currentQueueSize = Queue.getInstance().getPendingUserInput().size();
-        checkInput = getThread();
         gui = new GUI();
         Initialiser.getInstance().initialise();
     }

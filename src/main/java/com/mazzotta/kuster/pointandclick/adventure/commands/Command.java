@@ -1,7 +1,5 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
-import java.util.ArrayList;
-
 public enum Command {
     NONE, OPEN, COLLECT, FIGHT, INSPECT, USE, HELP, SAVE, LOAD;
 
@@ -23,11 +21,11 @@ public enum Command {
         return false;
     }
 
-    public static ArrayList<String> thatAreAvailable() {
-        ArrayList<String> availableCommands = new ArrayList<String>();
+    public static String listAvailable() {
+        StringBuilder availableCommands = new StringBuilder();
         for (Command command : Command.values()) {
-            availableCommands.add(command.name());
+            availableCommands.append(command.name() + "\n");
         }
-        return availableCommands;
+        return availableCommands.toString();
     }
 }

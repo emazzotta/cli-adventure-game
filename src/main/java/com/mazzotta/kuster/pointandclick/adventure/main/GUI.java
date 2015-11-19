@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 public class GUI extends JFrame {
 
     private JFrame frame;
+    private JScrollPane gameScrollWindow;
     private JTextArea gameOutput;
     private JTextField userInput;
     private Thread checkOutput;
@@ -38,21 +39,21 @@ public class GUI extends JFrame {
         };
     }
 
-    // random comment
     private void initUI() {
         frame = new JFrame("Point & Click by Emanuele & Leandro");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = new Dimension((screenSize.width / 2), (screenSize.height / 2));
-        int x = (frameSize.width / 2);
-        int y = (frameSize.height / 2);
+        int x = frameSize.width / 2;
+        int y = frameSize.height / 2;
         frame.setBounds(x, y, frameSize.width, frameSize.height);
 
         gameOutput = new JTextArea();
         gameOutput.setEditable(false);
         userInput = new JTextField();
+        gameScrollWindow = new JScrollPane(gameOutput);
 
         frame.getContentPane().setLayout(new BorderLayout());
-        frame.getContentPane().add(gameOutput, BorderLayout.CENTER);
+        frame.getContentPane().add(gameScrollWindow, BorderLayout.CENTER);
         frame.getContentPane().add(userInput, BorderLayout.SOUTH);
 
         userInput.addActionListener(action);
@@ -62,6 +63,7 @@ public class GUI extends JFrame {
     }
 
     public void updateGUI() {
+        gameOutput.setText("");
         System.out.println("Input: " + Queue.getInstance().getPendingUserInput());
         System.out.println("Output: " + Queue.getInstance().getPendingGameOutput());
         for(String output : Queue.getInstance().getPendingGameOutput()) {

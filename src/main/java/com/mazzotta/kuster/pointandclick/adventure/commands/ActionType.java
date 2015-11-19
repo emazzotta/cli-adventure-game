@@ -1,7 +1,5 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
-import java.util.ArrayList;
-
 public enum ActionType {
     NONE, DOOR, ENEMY, INVENTORY, ITEMS, POTION, ROOM;
 
@@ -23,11 +21,11 @@ public enum ActionType {
         return false;
     }
 
-    public static ArrayList<String> thatAreAvailable() {
-        ArrayList<String> availableActionTypes = new ArrayList<String>();
+    public static String listAvailable() {
+        StringBuilder availableActionTypes = new StringBuilder();
         for (ActionType actionType : ActionType.values()) {
-            availableActionTypes.add(actionType.name());
+            availableActionTypes.append(actionType.name() + "\n");
         }
-        return availableActionTypes;
+        return availableActionTypes.toString();
     }
 }
