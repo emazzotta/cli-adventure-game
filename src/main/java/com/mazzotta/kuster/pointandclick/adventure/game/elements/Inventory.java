@@ -1,5 +1,6 @@
 package com.mazzotta.kuster.pointandclick.adventure.game.elements;
 
+import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Potion;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Weapon;
 
@@ -17,17 +18,27 @@ public class Inventory {
 
     public void showInventory() {
         StringBuilder inventory = new StringBuilder();
-        inventory.append("Inventory:\n");
+        inventory.append("\n\nInventory:\n");
         inventory.append("Weapons:\n");
-
-        for(int i=0; i < weapons.size(); i++) {
-            inventory.append("[" + i + "]\t" + weapons.get(i).getName());
+        if(weapons.isEmpty()) {
+            inventory.append(" -\n");
+        } else {
+            for (int i = 0; i < weapons.size(); i++) {
+                inventory.append("[" + i + "]\t" + weapons.get(i).getName());
+            }
         }
-        for(int i=0; i < potions.size(); i++) {
-            inventory.append("[" + i + "]\t" + potions.get(i).getName());
+
+        inventory.append("Potions:\n");
+        if(potions.isEmpty()) {
+            inventory.append(" -\n");
+        } else {
+            for (int i = 0; i < potions.size(); i++) {
+                inventory.append("[" + i + "]\t" + potions.get(i).getName());
+            }
         }
 
         System.out.println(inventory);
+        Queue.getInstance().addGameOutput(inventory.toString());
     }
 
     public void addWeapon(Weapon weapon) {

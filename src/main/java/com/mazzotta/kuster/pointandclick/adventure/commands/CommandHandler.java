@@ -21,27 +21,15 @@ public class CommandHandler {
                 System.out.println("[Command = OPEN] Execute [OPEN] command");
                handleOpenCommand();
                 return;
-            case CLOSE:
-                return;
-            case SHOOT:
-                return;
-            case KILL:
-                return;
-            case WALK:
-                return;
-            case CROUCH:
-                return;
             case COLLECT:
-                return;
-            case TAKE:
                 return;
             case USE:
                 return;
-            case CONSUME:
-                return;
-            case FLEE:
-                return;
             case FIGHT:
+                return;
+            case INSPECT:
+                System.out.println("[Command = INSPECT] Execute [INSPECT] command");
+                handleInspectCommand();
                 return;
         }
 
@@ -56,6 +44,17 @@ public class CommandHandler {
         switch (commandAction.getActionType()) {
             case DOOR:
                 UserState.getInstance().changeRoom();
+                break;
+        }
+    }
+
+    public void handleInspectCommand() {
+        switch (commandAction.getActionType()) {
+            case INVENTORY:
+                UserState.getInstance().getPlayer().getInventory().showInventory();
+                break;
+            case ROOM:
+                UserState.getInstance().getCurrentRoom().showRoomContent();
                 break;
         }
     }

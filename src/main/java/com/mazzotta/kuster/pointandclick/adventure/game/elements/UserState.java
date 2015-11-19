@@ -1,9 +1,6 @@
 package com.mazzotta.kuster.pointandclick.adventure.game.elements;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
-import com.mazzotta.kuster.pointandclick.adventure.main.GUI;
-
-
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Player;
 
 public class UserState {
@@ -30,7 +27,7 @@ public class UserState {
 
     public void changeRoom() {
         if(currentRoom.getNextRoom() != null) {
-            if (currentRoom.monsterDefeated = true) {
+            if (currentRoom.monsterDefeated == true) {
                 currentRoom = currentRoom.getNextRoom();
                 Queue.getInstance().addGameOutput("You have advanced to the next room. ");
                 System.out.println("You have advanced to the next room. ");
@@ -48,7 +45,13 @@ public class UserState {
         }
     }
 
+    public Player getPlayer() {
+        return player;
+    }
 
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
 
 
     public void showCurrentRoom() {
