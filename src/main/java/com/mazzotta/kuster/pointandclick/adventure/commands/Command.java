@@ -3,7 +3,7 @@ package com.mazzotta.kuster.pointandclick.adventure.commands;
 import java.util.ArrayList;
 
 public enum Command {
-    NONE, OPEN, COLLECT, FIGHT, INSPECT, USE;
+    NONE, OPEN, COLLECT, FIGHT, INSPECT, USE, HELP, SAVE, LOAD;
 
     public static Command convertToCommand(String commandText) {
         for (Command command : Command.values()) {

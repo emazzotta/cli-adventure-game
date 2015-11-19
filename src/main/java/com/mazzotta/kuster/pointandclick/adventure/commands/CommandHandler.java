@@ -14,11 +14,11 @@ public class CommandHandler {
     public void executeCommand() {
 
         switch (commandAction.getCommand()) {
+            default:
+                System.out.println("Executing [Command = " + commandAction.getCommand() + "]");
             case NONE:
-                System.out.println("[Command = NONE] No Command available!");
                 return;
             case OPEN:
-                System.out.println("[Command = OPEN] Execute [OPEN] command");
                handleOpenCommand();
                 return;
             case COLLECT:
@@ -28,16 +28,32 @@ public class CommandHandler {
             case FIGHT:
                 return;
             case INSPECT:
-                System.out.println("[Command = INSPECT] Execute [INSPECT] command");
                 handleInspectCommand();
+                return;
+            case HELP:
+                handleHelpCommand();
+                return;
+            case SAVE:
+                handleSaveCommand();
+                return;
+            case LOAD:
+                handleLoadCommand();
                 return;
         }
 
-
-        System.out.println("Command executed(teststatement)");
-
-
         //TODO implement execution of the command. Also map available commands to actions.
+    }
+
+    private void handleHelpCommand() {
+
+    }
+
+    private void handleSaveCommand() {
+
+    }
+
+    private void handleLoadCommand() {
+
     }
 
     public void handleOpenCommand() {
