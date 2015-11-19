@@ -1,13 +1,12 @@
 package com.mazzotta.kuster.pointandclick.adventure.main;
 
-import com.mazzotta.kuster.pointandclick.adventure.commands.*;
+import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputParser;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.InvalidUserInputException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 
 
 public class GUI extends JFrame {
@@ -63,11 +62,11 @@ public class GUI extends JFrame {
     }
 
     public void updateGUI() {
-        // TODO If GUI should show more / different data this will need to be added here might also need more complex logic depending on what needs to be displayed.
-        gameOutput.append("Input: " + formatOutputText(Queue.getInstance().getPendingUserInput().toString()));
         System.out.println("Input: " + Queue.getInstance().getPendingUserInput());
-        gameOutput.append("Output: " + formatOutputText(Queue.getInstance().getPendingGameOutput().toString()));
         System.out.println("Output: " + Queue.getInstance().getPendingGameOutput());
+        for(String output : Queue.getInstance().getPendingGameOutput()) {
+            gameOutput.append(output + "\n");
+        }
     }
 
     Action action = new AbstractAction() {
@@ -79,18 +78,9 @@ public class GUI extends JFrame {
             } catch (InvalidUserInputException e) {
                 inputParser.createInvalidCommandActionFrom(actionEvent.getActionCommand());
                 e.printStackTrace();
-
             }
             Queue.getInstance().addUserInput(inputParser.getCommandAction());
             userInput.setText("");
         }
     };
-
-    private String formatOutputText(String textToFormat) {
-        StringBuilder formatedText = new StringBuilder();
-        formatedText.append("[" + textToFormat + "]");
-        formatedText.append("\n");
-
-        return formatedText.toString();
-    }
 }

@@ -2,8 +2,7 @@ package com.mazzotta.kuster.pointandclick.adventure.commands;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputValidator;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.InvalidUserInputException;
-
-import javax.swing.*;
+import org.apache.commons.lang3.StringUtils;
 
 public class CommandAction {
 
@@ -14,7 +13,7 @@ public class CommandAction {
     public CommandAction() {
         command = Command.NONE;
         actionType = ActionType.NONE;
-        actionIdentifier = ActionIdentifier.NONE;
+        actionIdentifier = new ActionIdentifier(0);
     }
 
     public CommandAction(String commandActionFragments[]) {
@@ -22,15 +21,13 @@ public class CommandAction {
 
         if(commandActionFragments.length >= 2) {
             actionType = ActionType.convertToActionType(commandActionFragments[1]);
-        }
-        else {
+        } else {
             actionType = ActionType.NONE;
         }
-        if(commandActionFragments.length >= 3) {
-            actionIdentifier = ActionIdentifier.convertToActionIdentifier(commandActionFragments[2]);
-        }
-        else {
-            actionIdentifier = ActionIdentifier.NONE;
+        if(commandActionFragments.length >= 3 && StringUtils.isNumeric(commandActionFragments[2])) {
+            actionIdentifier = new ActionIdentifier(commandActionFragments[2]);
+        } else {
+            actionIdentifier = new ActionIdentifier(0);
         }
     }
 
@@ -57,7 +54,6 @@ public class CommandAction {
     }
 
     public void setActionIdentifier(ActionIdentifier actionIdentifier) throws InvalidUserInputException {
-        InputValidator.validateActionIdentifier(actionIdentifier.name());
         this.actionIdentifier = actionIdentifier;
     }
 }

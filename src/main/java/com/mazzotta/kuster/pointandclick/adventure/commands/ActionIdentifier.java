@@ -1,33 +1,22 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
-import java.util.ArrayList;
-// TODO This class can be removed (view ideas.txt) as it isn't needed.
-public enum ActionIdentifier {
-    NONE, RED, BLUE, GREEN, YELLOW, WHITE, ALL;
+public class ActionIdentifier {
 
-    public static ActionIdentifier convertToActionIdentifier(String actionIdentifierText) {
-        for (ActionIdentifier actionIdentifier : ActionIdentifier.values()) {
-            if (actionIdentifier.name().equals(actionIdentifierText.toUpperCase())) {
-                return actionIdentifier;
-            }
-        }
-        return NONE;
-    }
-    
-    public static boolean contains(String actionIdentifierToLookFor) {
-        for (ActionIdentifier actionIdentifier : ActionIdentifier.values()) {
-            if (actionIdentifier.name().equals(actionIdentifierToLookFor.toUpperCase())) {
-                return true;
-            }
-        }
-        return false;
+    int identifierId;
+
+    public ActionIdentifier(int identifierId) {
+        this.identifierId = identifierId;
     }
 
-    public static ArrayList<String> thatAreAvailable() {
-        ArrayList<String> availableActionIdentifiers = new ArrayList<String>();
-        for (ActionIdentifier actionIdentifier : ActionIdentifier.values()) {
-            availableActionIdentifiers.add(actionIdentifier.name());
-        }
-        return availableActionIdentifiers;
+    public ActionIdentifier(String identifierId) {
+        this.identifierId = Integer.parseInt(identifierId);
+    }
+
+    public int getIdentifierId() {
+        return identifierId;
+    }
+
+    public String toString() {
+        return "" + identifierId;
     }
 }

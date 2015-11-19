@@ -38,4 +38,8 @@ public class Monster extends Character {
     public boolean isAlive() {
         return health > 0;
     }
+
+    public boolean isDead() {
+        return !isAlive();
+    }
 }

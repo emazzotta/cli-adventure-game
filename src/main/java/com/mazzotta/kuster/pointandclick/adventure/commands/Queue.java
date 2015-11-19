@@ -42,9 +42,9 @@ public class Queue {
     }
 
     public void addUserInput(CommandAction userInput) {
-        Game.getInstance().running = false;
-            pendingUserInput.add(userInput);
-        Game.getInstance().running = true;
+        Game.running = false;
+        pendingUserInput.add(userInput);
+        Game.running = true;
     }
     public void addGameOutput(String gameOutput) {
         pendingGameOutput.add(gameOutput);

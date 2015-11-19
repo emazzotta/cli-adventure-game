@@ -12,7 +12,6 @@ public class Room {
     private ArrayList<Item> items;
     private Monster monster;
     private Room nextRoom;
-    public boolean monsterDefeated;
 
     public Room(String name, Room nextRoom) {
         this.name = name;
@@ -44,10 +43,18 @@ public class Room {
         return nextRoom;
     }
 
+    public boolean hasNextRoom() {
+        return nextRoom != null;
+    }
+
+    public boolean hasMonster() {
+        return monster != null;
+    }
+
     public void showRoomContent() {
         StringBuilder roomContent = new StringBuilder();
         roomContent.append("Room:" + name + "\n");
-        if (monster != null) {
+        if (hasMonster()) {
             roomContent.append("Monster: " + monster.getName() + "\n");
             roomContent.append("Alive: " + monster.isAlive() + "\n");
         }
@@ -56,7 +63,13 @@ public class Room {
             for (int i = 0; i < items.size(); i++) {
                 roomContent.append("[" + i + "]\t" + items.get(i).getName() + "\n");
             }
+        } else {
+            roomContent.append("There are no items in this room (anymore)");
         }
         Queue.getInstance().addGameOutput(roomContent.toString());
+    }
+
+    public boolean hasUndefeatedMonster() {
+        return hasMonster() && getMonster().isAlive();
     }
 }

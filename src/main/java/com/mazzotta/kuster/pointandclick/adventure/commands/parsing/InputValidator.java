@@ -1,6 +1,5 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands.parsing;
 
-import com.mazzotta.kuster.pointandclick.adventure.commands.ActionIdentifier;
 import com.mazzotta.kuster.pointandclick.adventure.commands.ActionType;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Command;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.InvalidUserInputException;
@@ -14,7 +13,7 @@ public class InputValidator {
             validateActionType(commandActionFragments[1]);
         }
         if(commandActionFragments.length >= 3) {
-            validateActionIdentifier(commandActionFragments[2]);
+            // TODO Validate that this number is valid in conjunction with the rest validateActionIdentifier(commandActionFragments[2]);
         }
     }
 
@@ -35,13 +34,6 @@ public class InputValidator {
         actionType = actionType.toUpperCase();
         if(!ActionType.contains(actionType)) {
             throw new InvalidUserInputException("The action type [" + actionType + "] does not exist");
-        }
-    }
-
-    public static void validateActionIdentifier(String actionIdentifier) throws InvalidUserInputException {
-        actionIdentifier = actionIdentifier.toUpperCase();
-        if(!ActionIdentifier.contains(actionIdentifier)) {
-            throw new InvalidUserInputException("The action identifier [" + actionIdentifier + "] does not exist");
         }
     }
 }

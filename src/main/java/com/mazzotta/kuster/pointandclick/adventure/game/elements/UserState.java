@@ -26,8 +26,8 @@ public class UserState {
     }
 
     public void changeRoom() {
-        if(currentRoom.getNextRoom() != null) {
-            if (currentRoom.monsterDefeated == true) {
+        if(currentRoom.hasNextRoom()) {
+            if (!currentRoom.hasUndefeatedMonster()) {
                 currentRoom = currentRoom.getNextRoom();
                 Queue.getInstance().addGameOutput("You have advanced to the next room. ");
                 System.out.println("You have advanced to the next room. ");
@@ -36,7 +36,6 @@ public class UserState {
             } else {
                 Queue.getInstance().addGameOutput("WARNING! You cannot advance to the next room before you have defeated: " + currentRoom.getMonster().getName() + "!!");
                 System.out.println("WARNING! You cannot advance to the next room before you have defeated: " + currentRoom.getMonster().getName() + "!!");
-
             }
         }
         else {
@@ -53,8 +52,6 @@ public class UserState {
         return currentRoom;
     }
 
-
     public void showCurrentRoom() {
     }
-
 }
