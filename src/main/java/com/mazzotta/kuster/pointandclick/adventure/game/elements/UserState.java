@@ -29,17 +29,22 @@ public class UserState {
     }
 
     public void changeRoom() {
-        if(currentRoom.monsterDefeated = true) {
-            currentRoom = currentRoom.getNextRoom();
-            Queue.getInstance().addGameOutput("You have advanced to the next room. ");
-            System.out.println("You have advanced to the next room. ");
-            Queue.getInstance().addGameOutput("New Room: " + currentRoom.getName());
-            System.out.println("New Room: " + currentRoom.getName());
+        if(currentRoom.getNextRoom() != null) {
+            if (currentRoom.monsterDefeated = true) {
+                currentRoom = currentRoom.getNextRoom();
+                Queue.getInstance().addGameOutput("You have advanced to the next room. ");
+                System.out.println("You have advanced to the next room. ");
+                Queue.getInstance().addGameOutput("New Room: " + currentRoom.getName());
+                System.out.println("New Room: " + currentRoom.getName());
+            } else {
+                Queue.getInstance().addGameOutput("WARNING! You cannot advance to the next room before you have defeated: " + currentRoom.getMonster().getName() + "!!");
+                System.out.println("WARNING! You cannot advance to the next room before you have defeated: " + currentRoom.getMonster().getName() + "!!");
+
+            }
         }
         else {
-            Queue.getInstance().addGameOutput("WARNING! You cannot advance to the next room before you have defeated: " + currentRoom.getMonster().getName() + "!!");
-            System.out.println("WARNING! You cannot advance to the next room before you have defeated: " + currentRoom.getMonster().getName() + "!!");
-
+            Queue.getInstance().addGameOutput("There is no next room available!");
+            System.out.println("There is no next room available");
         }
     }
 
