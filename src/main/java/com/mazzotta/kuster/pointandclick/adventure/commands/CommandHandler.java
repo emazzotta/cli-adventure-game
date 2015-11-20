@@ -67,7 +67,7 @@ public class CommandHandler {
     }
 
     private void handleLoadCommand() {
-
+        Game.getInstance().getLoader().loadFromJsonFile(commandAction.getActionIdentifier().getIdentifierId());
     }
 
     public void handleOpenCommand() {
