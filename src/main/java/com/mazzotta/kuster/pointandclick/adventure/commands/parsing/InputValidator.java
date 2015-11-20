@@ -13,7 +13,7 @@ public class InputValidator {
             validateActionType(commandActionFragments[1]);
         }
         if(commandActionFragments.length >= 3) {
-            // TODO Validate that this number is valid in conjunction with the rest validateActionIdentifier(commandActionFragments[2]);
+            validateActionIdentifier(commandActionFragments[2]);
         }
     }
 
@@ -35,5 +35,10 @@ public class InputValidator {
         if(!ActionType.contains(actionType)) {
             throw new InvalidUserInputException("The action type [" + actionType + "] does not exist");
         }
+    }
+
+    public static void validateActionIdentifier(String actionIdentifier) throws InvalidUserInputException {
+        actionIdentifier = actionIdentifier.toUpperCase();
+        //TODO might need further validation.
     }
 }

@@ -4,7 +4,9 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
 import com.mazzotta.kuster.pointandclick.adventure.commands.CommandHandler;
 import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
-import com.mazzotta.kuster.pointandclick.adventure.level.Initialiser;
+import com.mazzotta.kuster.pointandclick.adventure.level.Initializer;
+import com.mazzotta.kuster.pointandclick.adventure.level.Loader;
+import com.mazzotta.kuster.pointandclick.adventure.level.Saver;
 
 public class Game {
 
@@ -14,6 +16,9 @@ public class Game {
     private static boolean showInitialText;
     private static int currentQueueSize;
     public static boolean running;
+
+    private static Loader loader;
+    private static Saver saver;
 
     public static Game getInstance() {
         if(instance == null) {
@@ -27,7 +32,9 @@ public class Game {
         showInitialText = true;
         currentQueueSize = Queue.getInstance().getPendingUserInput().size();
         gui = new GUI();
-        Initialiser.getInstance().initialise();
+        Initializer.getInstance().initialise();
+        loader = new Loader();
+        saver = new Saver();
     }
 
     private Thread getThread() {
@@ -81,4 +88,14 @@ public class Game {
     public static void main(String[] args) {
         getInstance().getThread().start();
     }
+
+    public static Loader getLoader() {
+        return loader;
+    }
+
+    public static Saver getSaver() {
+        return saver;
+    }
+
+
 }

@@ -8,19 +8,19 @@ import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Play
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Potion;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Weapon;
 
-public class Initialiser {
+public class Initializer {
 
     private Dungeon dungeon;
     private Player player;
-    private static Initialiser instance;
+    private static Initializer instance;
 
-    private Initialiser() {
+    private Initializer() {
         dungeon = new Dungeon();
     }
 
-    public static Initialiser getInstance() {
+    public static Initializer getInstance() {
         if(instance == null) {
-            instance = new Initialiser();
+            instance = new Initializer();
         }
         return instance;
     }

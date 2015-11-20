@@ -13,7 +13,7 @@ public class CommandAction {
     public CommandAction() {
         command = Command.NONE;
         actionType = ActionType.NONE;
-        actionIdentifier = new ActionIdentifier(0);
+        actionIdentifier = new ActionIdentifier("");
     }
 
     public CommandAction(String commandActionFragments[]) {
@@ -24,10 +24,10 @@ public class CommandAction {
         } else {
             actionType = ActionType.NONE;
         }
-        if(commandActionFragments.length >= 3 && StringUtils.isNumeric(commandActionFragments[2])) {
+        if(commandActionFragments.length >= 3) {
             actionIdentifier = new ActionIdentifier(commandActionFragments[2]);
         } else {
-            actionIdentifier = new ActionIdentifier(0);
+            actionIdentifier = new ActionIdentifier("");
         }
     }
 

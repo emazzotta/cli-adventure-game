@@ -2,6 +2,7 @@ package com.mazzotta.kuster.pointandclick.adventure.commands;
 
 
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.UserState;
+import com.mazzotta.kuster.pointandclick.adventure.main.Game;
 
 public class CommandHandler {
 
@@ -26,6 +27,7 @@ public class CommandHandler {
             case USE:
                 return;
             case FIGHT:
+                handleFightCommand();
                 return;
             case INSPECT:
                 handleInspectCommand();
@@ -55,13 +57,13 @@ public class CommandHandler {
                 ActionType.listAvailable() +
                 "3st command arguments:\n" +
                 "This is actually just a number. It will identify the exact action item you're referring to.\n\n" +
-                "To save your current game type: SAVE save_filename\n" +
-                "To load a saved game type: LOAD save_filename\n" +
+                "To save your current game type: SAVE GAME 'save_filename'\n" +
+                "To load a saved game type: LOAD GAME 'save_filename'\n" +
                 "Now go ahead and beat the monsters!");
     }
 
     private void handleSaveCommand() {
-
+        Game.getInstance().getSaver().saveAs(commandAction.getActionIdentifier().getIdentifierId());
     }
 
     private void handleLoadCommand() {
@@ -85,5 +87,9 @@ public class CommandHandler {
                 UserState.getInstance().getCurrentRoom().showRoomContent();
                 break;
         }
+    }
+
+    public void handleFightCommand() {
+
     }
 }

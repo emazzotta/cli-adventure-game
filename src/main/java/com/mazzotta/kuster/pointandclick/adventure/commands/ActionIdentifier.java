@@ -2,21 +2,17 @@ package com.mazzotta.kuster.pointandclick.adventure.commands;
 
 public class ActionIdentifier {
 
-    int identifierId;
+    String identifierId;
 
-    public ActionIdentifier(int identifierId) {
+    public ActionIdentifier(String identifierId) {
         this.identifierId = identifierId;
     }
 
-    public ActionIdentifier(String identifierId) {
-        this.identifierId = Integer.parseInt(identifierId);
-    }
-
-    public int getIdentifierId() {
+    public String getIdentifierId() {
         return identifierId;
     }
 
-    public String toString() {
-        return "" + identifierId;
+    public int toInt() {
+        return Integer.parseInt(identifierId);
     }
 }
