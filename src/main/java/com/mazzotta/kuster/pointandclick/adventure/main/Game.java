@@ -69,7 +69,7 @@ public class Game {
     }
 
     private String infoText() {
-        return "Hello Player! Yes, antoher one of those stereotypical games. \n" +
+        return "Hello Player! Yes, another one of those stereotypical games. \n" +
                 "Fight the boss win the game, simple enough right?\n" +
                 "In case you need help with the commands, type \"HELP\"\n\n" +
                 "If you want to resume your previous session, load your saved file like this:\n" +
