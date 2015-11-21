@@ -1,7 +1,5 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
-import com.mazzotta.kuster.pointandclick.adventure.main.Game;
-
 import java.util.ArrayList;
 
 public class Queue {
@@ -42,11 +40,10 @@ public class Queue {
     }
 
     public void addUserInput(CommandAction userInput) {
-        Game.running = false;
         pendingUserInput.add(userInput);
-        Game.running = true;
     }
     public void addGameOutput(String gameOutput) {
+        System.out.println(gameOutput);
         pendingGameOutput.add(gameOutput);
     }
 }

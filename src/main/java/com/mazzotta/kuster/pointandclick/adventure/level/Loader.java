@@ -1,8 +1,11 @@
 package com.mazzotta.kuster.pointandclick.adventure.level;
 
 import com.google.gson.*;
+import com.mazzotta.kuster.pointandclick.adventure.commands.Command;
 import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
 import com.mazzotta.kuster.pointandclick.adventure.commands.History;
+import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.UserState;
 import org.apache.commons.io.FileUtils;
 
 import java.io.IOException;
@@ -28,10 +31,19 @@ public class Loader {
     }
 
     private void loadJsonArrayIntoHistory(JsonArray commandsAsJson) {
+        History.getInstance().clearCommands();
+        UserState.getInstance().resetUserState();
         for(JsonElement commandAsJson: commandsAsJson) {
             CommandAction commandAction = gson.fromJson(commandAsJson , CommandAction.class);
-            History.getInstance().addEnteredCommand(commandAction);
+            if(!isASaveOrLoadCommand(commandAction)) {
+                History.getInstance().addEnteredCommand(commandAction);
+                Queue.getInstance().addUserInput(commandAction);
+            }
         }
+    }
+
+    private boolean isASaveOrLoadCommand(CommandAction commandAction) {
+        return commandAction.getCommand() == Command.SAVE || commandAction.getCommand() == Command.LOAD;
     }
 
     private JsonArray getStringAsJsonArray(String loadedJson) {

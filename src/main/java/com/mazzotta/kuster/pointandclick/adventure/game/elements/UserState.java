@@ -6,6 +6,7 @@ import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Play
 public class UserState {
 
     private static UserState instance;
+    private static UserState initialUserState;
     private Room currentRoom;
     private Player player;
     private Dungeon dungeon;
@@ -25,23 +26,31 @@ public class UserState {
         this.currentRoom = dungeon.getRooms().get(0);
     }
 
+    public void createInitialUserStateFromCurrentState() {
+        initialUserState = new UserState(player, dungeon);
+    }
+
+    public void resetUserState() {
+        instance = new UserState(initialUserState.getPlayer(), initialUserState.getDungeon());
+    }
+
     public void changeRoom() {
         if(currentRoom.hasNextRoom()) {
             if (!currentRoom.hasUndefeatedMonster()) {
                 currentRoom = currentRoom.getNextRoom();
                 Queue.getInstance().addGameOutput("You have advanced to the next room. ");
-                System.out.println("You have advanced to the next room. ");
                 Queue.getInstance().addGameOutput("New Room: " + currentRoom.getName());
-                System.out.println("New Room: " + currentRoom.getName());
             } else {
                 Queue.getInstance().addGameOutput("WARNING! You cannot advance to the next room before you have defeated: " + currentRoom.getMonster().getName() + "!!");
-                System.out.println("WARNING! You cannot advance to the next room before you have defeated: " + currentRoom.getMonster().getName() + "!!");
             }
         }
         else {
             Queue.getInstance().addGameOutput("There is no next room available!");
-            System.out.println("There is no next room available");
         }
+    }
+
+    public Dungeon getDungeon() {
+        return dungeon;
     }
 
     public Player getPlayer() {

@@ -5,8 +5,6 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.CommandHandler;
 import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.level.Initializer;
-import com.mazzotta.kuster.pointandclick.adventure.level.Loader;
-import com.mazzotta.kuster.pointandclick.adventure.level.Saver;
 
 public class Game {
 
@@ -16,9 +14,6 @@ public class Game {
     private static boolean showInitialText;
     private static int currentQueueSize;
     public static boolean running;
-
-    private static Loader loader;
-    private static Saver saver;
 
     public static Game getInstance() {
         if(instance == null) {
@@ -33,8 +28,6 @@ public class Game {
         currentQueueSize = Queue.getInstance().getPendingUserInput().size();
         gui = new GUI();
         Initializer.getInstance().initialise();
-        loader = new Loader();
-        saver = new Saver();
     }
 
     private Thread getThread() {
@@ -43,7 +36,7 @@ public class Game {
                 running = true;
                 while (running) {
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(10);
                         if(showInitialText) {
                             showInitialText = false;
                             Queue.getInstance().addGameOutput(infoText());
@@ -51,14 +44,13 @@ public class Game {
                             Queue.getInstance().clearGameOutputCache();
                         }
                         if (Queue.getInstance().getPendingUserInput().size() > currentQueueSize) {
-                            currentQueueSize = Queue.getInstance().getPendingUserInput().size();
-                            Game.handleNewQueueItem();
-
-                            gui.updateGUI();
-
-                            Queue.getInstance().clearUserInputCache();
+                            currentQueueSize = 1;
+                            CommandAction commandAction = Queue.getInstance().getPendingUserInput().get(currentQueueSize-1);
+                            Queue.getInstance().getPendingUserInput().remove(currentQueueSize-1);
                             Queue.getInstance().clearGameOutputCache();
-                            currentQueueSize = 0;
+                            handleNewQueueItem(commandAction);
+                            gui.updateGUI();
+                            currentQueueSize--;
                         }
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
@@ -68,9 +60,8 @@ public class Game {
         };
     }
 
-    public static void handleNewQueueItem() {
-            CommandAction commandAction = Queue.getInstance().getPendingUserInput().get(currentQueueSize-1);
-            Queue.getInstance().addGameOutput("OK: " + commandAction.getCommand() + " " + commandAction.getActionType() + " " + commandAction.getActionIdentifier());
+    public static void handleNewQueueItem(CommandAction commandAction) {
+            Queue.getInstance().addGameOutput("INTERPRETED: " + commandAction.getCommand() + " " + commandAction.getActionType() + " " + commandAction.getActionIdentifier());
             History.getInstance().addEnteredCommand(commandAction);
             new CommandHandler(commandAction).executeCommand();
     }
@@ -80,22 +71,12 @@ public class Game {
                 "Fight the boss win the game, simple enough right?\n" +
                 "In case you need help with the commands, type \"HELP\"\n\n" +
                 "If you want to resume your previous session, load your saved file like this:\n" +
-                "LOAD my_session\n\n" +
-                "Enjoy! - A Mazzotta & Kuster production\n" +
+                "LOAD GAME my_session\n\n" +
+                "Enjoy! - A Kuster & Mazzotta production\n" +
                 "<Hier könnte Ihre Werbung stehen!>\n\n";
     }
 
     public static void main(String[] args) {
         getInstance().getThread().start();
     }
-
-    public static Loader getLoader() {
-        return loader;
-    }
-
-    public static Saver getSaver() {
-        return saver;
-    }
-
-
 }

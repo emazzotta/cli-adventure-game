@@ -24,4 +24,8 @@ public class History {
     public void addEnteredCommand(CommandAction commandAction) {
         enteredCommands.add(commandAction);
     }
+
+    public void clearCommands() {
+        enteredCommands.clear();
+    }
 }

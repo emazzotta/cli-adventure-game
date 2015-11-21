@@ -37,7 +37,6 @@ public class Inventory {
             }
         }
 
-        System.out.println(inventory);
         Queue.getInstance().addGameOutput(inventory.toString());
     }
 

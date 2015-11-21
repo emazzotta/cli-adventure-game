@@ -2,7 +2,8 @@ package com.mazzotta.kuster.pointandclick.adventure.commands;
 
 
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.UserState;
-import com.mazzotta.kuster.pointandclick.adventure.main.Game;
+import com.mazzotta.kuster.pointandclick.adventure.level.Loader;
+import com.mazzotta.kuster.pointandclick.adventure.level.Saver;
 
 public class CommandHandler {
 
@@ -41,9 +42,24 @@ public class CommandHandler {
             case LOAD:
                 handleLoadCommand();
                 return;
+            case HISTORY:
+                handleHistoryCommand();
+                return;
+            case RESET:
+                handleResetCommand();
+                return;
         }
 
         //TODO implement execution of the command. Also map available commands to actions.
+    }
+
+    private void handleResetCommand() {
+        UserState.getInstance().resetUserState();
+        History.getInstance().clearCommands();
+    }
+
+    private void handleHistoryCommand() {
+        Queue.getInstance().addGameOutput("Entered Commands:\n" + History.getInstance().getEnteredCommands().toString());
     }
 
     private void handleHelpCommand() {
@@ -53,21 +69,22 @@ public class CommandHandler {
                 "Here are a list of commands arguments:\n\n" +
                 "1st command arguments:\n" +
                 Command.listAvailable() +
-                "2st command arguments:\n" +
+                "2nd command arguments:\n" +
                 ActionType.listAvailable() +
-                "3st command arguments:\n" +
-                "This is actually just a number. It will identify the exact action item you're referring to.\n\n" +
+                "3rd command arguments:\n" +
+                "This is actually just a number. It will identify the exact action item you're referring to.\n" +
+                "Though it will be a name when referring to saving and loading, see below:\n" +
                 "To save your current game type: SAVE GAME 'save_filename'\n" +
                 "To load a saved game type: LOAD GAME 'save_filename'\n" +
                 "Now go ahead and beat the monsters!");
     }
 
     private void handleSaveCommand() {
-        Game.getInstance().getSaver().saveAs(commandAction.getActionIdentifier().getIdentifierId());
+        new Saver().saveAs(commandAction.getActionIdentifier().getIdentifierId());
     }
 
     private void handleLoadCommand() {
-        Game.getInstance().getLoader().loadFromJsonFile(commandAction.getActionIdentifier().getIdentifierId());
+        new Loader().loadFromJsonFile(commandAction.getActionIdentifier().getIdentifierId());
     }
 
     public void handleOpenCommand() {

@@ -12,7 +12,7 @@ public class ActionIdentifier {
         return identifierId;
     }
 
-    public int toInt() {
-        return Integer.parseInt(identifierId);
+    public String toString() {
+        return identifierId;
     }
 }
