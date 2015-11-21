@@ -24,6 +24,7 @@ public class Saver {
 
         try {
             FileUtils.write(savePath, saveDataString);
+            Queue.getInstance().addGameOutput("Game saved successfully! Savegame: " + savePath);
         } catch (IOException e) {
             Queue.getInstance().addGameOutput("Error saving to file " + filename + "\n" + e.getMessage());
         }

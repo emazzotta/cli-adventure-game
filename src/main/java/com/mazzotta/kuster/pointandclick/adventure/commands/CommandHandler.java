@@ -4,6 +4,7 @@ package com.mazzotta.kuster.pointandclick.adventure.commands;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.UserState;
 import com.mazzotta.kuster.pointandclick.adventure.level.Loader;
 import com.mazzotta.kuster.pointandclick.adventure.level.Saver;
+import com.mazzotta.kuster.pointandclick.adventure.main.Game;
 
 public class CommandHandler {
 
@@ -56,6 +57,7 @@ public class CommandHandler {
     private void handleResetCommand() {
         UserState.getInstance().resetUserState();
         History.getInstance().clearCommands();
+        Game.showInitialText = true;
     }
 
     private void handleHistoryCommand() {

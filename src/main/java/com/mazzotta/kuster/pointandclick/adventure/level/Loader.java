@@ -24,13 +24,13 @@ public class Loader {
         try {
             String loadedJson = FileUtils.readFileToString(getSavePath(filename));
             JsonArray commandsAsJson = getStringAsJsonArray(loadedJson);
-            loadJsonArrayIntoHistory(commandsAsJson);
+            resumeGameFromCommands(commandsAsJson);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void loadJsonArrayIntoHistory(JsonArray commandsAsJson) {
+    private void resumeGameFromCommands(JsonArray commandsAsJson) {
         History.getInstance().clearCommands();
         UserState.getInstance().resetUserState();
         for(JsonElement commandAsJson: commandsAsJson) {
