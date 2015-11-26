@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.getSaveGameFile;
+import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.getSavegameFile;
 import static org.junit.Assert.assertEquals;
 
 public class SaverTest {
@@ -28,7 +28,7 @@ public class SaverTest {
     public void testThatCurrentHistoryCanBeSaved() throws IOException {
         String expectedString = "[{\"command\":\"COLLECT\",\"actionType\":\"POTION\",\"actionIdentifier\":\"ALL\"},{\"command\":\"SHOOT\",\"actionType\":\"ENEMY\",\"actionIdentifier\":\"RED\"}]";
         saver.saveAs("test");
-        assertEquals(expectedString, FileUtils.readFileToString(getSaveGameFile("test")));
+        assertEquals(expectedString, FileUtils.readFileToString(getSavegameFile("test")));
     }
 
     public CommandAction getShootCommand() throws InvalidUserInputException {

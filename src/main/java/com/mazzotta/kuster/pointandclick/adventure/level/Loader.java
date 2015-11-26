@@ -7,12 +7,9 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import org.apache.commons.io.FileUtils;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.mazzotta.kuster.pointandclick.adventure.commands.CommandUtil.resetGame;
-import static com.mazzotta.kuster.pointandclick.adventure.commands.CommandUtil.resetGameAndDisplayInitialText;
 import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.*;
 
 public class Loader {
@@ -25,27 +22,23 @@ public class Loader {
 
     public void loadFromJsonFile(String filename) {
         try {
-            String loadedJson = FileUtils.readFileToString(getSaveGameFile(filename));
+            String loadedJson = FileUtils.readFileToString(getSavegameFile(filename));
             JsonArray commandsAsJson = getStringAsJsonArray(loadedJson);
             resumeGameFromCommands(commandsAsJson);
         } catch (IOException e) {
-            Queue.getInstance().addGameOutput("No savegame with the name [" + filename + "] was found!\n\n" +
+            Queue.getInstance().addGameOutput("" +
+                    "No savegame with the name [" + filename + "] was found!\n\n" +
                     "Valid savegames are:\n" +
-                    listFilesForFolder(new File(getSaveGameFolder())));
+                    getPotentialSavegamesForFolder(getSavegameFolder()));
         }
     }
 
     private void resumeGameFromCommands(JsonArray commandsAsJson) {
-        resetGame();
-        ArrayList<CommandAction> commandActions = getCommandActions(commandsAsJson);
+        Initializer.getInstance().initialise();
 
-        if(commandActions.size() == 0) {
-            resetGameAndDisplayInitialText();
-        } else {
-            for(CommandAction commandAction : commandActions) {
-                History.getInstance().addEnteredCommand(commandAction);
-                Queue.getInstance().addUserInput(commandAction);
-            }
+        for(CommandAction commandAction : getCommandActions(commandsAsJson)) {
+            History.getInstance().addEnteredCommand(commandAction);
+            Queue.getInstance().addUserInput(commandAction);
         }
     }
 

@@ -3,33 +3,30 @@ package com.mazzotta.kuster.pointandclick.adventure.util;
 import java.io.File;
 
 public class FileOperationUtil {
-    public static File getSaveGameFile(String filename) {
-        return new File(getSaveGameFolder() + File.separator + filename + ".json");
+    public static File getSavegameFile(String filename) {
+        return new File(getSavegameFolder() + File.separator + filename + ".json");
     }
 
-    public static String getSaveGameFolder() {
-        String currentUsersHomeDir = System.getProperty("user.home");
-        return currentUsersHomeDir + File.separator + "point_and_click";
+    public static String getSavegameFolder() {
+        return System.getProperty("user.home") + File.separator + "point_and_click";
     }
 
-    public static String listFilesForFolder(File folder) {
-        String potentialSaveGames = "";
-        File[] listOfFiles = folder.listFiles();
+    public static String getPotentialSavegamesForFolder(String folder) {
+        String potentialSavegames = "";
+        File[] listOfFiles = new File(folder).listFiles();
 
         if(listOfFiles != null) {
             for (File file : listOfFiles) {
-                if (isAPossibleSaveGame(file)) {
-                    potentialSaveGames += file.getName() + "\n";
+                if (isAPossibleSavegame(file)) {
+                    potentialSavegames += file.getName() + "\n";
                 }
             }
         }
 
-        return potentialSaveGames;
+        return potentialSavegames;
     }
 
-
-
-    private static boolean isAPossibleSaveGame(File fileEntry) {
+    private static boolean isAPossibleSavegame(File fileEntry) {
         return !fileEntry.isDirectory() && fileEntry.toString().endsWith(".json") && !fileEntry.toString().endsWith("/.json");
     }
 }

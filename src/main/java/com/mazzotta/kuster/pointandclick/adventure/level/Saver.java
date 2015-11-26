@@ -19,7 +19,7 @@ public class Saver {
     }
 
     public void saveAs(String filename) {
-        File savePath = FileOperationUtil.getSaveGameFile(filename);
+        File savePath = FileOperationUtil.getSavegameFile(filename);
         String saveDataString = gson.toJson(History.getInstance().getEnteredCommands());
 
         try {
