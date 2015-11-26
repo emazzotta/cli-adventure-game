@@ -58,9 +58,9 @@ public class Room {
             roomContent += "Alive: " + monster.isAlive() + "\n";
         }
         if(!items.isEmpty()) {
-            roomContent.append("Items:\n");
+            roomContent += "Items:\n";
             for(int i = 0; i < items.size(); i++) {
-                roomContent.append("[" + (i+1) + "] " + items.get(i).getName() + "\n");
+                roomContent += "[" + (i+1) + "] " + items.get(i).getName() + "\n";
             }
         } else {
             roomContent += "There are no items in this room (anymore)";
