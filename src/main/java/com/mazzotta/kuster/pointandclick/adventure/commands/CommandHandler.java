@@ -5,6 +5,7 @@ import com.mazzotta.kuster.pointandclick.adventure.game.elements.UserState;
 import com.mazzotta.kuster.pointandclick.adventure.level.Loader;
 import com.mazzotta.kuster.pointandclick.adventure.level.Saver;
 import com.mazzotta.kuster.pointandclick.adventure.main.Game;
+import org.apache.commons.lang3.StringUtils;
 
 public class CommandHandler {
 
@@ -20,14 +21,16 @@ public class CommandHandler {
             default:
                 System.out.println("Executing [Command = " + commandAction.getCommand() + "]");
             case NONE:
+                handleNoneCommand();
                 return;
             case OPEN:
-               handleOpenCommand();
+                handleOpenCommand();
                 return;
             case COLLECT:
                 handleCollectCommand();
                 return;
             case USE:
+                handleUseCommand();
                 return;
             case FIGHT:
                 handleFightCommand();
@@ -49,10 +52,30 @@ public class CommandHandler {
                 return;
             case RESET:
                 handleResetCommand();
-                return;
         }
+    }
 
-        //TODO implement execution of the command. Also map available commands to actions.
+    private void handleNoneCommand() {
+        Queue.getInstance().addGameOutput("Either you entered an invalid command or you expect\nsomething magical to happen by entering \"NONE\"");
+    }
+
+    private void handleUseCommand() {
+        switch (commandAction.getActionType()) {
+            case POTION:
+                handleUsePotionActionType();
+                return;
+            default:
+                Queue.getInstance().addGameOutput("Use command is not possible with " + commandAction.getActionType());
+        }
+    }
+
+    private void handleUsePotionActionType() {
+        if (StringUtils.isNumeric(commandAction.getActionIdentifier().toString())) {
+            int potionPosition = Integer.parseInt(commandAction.getActionIdentifier().toString());
+            UserState.getInstance().getPlayer().drinkPotion(potionPosition);
+        } else {
+            Queue.getInstance().addGameOutput("Invalid Potion Position! Use command like: USE POTION 1");
+        }
     }
 
     private void handleResetCommand() {

@@ -8,9 +8,10 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.UserState;
 import org.apache.commons.io.FileUtils;
 
+import java.io.File;
 import java.io.IOException;
 
-import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.getSavePath;
+import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.*;
 
 public class Loader {
 
@@ -22,11 +23,13 @@ public class Loader {
 
     public void loadFromJsonFile(String filename) {
         try {
-            String loadedJson = FileUtils.readFileToString(getSavePath(filename));
+            String loadedJson = FileUtils.readFileToString(getSaveGameFile(filename));
             JsonArray commandsAsJson = getStringAsJsonArray(loadedJson);
             resumeGameFromCommands(commandsAsJson);
         } catch (IOException e) {
-            e.printStackTrace();
+            Queue.getInstance().addGameOutput("No savegame with the name [" + filename + "] was found!\n\n" +
+                    "Valid savegames are:\n" +
+                    listFilesForFolder(new File(getSaveGameFolder())));
         }
     }
 

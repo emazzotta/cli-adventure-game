@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.getSavePath;
+import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.getSaveGameFile;
 import static junit.framework.TestCase.assertEquals;
 
 public class LoaderTest {
@@ -33,6 +33,6 @@ public class LoaderTest {
     }
 
     private void writeTwoCommandsToTestFile(String dataToWrite) throws IOException {
-        FileUtils.write(getSavePath("test"), dataToWrite);
+        FileUtils.write(getSaveGameFile("test"), dataToWrite);
     }
 }

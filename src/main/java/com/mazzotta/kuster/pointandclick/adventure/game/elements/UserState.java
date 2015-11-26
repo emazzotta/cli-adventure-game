@@ -38,8 +38,7 @@ public class UserState {
         if(currentRoom.hasNextRoom()) {
             if (!currentRoom.hasUndefeatedMonster()) {
                 currentRoom = currentRoom.getNextRoom();
-                Queue.getInstance().addGameOutput("You have advanced to the next room. ");
-                Queue.getInstance().addGameOutput("New Room: " + currentRoom.getName());
+                Queue.getInstance().addGameOutput("You have advanced to the next room.\nNew Room: " + currentRoom.getName());
             } else {
                 Queue.getInstance().addGameOutput("WARNING! You cannot advance to the next room before you have defeated: " + currentRoom.getMonster().getName() + "!!");
             }

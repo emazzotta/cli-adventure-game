@@ -18,22 +18,22 @@ public class Inventory {
 
     public void showInventory() {
         StringBuilder inventory = new StringBuilder();
-        inventory.append("\n\nInventory:\n");
-        inventory.append("Weapons:\n");
+        inventory.append("Inventory:\n" +
+                "\nWeapons:\n");
         if(weapons.isEmpty()) {
-            inventory.append(" -\n");
+            inventory.append("None\n");
         } else {
             for (int i = 0; i < weapons.size(); i++) {
-                inventory.append("[" + i + "]\t" + weapons.get(i).getName() + "\n");
+                inventory.append("[" + (i+1) + "] " + weapons.get(i).getName() + "\n");
             }
         }
 
-        inventory.append("Potions:\n");
+        inventory.append("\nPotions:\n");
         if(potions.isEmpty()) {
-            inventory.append(" -\n");
+            inventory.append("None\n");
         } else {
             for (int i = 0; i < potions.size(); i++) {
-                inventory.append("[" + i + "]\t" + potions.get(i).getName() + "\n");
+                inventory.append("[" + (i+1) + "] " + potions.get(i).getName() + "\n");
             }
         }
 
@@ -46,6 +46,10 @@ public class Inventory {
 
     public void addPotion(Potion potion) {
         potions.add(potion);
+    }
+
+    public ArrayList<Potion> getPotions() {
+        return potions;
     }
 
     public void discardWeapon(int index) {

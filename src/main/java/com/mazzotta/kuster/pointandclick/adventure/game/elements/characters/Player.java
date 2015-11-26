@@ -1,5 +1,6 @@
 package com.mazzotta.kuster.pointandclick.adventure.game.elements.characters;
 
+import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.Inventory;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.exception.UserDiedException;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Item;
@@ -49,12 +50,22 @@ public class Player extends Character {
         return inventory;
     }
 
+    public void drinkPotion(int potionPosition) {
+        try {
+            int healthPoints = inventory.getPotions().get(potionPosition-1).getHealthRestorePoints();
+            health += healthPoints;
+            inventory.getPotions().remove(potionPosition-1);
+            Queue.getInstance().addGameOutput("Health restored [+" + healthPoints + "]! New health: " + health);
+        } catch (Exception e) {
+            Queue.getInstance().addGameOutput("Potion number [" + potionPosition +"] does not exist!");
+        }
+    }
+
     public void addToInventory(ArrayList<Item> items) {
         for(Item item : items) {
             if (item instanceof Weapon) {
                 inventory.addWeapon((Weapon) item);
-            }
-            else if (item instanceof Potion) {
+            } else if (item instanceof Potion) {
                 inventory.addPotion((Potion) item);
             }
         }
