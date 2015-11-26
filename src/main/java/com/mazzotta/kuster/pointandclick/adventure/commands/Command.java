@@ -1,7 +1,7 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
 public enum Command {
-    NONE, OPEN, COLLECT, FIGHT, INSPECT, USE, HELP, SAVE, LOAD, HISTORY, RESET;
+    NONE, OPEN, COLLECT, ATTACK, INSPECT, USE, HELP, SAVE, LOAD, HISTORY, RESET;
 
     public static Command convertToCommand(String commandText) {
         for (Command command : Command.values()) {

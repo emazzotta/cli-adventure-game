@@ -32,8 +32,8 @@ public class CommandHandler {
             case USE:
                 handleUseCommand();
                 return;
-            case FIGHT:
-                handleFightCommand();
+            case ATTACK:
+                handleAttackCommand();
                 return;
             case INSPECT:
                 handleInspectCommand();
@@ -139,7 +139,7 @@ public class CommandHandler {
         }
     }
 
-    public void handleFightCommand() {
-
+    public void handleAttackCommand() {
+        UserState.getInstance().attackMonster();
     }
 }

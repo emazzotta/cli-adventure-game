@@ -2,6 +2,8 @@ package com.mazzotta.kuster.pointandclick.adventure.game.elements;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Player;
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.exception.UserDiedException;
+import com.mazzotta.kuster.pointandclick.adventure.main.Game;
 
 public class UserState {
 
@@ -61,5 +63,30 @@ public class UserState {
     }
 
     public void showCurrentRoom() {
+    }
+
+    // TODO maybe make something like a session for the fight so that no other actions like "OPEN DOOR" can be triggered
+    public void attackMonster() {
+        StringBuilder fightOutput = new StringBuilder();
+        currentRoom.getMonster().takeDamage(player.getAttackPoints());
+        fightOutput.append("You attacked " + currentRoom.getMonster().getName() +
+                " and inflicted " + player.getAttackPoints() + " damage!\n");
+        if(currentRoom.getMonster().isAlive()) {
+            try {
+                player.takeDamage(currentRoom.getMonster().getAttackPoints());
+                fightOutput.append(currentRoom.getMonster().getName() + " attacked you and inflicted " + currentRoom.getMonster().getAttackPoints() +
+                        " damage to you!\n");
+            } catch (UserDiedException e) {
+                //TODO handle exception
+            }
+        }
+        fightOutput.append(
+                "Player Health:\t" + player.getHealth() + "\n" +
+                "Monster Health:\t" + currentRoom.getMonster().getHealth() + "\n");
+        if (!currentRoom.getMonster().isAlive()) {
+           fightOutput.append("You have defeated " + currentRoom.getMonster().getName() + "!\n" +
+                    "You may advance to the next room.");
+        }
+        Queue.getInstance().addGameOutput(fightOutput.toString());
     }
 }

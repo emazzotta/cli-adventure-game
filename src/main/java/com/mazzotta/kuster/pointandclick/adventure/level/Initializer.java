@@ -44,9 +44,9 @@ public class Initializer {
 
     private void addMonstersToRooms() {
         Monster monsterEasy = new Monster("Bowaa", 12, 50);
-        Monster monsterMedium = new Monster("Zazinzongi", 12, 50);
-        Monster monsterHard = new Monster("ARGHHAKASH", 12, 50);
-        Monster monsterEndbaawwws = new Monster("BLOOOAAATTTOOON", 12, 50);
+        Monster monsterMedium = new Monster("Zazinzongi", 12, 250);
+        Monster monsterHard = new Monster("ARGHHAKASH", 12, 500);
+        Monster monsterEndbaawwws = new Monster("BLOOOAAATTTOOON", 12, 1000);
 
         dungeon.getRooms().get(3).setMonster(monsterEasy);
         dungeon.getRooms().get(5).setMonster(monsterMedium);
