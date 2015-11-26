@@ -23,7 +23,7 @@ public class Inventory {
         if(weapons.isEmpty()) {
             inventory.append("None\n");
         } else {
-            for (int i = 0; i < weapons.size(); i++) {
+            for(int i = 0; i < weapons.size(); i++) {
                 inventory.append("[" + (i+1) + "] " + weapons.get(i).getName() + "\n");
             }
         }
@@ -32,7 +32,7 @@ public class Inventory {
         if(potions.isEmpty()) {
             inventory.append("None\n");
         } else {
-            for (int i = 0; i < potions.size(); i++) {
+            for(int i = 0; i < potions.size(); i++) {
                 inventory.append("[" + (i+1) + "] " + potions.get(i).getName() + "\n");
             }
         }

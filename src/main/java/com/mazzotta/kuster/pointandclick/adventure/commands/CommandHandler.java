@@ -17,7 +17,7 @@ public class CommandHandler {
 
     public void executeCommand() {
 
-        switch (commandAction.getCommand()) {
+        switch(commandAction.getCommand()) {
             default:
                 System.out.println("Executing [Command = " + commandAction.getCommand() + "]");
             case NONE:
@@ -60,7 +60,7 @@ public class CommandHandler {
     }
 
     private void handleUseCommand() {
-        switch (commandAction.getActionType()) {
+        switch(commandAction.getActionType()) {
             case POTION:
                 handleUsePotionActionType();
                 return;
@@ -70,7 +70,7 @@ public class CommandHandler {
     }
 
     private void handleUsePotionActionType() {
-        if (StringUtils.isNumeric(commandAction.getActionIdentifier().toString())) {
+        if(StringUtils.isNumeric(commandAction.getActionIdentifier().toString())) {
             int potionPosition = Integer.parseInt(commandAction.getActionIdentifier().toString());
             UserState.getInstance().getPlayer().drinkPotion(potionPosition);
         } else {
@@ -114,7 +114,7 @@ public class CommandHandler {
     }
 
     public void handleOpenCommand() {
-        switch (commandAction.getActionType()) {
+        switch(commandAction.getActionType()) {
             case DOOR:
                 UserState.getInstance().changeRoom();
                 break;
@@ -122,7 +122,7 @@ public class CommandHandler {
     }
 
     public void handleInspectCommand() {
-        switch (commandAction.getActionType()) {
+        switch(commandAction.getActionType()) {
             case INVENTORY:
                 UserState.getInstance().getPlayer().getInventory().showInventory();
                 break;
@@ -133,7 +133,7 @@ public class CommandHandler {
     }
 
     public void handleCollectCommand() {
-        switch (commandAction.getActionType()) {
+        switch(commandAction.getActionType()) {
             case ITEMS:
                 UserState.getInstance().getPlayer().addToInventory(UserState.getInstance().getCurrentRoom().getItems());
         }

@@ -63,9 +63,9 @@ public class Player extends Character {
 
     public void addToInventory(ArrayList<Item> items) {
         for(Item item : items) {
-            if (item instanceof Weapon) {
+            if(item instanceof Weapon) {
                 inventory.addWeapon((Weapon) item);
-            } else if (item instanceof Potion) {
+            } else if(item instanceof Potion) {
                 inventory.addPotion((Potion) item);
             }
         }

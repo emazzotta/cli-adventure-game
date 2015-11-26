@@ -4,8 +4,8 @@ public enum Command {
     NONE, OPEN, COLLECT, ATTACK, INSPECT, USE, HELP, SAVE, LOAD, HISTORY, RESET;
 
     public static Command convertToCommand(String commandText) {
-        for (Command command : Command.values()) {
-            if (command.name().equals(commandText.toUpperCase())) {
+        for(Command command : Command.values()) {
+            if(command.name().equals(commandText.toUpperCase())) {
                 return command;
             }
         }
@@ -13,8 +13,8 @@ public enum Command {
     }
 
     public static boolean contains(String commandToLookFor) {
-        for (Command command : Command.values()) {
-            if (command.name().equals(commandToLookFor.toUpperCase())) {
+        for(Command command : Command.values()) {
+            if(command.name().equals(commandToLookFor.toUpperCase())) {
                 return true;
             }
         }
@@ -23,7 +23,7 @@ public enum Command {
 
     public static String listAvailable() {
         StringBuilder availableCommands = new StringBuilder();
-        for (Command command : Command.values()) {
+        for(Command command : Command.values()) {
             availableCommands.append(command.name() + "\n");
         }
         return availableCommands.toString();

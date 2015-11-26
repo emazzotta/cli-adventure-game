@@ -15,7 +15,7 @@ public class Game {
     public static boolean running;
 
     public static Game getInstance() {
-        if (instance == null) {
+        if(instance == null) {
             instance = new Game();
         }
         return instance;
@@ -32,16 +32,16 @@ public class Game {
         return new Thread() {
             public void run() {
                 running = true;
-                while (running) {
+                while(running) {
                     try {
                         Thread.sleep(10);
-                        if (showInitialText) {
+                        if(showInitialText) {
                             showInitialText = false;
                             Queue.getInstance().addGameOutput(infoText());
                             gui.updateGUI();
                             Queue.getInstance().clearGameOutputCache();
                         }
-                        if (Queue.getInstance().getPendingUserInput().size() > 0) {
+                        if(Queue.getInstance().getPendingUserInput().size() > 0) {
                             CommandAction commandAction = Queue.getInstance().getPendingUserInput().get(0);
                             Queue.getInstance().getPendingUserInput().remove(0);
                             Queue.getInstance().clearGameOutputCache();
