@@ -12,15 +12,22 @@ public class FileOperationUtil {
         return currentUsersHomeDir + File.separator + "point_and_click";
     }
 
-    public static String listFilesForFolder(final File folder) {
+    public static String listFilesForFolder(File folder) {
         String potentialSaveGames = "";
-        for(final File file : folder.listFiles()) {
-            if(isAPossibleSaveGame(file)) {
-                potentialSaveGames += file.getName() + "\n";
+        File[] listOfFiles = folder.listFiles();
+
+        if(listOfFiles != null) {
+            for (File file : listOfFiles) {
+                if (isAPossibleSaveGame(file)) {
+                    potentialSaveGames += file.getName() + "\n";
+                }
             }
         }
+
         return potentialSaveGames;
     }
+
+
 
     private static boolean isAPossibleSaveGame(File fileEntry) {
         return !fileEntry.isDirectory() && fileEntry.toString().endsWith(".json") && !fileEntry.toString().endsWith("/.json");
