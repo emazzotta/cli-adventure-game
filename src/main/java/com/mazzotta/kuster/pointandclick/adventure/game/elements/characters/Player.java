@@ -13,12 +13,10 @@ public class Player extends Character {
 
     private Weapon equippedWeapon;
     private Inventory inventory;
-    private String name;
     private int health;
 
-    public Player(String name, int health, Weapon equippedWeapon) {
+    public Player(int health, Weapon equippedWeapon) {
         inventory = new Inventory();
-        this.name = name;
         this.health = health;
         this.equippedWeapon = equippedWeapon;
     }
@@ -42,15 +40,20 @@ public class Player extends Character {
         return equippedWeapon;
     }
 
-    public void setEquippedWeapon(Weapon equippedWeapon) {
-        this.equippedWeapon = equippedWeapon;
-    }
-
     public Inventory getInventory() {
         return inventory;
     }
 
-    public void drinkPotion(int potionPosition) {
+    public void setEquippedWeaponToWeaponAtPosition(int weaponPosition) {
+        try {
+            equippedWeapon = inventory.getWeapons().get(weaponPosition - 1);
+            Queue.getInstance().addGameOutput("Successfully equipped weapon: " + equippedWeapon.getName());
+        } catch (Exception e) {
+            Queue.getInstance().addGameOutput("Weapon number [" + weaponPosition +"] does not exist!");
+        }
+    }
+
+    public void drinkPotionAtPosition(int potionPosition) {
         try {
             int healthPoints = inventory.getPotions().get(potionPosition-1).getHealthRestorePoints();
             health += healthPoints;

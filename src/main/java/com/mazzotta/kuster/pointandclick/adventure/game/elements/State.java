@@ -47,29 +47,33 @@ public class State {
     }
 
     public void attackMonster() {
-        currentRoom.getMonster().takeDamage(player.getAttackPoints());
+        if(currentRoom.hasUndefeatedMonster()) {
+            currentRoom.getMonster().takeDamage(player.getAttackPoints());
 
-        String fightOutput = "You attacked " + currentRoom.getMonster().getName() + " and inflicted " + player.getAttackPoints() + " damage!\n";
-        if(currentRoom.getMonster().isAlive()) {
-            try {
-                player.takeDamage(currentRoom.getMonster().getAttackPoints());
-                fightOutput += currentRoom.getMonster().getName() +
-                        " attacked you and inflicted " +
-                        currentRoom.getMonster().getAttackPoints() +
-                        " damage to you!\n";
-            } catch (UserDiedException e) {
-                //TODO handle exception
+            String fightOutput = "You attacked " + currentRoom.getMonster().getName() + " and inflicted " + player.getAttackPoints() + " damage!\n";
+            if (currentRoom.getMonster().isAlive()) {
+                try {
+                    player.takeDamage(currentRoom.getMonster().getAttackPoints());
+                    fightOutput += currentRoom.getMonster().getName() +
+                            " attacked you and inflicted " +
+                            currentRoom.getMonster().getAttackPoints() +
+                            " damage to you!\n";
+                } catch (UserDiedException e) {
+                    //TODO handle exception
+                }
             }
+            fightOutput += "Player Health: " +
+                    player.getHealth() + "\n" +
+                    "Monster Health: " +
+                    currentRoom.getMonster().getHealth() + "\n";
+            if (!currentRoom.getMonster().isAlive()) {
+                fightOutput += "You have defeated " +
+                        currentRoom.getMonster().getName() + "!\n" +
+                        "You may advance to the next room.";
+            }
+            Queue.getInstance().addGameOutput(fightOutput);
+        } else {
+            Queue.getInstance().addGameOutput("What are you trying to attack? There's noting here...");
         }
-        fightOutput += "Player Health: " +
-                player.getHealth() + "\n" +
-                "Monster Health: " +
-                currentRoom.getMonster().getHealth() + "\n";
-        if(!currentRoom.getMonster().isAlive()) {
-           fightOutput += "You have defeated " +
-                   currentRoom.getMonster().getName() + "!\n" +
-                    "You may advance to the next room.";
-        }
-        Queue.getInstance().addGameOutput(fightOutput);
     }
 }

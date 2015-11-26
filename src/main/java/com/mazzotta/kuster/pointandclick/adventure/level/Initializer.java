@@ -40,7 +40,8 @@ public class Initializer {
         Weapon weakSword = new Weapon("Weak Sword", 50);
         Potion healthPotion25 = new Potion("Health +25", 25);
 
-        player = new Player("Test Player", 500, weakSword);
+        player = new Player(500, weakSword);
+        player.getInventory().addWeapon(weakSword);
         player.getInventory().addPotion(healthPotion25);
     }
 

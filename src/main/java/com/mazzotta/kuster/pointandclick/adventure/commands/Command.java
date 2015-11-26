@@ -20,12 +20,4 @@ public enum Command {
         }
         return false;
     }
-
-    public static String listAvailable() {
-        String availableCommands = "";
-        for(Command command : Command.values()) {
-            availableCommands += command.name() + "\n";
-        }
-        return availableCommands;
-    }
 }

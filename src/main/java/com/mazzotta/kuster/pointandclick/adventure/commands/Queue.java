@@ -21,16 +21,8 @@ public class Queue {
         pendingGameOutput = new ArrayList<>();
     }
 
-    public void clearUserInputCache() {
-        if(!pendingUserInput.isEmpty()) {
-            pendingUserInput.clear();
-        }
-    }
-
     public void clearGameOutputCache() {
-        if(!pendingGameOutput.isEmpty()) {
-            pendingGameOutput.clear();
-        }
+        pendingGameOutput.clear();
     }
 
     public ArrayList<CommandAction> getPendingUserInput() {
@@ -46,10 +38,10 @@ public class Queue {
     }
     public void addGameOutput(String gameOutput) {
         System.out.println(gameOutput);
-        pendingGameOutput.add(satistics() + gameOutput);
+        pendingGameOutput.add(statistics() + gameOutput);
     }
 
-    private String satistics() {
+    private String statistics() {
         return "###############################\n" +
                 "Statistics:\n" +
                 "Health: " + State.getInstance().getPlayer().getHealth() + "\n" +

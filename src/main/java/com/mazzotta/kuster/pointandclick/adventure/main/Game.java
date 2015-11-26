@@ -9,7 +9,6 @@ import com.mazzotta.kuster.pointandclick.adventure.level.Initializer;
 public class Game {
 
     private static Game instance;
-
     private static GUI gui;
     public static boolean showInitialText;
     public static boolean running;
@@ -22,9 +21,8 @@ public class Game {
     }
 
     private Game() {
-        running = false;
-        showInitialText = true;
         gui = new GUI();
+        showInitialText = true;
         Initializer.getInstance().initialise();
     }
 

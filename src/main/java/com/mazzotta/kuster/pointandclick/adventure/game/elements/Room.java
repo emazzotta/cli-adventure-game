@@ -16,7 +16,7 @@ public class Room {
     public Room(String name, Room nextRoom) {
         this.name = name;
         this.nextRoom = nextRoom;
-        this.items = new ArrayList<Item>();
+        this.items = new ArrayList<>();
     }
 
     public void addItem(Item item) {
@@ -70,5 +70,9 @@ public class Room {
 
     public boolean hasUndefeatedMonster() {
         return hasMonster() && getMonster().isAlive();
+    }
+
+    public void removeAllItems() {
+        items.clear();
     }
 }

@@ -12,8 +12,8 @@ public class Inventory {
     private ArrayList<Potion> potions;
 
     public Inventory() {
-        weapons = new ArrayList<Weapon>();
-        potions = new ArrayList<Potion>();
+        weapons = new ArrayList<>();
+        potions = new ArrayList<>();
     }
 
     public void showInventory() {
@@ -61,6 +61,10 @@ public class Inventory {
 
     public void addWeapon(Weapon weapon) {
         weapons.add(weapon);
+    }
+
+    public ArrayList<Weapon> getWeapons() {
+        return weapons;
     }
 
     public void addPotion(Potion potion) {

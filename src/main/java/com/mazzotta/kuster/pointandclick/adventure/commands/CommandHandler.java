@@ -62,6 +62,7 @@ public class CommandHandler {
         switch(commandAction.getActionType()) {
             case ITEMS:
                 State.getInstance().getPlayer().addToInventory(State.getInstance().getCurrentRoom().getItems());
+                State.getInstance().getCurrentRoom().removeAllItems();
                 return;
             default:
                 Queue.getInstance().addGameOutput("Invalid Collect Action Type, try COLLECT ITEMS");
@@ -72,6 +73,9 @@ public class CommandHandler {
         switch(commandAction.getActionType()) {
             case POTION:
                 handleUsePotionActionType(commandAction);
+                return;
+            case WEAPON:
+                handleUseWeaponActionType(commandAction);
                 return;
             default:
                 Queue.getInstance().addGameOutput("Use command is not possible with " + commandAction.getActionType());
@@ -112,6 +116,7 @@ public class CommandHandler {
                 "INSPECT ROOM - Check for items in current room\n" +
                 "INSPECT INVENTORY - Check items in inventory\n" +
                 "USE POTION 1 - Use potion at position one (use command above to check which potion is at which position)\n" +
+                "USE WEAPON 1 - Equip weapon at position one\n" +
                 "ATTACK - Attack the monster in the current room\n" +
                 "RESET - Restart the game\n" +
                 "HISTORY - Show history of typed commands\n" +
@@ -138,9 +143,18 @@ public class CommandHandler {
     private static void handleUsePotionActionType(CommandAction commandAction) {
         if(StringUtils.isNumeric(commandAction.getActionIdentifier().toString())) {
             int potionPosition = Integer.parseInt(commandAction.getActionIdentifier().toString());
-            State.getInstance().getPlayer().drinkPotion(potionPosition);
+            State.getInstance().getPlayer().drinkPotionAtPosition(potionPosition);
         } else {
             Queue.getInstance().addGameOutput("Invalid Potion Position! Use command like: USE POTION 1");
+        }
+    }
+
+    private static void handleUseWeaponActionType(CommandAction commandAction) {
+        if(StringUtils.isNumeric(commandAction.getActionIdentifier().toString())) {
+            int potionPosition = Integer.parseInt(commandAction.getActionIdentifier().toString());
+            State.getInstance().getPlayer().setEquippedWeaponToWeaponAtPosition(potionPosition);
+        } else {
+            Queue.getInstance().addGameOutput("Invalid Weapon Position! Use command like: USE WEAPON 1");
         }
     }
 }

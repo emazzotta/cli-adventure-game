@@ -1,7 +1,7 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
 public enum ActionType {
-    NONE, DOOR, MONSTER, INVENTORY, ITEMS, POTION, ROOM, GAME;
+    NONE, DOOR, MONSTER, INVENTORY, ITEMS, POTION, WEAPON, ROOM, GAME;
 
     public static ActionType convertToActionType(String actionTypeText) {
         for(ActionType actionType : ActionType.values()) {
@@ -19,13 +19,5 @@ public enum ActionType {
             }
         }
         return false;
-    }
-
-    public static String listAvailable() {
-        String availableActionTypes = "";
-        for(ActionType actionType : ActionType.values()) {
-            availableActionTypes += actionType.name() + "\n";
-        }
-        return availableActionTypes;
     }
 }
