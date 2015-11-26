@@ -9,84 +9,101 @@ import org.apache.commons.lang3.StringUtils;
 
 public class CommandHandler {
 
-    CommandAction commandAction;
-
-    public CommandHandler(CommandAction newCommandAction) {
-        commandAction = newCommandAction;
-    }
-
-    public void executeCommand() {
-
+    public static void execute(CommandAction commandAction) {
         switch(commandAction.getCommand()) {
             default:
                 System.out.println("Executing [Command = " + commandAction.getCommand() + "]");
-            case NONE:
-                handleNoneCommand();
-                return;
             case OPEN:
-                handleOpenCommand();
+                handleOpenCommand(commandAction);
                 return;
             case COLLECT:
-                handleCollectCommand();
+                handleCollectCommand(commandAction);
                 return;
             case USE:
-                handleUseCommand();
+                handleUseCommand(commandAction);
+                return;
+            case INSPECT:
+                handleInspectCommand(commandAction);
+                return;
+            case SAVE:
+                handleSaveCommand(commandAction);
+                return;
+            case LOAD:
+                handleLoadCommand(commandAction);
                 return;
             case ATTACK:
                 handleAttackCommand();
                 return;
-            case INSPECT:
-                handleInspectCommand();
-                return;
             case HELP:
                 handleHelpCommand();
-                return;
-            case SAVE:
-                handleSaveCommand();
-                return;
-            case LOAD:
-                handleLoadCommand();
                 return;
             case HISTORY:
                 handleHistoryCommand();
                 return;
             case RESET:
                 handleResetCommand();
+                return;
+            case NONE:
+                handleNoneCommand();
         }
     }
 
-    private void handleNoneCommand() {
-        Queue.getInstance().addGameOutput("I'm sorry, but I'm afraid I can't handle invalid commands, Dave.");
+    private static void handleOpenCommand(CommandAction commandAction) {
+        switch(commandAction.getActionType()) {
+            case DOOR:
+                UserState.getInstance().changeRoom();
+                return;
+            default:
+                Queue.getInstance().addGameOutput("Invalid Open Action Type, try OPEN DOOR");
+        }
     }
 
-    private void handleUseCommand() {
+    private static void handleCollectCommand(CommandAction commandAction) {
+        switch(commandAction.getActionType()) {
+            case ITEMS:
+                UserState.getInstance().getPlayer().addToInventory(UserState.getInstance().getCurrentRoom().getItems());
+                return;
+            default:
+                Queue.getInstance().addGameOutput("Invalid Collect Action Type, try COLLECT ITEMS");
+        }
+    }
+
+    private static void handleUseCommand(CommandAction commandAction) {
         switch(commandAction.getActionType()) {
             case POTION:
-                handleUsePotionActionType();
+                handleUsePotionActionType(commandAction);
                 return;
             default:
                 Queue.getInstance().addGameOutput("Use command is not possible with " + commandAction.getActionType());
         }
     }
 
-    private void handleUsePotionActionType() {
-        if(StringUtils.isNumeric(commandAction.getActionIdentifier().toString())) {
-            int potionPosition = Integer.parseInt(commandAction.getActionIdentifier().toString());
-            UserState.getInstance().getPlayer().drinkPotion(potionPosition);
-        } else {
-            Queue.getInstance().addGameOutput("Invalid Potion Position! Use command like: USE POTION 1");
+    private static void handleInspectCommand(CommandAction commandAction) {
+        switch(commandAction.getActionType()) {
+            case INVENTORY:
+                UserState.getInstance().getPlayer().getInventory().showInventory();
+                return;
+            case ROOM:
+                UserState.getInstance().getCurrentRoom().showRoomContent();
+                return;
+            default:
+                Queue.getInstance().addGameOutput("Invalid Inspect Action Type, try INSPECT ROOM or INSPECT INVENTORY");
         }
     }
 
-    private void handleResetCommand() {
-        Initializer.getInstance().initialise();
+    private static void handleSaveCommand(CommandAction commandAction) {
+        new Saver().saveAs(commandAction.getActionIdentifier().getIdentifierId());
     }
 
-    private void handleHistoryCommand() {
-        Queue.getInstance().addGameOutput("Entered Commands:\n" + History.getInstance().getEnteredCommands().toString());
+    private static void handleLoadCommand(CommandAction commandAction) {
+        new Loader().loadFromJsonFile(commandAction.getActionIdentifier().getIdentifierId());
     }
 
-    private void handleHelpCommand() {
+    private static void handleAttackCommand() {
+        UserState.getInstance().attackMonster();
+    }
+
+    private static void handleHelpCommand() {
         Queue.getInstance().addGameOutput("The HELP-FAIRY was summoned! Here are some tips:\n" +
                 "You can play this game typing commands. A command consists of a maximum of three parts.\n" +
                 "\nThis is a list of useful commands:\n" +
@@ -106,48 +123,24 @@ public class CommandHandler {
                 "Now go ahead and beat the monsters!");
     }
 
-    private void handleSaveCommand() {
-        new Saver().saveAs(commandAction.getActionIdentifier().getIdentifierId());
+    private static void handleHistoryCommand() {
+        Queue.getInstance().addGameOutput("Entered Commands:\n" + History.getInstance().getEnteredCommands().toString());
     }
 
-    private void handleLoadCommand() {
-        new Loader().loadFromJsonFile(commandAction.getActionIdentifier().getIdentifierId());
+    private static void handleResetCommand() {
+        Initializer.getInstance().initialise();
     }
 
-    public void handleOpenCommand() {
-        switch(commandAction.getActionType()) {
-            case DOOR:
-                UserState.getInstance().changeRoom();
-                return;
-            default:
-                Queue.getInstance().addGameOutput("Invalid Open Action Type, try OPEN DOOR");
+    private static void handleNoneCommand() {
+        Queue.getInstance().addGameOutput("I'm sorry, but I'm afraid I can't handle invalid commands, Dave.");
+    }
+
+    private static void handleUsePotionActionType(CommandAction commandAction) {
+        if(StringUtils.isNumeric(commandAction.getActionIdentifier().toString())) {
+            int potionPosition = Integer.parseInt(commandAction.getActionIdentifier().toString());
+            UserState.getInstance().getPlayer().drinkPotion(potionPosition);
+        } else {
+            Queue.getInstance().addGameOutput("Invalid Potion Position! Use command like: USE POTION 1");
         }
-    }
-
-    public void handleInspectCommand() {
-        switch(commandAction.getActionType()) {
-            case INVENTORY:
-                UserState.getInstance().getPlayer().getInventory().showInventory();
-                return;
-            case ROOM:
-                UserState.getInstance().getCurrentRoom().showRoomContent();
-                return;
-            default:
-                Queue.getInstance().addGameOutput("Invalid Inspect Action Type, try INSPECT ROOM or INSPECT INVENTORY");
-        }
-    }
-
-    public void handleCollectCommand() {
-        switch(commandAction.getActionType()) {
-            case ITEMS:
-                UserState.getInstance().getPlayer().addToInventory(UserState.getInstance().getCurrentRoom().getItems());
-                return;
-            default:
-                Queue.getInstance().addGameOutput("Invalid Collect Action Type, try COLLECT ITEMS");
-        }
-    }
-
-    public void handleAttackCommand() {
-        UserState.getInstance().attackMonster();
     }
 }

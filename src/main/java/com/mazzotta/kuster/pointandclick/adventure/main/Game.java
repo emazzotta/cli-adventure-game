@@ -58,7 +58,7 @@ public class Game {
 
     public static void handleNewQueueItem(CommandAction commandAction) {
         History.getInstance().addEnteredCommand(commandAction);
-        new CommandHandler(commandAction).executeCommand();
+        CommandHandler.execute(commandAction);
     }
 
     private String infoText() {

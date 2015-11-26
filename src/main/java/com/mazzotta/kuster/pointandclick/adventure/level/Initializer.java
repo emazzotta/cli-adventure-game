@@ -17,7 +17,6 @@ public class Initializer {
     private static Initializer instance;
 
     private Initializer() {
-        dungeon = new Dungeon();
     }
 
     public static Initializer getInstance() {
@@ -45,36 +44,9 @@ public class Initializer {
         player.getInventory().addPotion(healthPotion25);
     }
 
-    private void addMonstersToRooms() {
-        Monster monsterEasy = new Monster("Bowaa", 12, 50);
-        Monster monsterMedium = new Monster("Zazinzongi", 12, 250);
-        Monster monsterHard = new Monster("ARGHHAKASH", 12, 500);
-        Monster monsterEndbaawwws = new Monster("BLOOOAAATTTOOON", 12, 1000);
-
-        dungeon.getRooms().get(3).setMonster(monsterEasy);
-        dungeon.getRooms().get(5).setMonster(monsterMedium);
-        dungeon.getRooms().get(7).setMonster(monsterHard);
-        dungeon.getRooms().get(8).setMonster(monsterEndbaawwws);
-    }
-
-    private void addItemsToRooms() {
-        Weapon shortSword = new Weapon("Short Sword", 100);
-        Weapon longSword = new Weapon("Long Sword", 200);
-        Weapon masterSword = new Weapon("Master Sword", 500);
-
-        Potion healthPotion50 = new Potion("Health +50", 50);
-        Potion healthPotion100 = new Potion("Health +100", 100);
-        Potion healthPotion150 = new Potion("Health +150", 150);
-
-        dungeon.getRooms().get(0).addItem(shortSword);
-        dungeon.getRooms().get(2).addItem(healthPotion50);
-        dungeon.getRooms().get(2).addItem(healthPotion100);
-        dungeon.getRooms().get(6).addItem(longSword);
-        dungeon.getRooms().get(7).addItem(healthPotion150);
-        dungeon.getRooms().get(8).addItem(masterSword);
-    }
-
     private void addRoomsToDungeon() {
+        dungeon = new Dungeon();
+
         Room room9 = new Room("Final Room", null);
         Room room8 = new Room("Room 8", room9);
         Room room7 = new Room("Room 7", room8);
@@ -94,5 +66,34 @@ public class Initializer {
         dungeon.getRooms().add(room7);
         dungeon.getRooms().add(room8);
         dungeon.getRooms().add(room9);
+    }
+
+    private void addItemsToRooms() {
+        Weapon shortSword = new Weapon("Short Sword", 100);
+        Weapon longSword = new Weapon("Long Sword", 200);
+        Weapon masterSword = new Weapon("Master Sword", 500);
+
+        Potion healthPotion50 = new Potion("Health +50", 50);
+        Potion healthPotion100 = new Potion("Health +100", 100);
+        Potion healthPotion150 = new Potion("Health +150", 150);
+
+        dungeon.getRooms().get(0).addItem(shortSword);
+        dungeon.getRooms().get(2).addItem(healthPotion50);
+        dungeon.getRooms().get(2).addItem(healthPotion100);
+        dungeon.getRooms().get(6).addItem(longSword);
+        dungeon.getRooms().get(7).addItem(healthPotion150);
+        dungeon.getRooms().get(8).addItem(masterSword);
+    }
+
+    private void addMonstersToRooms() {
+        Monster monsterEasy = new Monster("Bowaa", 12, 50);
+        Monster monsterMedium = new Monster("Zazinzongi", 12, 250);
+        Monster monsterHard = new Monster("ARGHHAKASH", 12, 500);
+        Monster monsterEndbaawwws = new Monster("BLOOOAAATTTOOON", 12, 1000);
+
+        dungeon.getRooms().get(3).setMonster(monsterEasy);
+        dungeon.getRooms().get(5).setMonster(monsterMedium);
+        dungeon.getRooms().get(7).setMonster(monsterHard);
+        dungeon.getRooms().get(8).setMonster(monsterEndbaawwws);
     }
 }
