@@ -7,7 +7,6 @@ import com.mazzotta.kuster.pointandclick.adventure.game.elements.exception.UserD
 public class UserState {
 
     private static UserState instance;
-    private static UserState initialUserState;
     private Room currentRoom;
     private Player player;
     private Dungeon dungeon;
@@ -25,14 +24,6 @@ public class UserState {
         this.player = player;
         this.dungeon = dungeon;
         this.currentRoom = dungeon.getRooms().get(0);
-    }
-
-    public void createInitialUserStateFromCurrentState() {
-        initialUserState = new UserState(player, dungeon);
-    }
-
-    public void resetUserState() {
-        instance = new UserState(initialUserState.getPlayer(), initialUserState.getDungeon());
     }
 
     public void changeRoom() {
@@ -59,9 +50,6 @@ public class UserState {
 
     public Room getCurrentRoom() {
         return currentRoom;
-    }
-
-    public void showCurrentRoom() {
     }
 
     public void attackMonster() {

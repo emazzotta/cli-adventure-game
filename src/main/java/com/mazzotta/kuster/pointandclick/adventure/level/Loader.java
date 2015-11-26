@@ -5,12 +5,14 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.Command;
 import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
 import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
-import com.mazzotta.kuster.pointandclick.adventure.game.elements.UserState;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
+import static com.mazzotta.kuster.pointandclick.adventure.commands.CommandUtil.resetGame;
+import static com.mazzotta.kuster.pointandclick.adventure.commands.CommandUtil.resetGameAndDisplayInitialText;
 import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.*;
 
 public class Loader {
@@ -34,15 +36,28 @@ public class Loader {
     }
 
     private void resumeGameFromCommands(JsonArray commandsAsJson) {
-        History.getInstance().clearCommands();
-        UserState.getInstance().resetUserState();
-        for(JsonElement commandAsJson: commandsAsJson) {
-            CommandAction commandAction = gson.fromJson(commandAsJson , CommandAction.class);
-            if(!isASaveOrLoadCommand(commandAction)) {
+        resetGame();
+        ArrayList<CommandAction> commandActions = getCommandActions(commandsAsJson);
+
+        if(commandActions.size() == 0) {
+            resetGameAndDisplayInitialText();
+        } else {
+            for(CommandAction commandAction : commandActions) {
                 History.getInstance().addEnteredCommand(commandAction);
                 Queue.getInstance().addUserInput(commandAction);
             }
         }
+    }
+
+    private ArrayList<CommandAction> getCommandActions(JsonArray commandsAsJson) {
+        ArrayList<CommandAction> commandActions = new ArrayList<>();
+        for(JsonElement commandAsJson: commandsAsJson) {
+            CommandAction commandAction = gson.fromJson(commandAsJson , CommandAction.class);
+            if(!isASaveOrLoadCommand(commandAction)) {
+                commandActions.add(commandAction);
+            }
+        }
+        return commandActions;
     }
 
     private boolean isASaveOrLoadCommand(CommandAction commandAction) {

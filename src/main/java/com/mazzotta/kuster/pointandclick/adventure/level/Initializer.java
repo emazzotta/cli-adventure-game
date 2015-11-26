@@ -31,7 +31,6 @@ public class Initializer {
         addItemsToRooms();
         addMonstersToRooms();
         UserState.createInstance(player, dungeon);
-        UserState.getInstance().createInitialUserStateFromCurrentState();
     }
 
     private void createPlayer() {
