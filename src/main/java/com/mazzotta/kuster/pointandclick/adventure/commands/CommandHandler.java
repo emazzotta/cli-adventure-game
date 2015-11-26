@@ -56,7 +56,7 @@ public class CommandHandler {
     }
 
     private void handleNoneCommand() {
-        Queue.getInstance().addGameOutput("Either you entered an invalid command or you expect\nsomething magical to happen by entering \"NONE\"");
+        Queue.getInstance().addGameOutput("I'm sorry, but I'm afraid I can't handle invalid commands, Dave.");
     }
 
     private void handleUseCommand() {
@@ -118,6 +118,8 @@ public class CommandHandler {
             case DOOR:
                 UserState.getInstance().changeRoom();
                 break;
+            default:
+                Queue.getInstance().addGameOutput("Invalid Open Action Type, try OPEN DOOR");
         }
     }
 
@@ -129,6 +131,8 @@ public class CommandHandler {
             case ROOM:
                 UserState.getInstance().getCurrentRoom().showRoomContent();
                 break;
+            default:
+                Queue.getInstance().addGameOutput("Invalid Inspect Action Type, try INSPECT ROOM or INSPECT INVENTORY");
         }
     }
 
@@ -136,6 +140,8 @@ public class CommandHandler {
         switch(commandAction.getActionType()) {
             case ITEMS:
                 UserState.getInstance().getPlayer().addToInventory(UserState.getInstance().getCurrentRoom().getItems());
+            default:
+                Queue.getInstance().addGameOutput("Invalid Collect Action Type, try COLLECT ITEMS");
         }
     }
 
