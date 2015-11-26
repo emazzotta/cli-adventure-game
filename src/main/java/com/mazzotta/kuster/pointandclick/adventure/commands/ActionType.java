@@ -22,10 +22,10 @@ public enum ActionType {
     }
 
     public static String listAvailable() {
-        StringBuilder availableActionTypes = new StringBuilder();
+        String availableActionTypes = "";
         for(ActionType actionType : ActionType.values()) {
-            availableActionTypes.append(actionType.name() + "\n");
+            availableActionTypes += actionType.name() + "\n";
         }
-        return availableActionTypes.toString();
+        return availableActionTypes;
     }
 }

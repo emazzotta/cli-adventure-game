@@ -17,9 +17,7 @@ public class Inventory {
     }
 
     public void showInventory() {
-        String inventory = "";
-        inventory += "Inventory:\n" +
-                "\nWeapons:\n";
+        String inventory = "Inventory:\n\nWeapons:\n";
         if(weapons.isEmpty()) {
             inventory += "None\n";
         } else {
@@ -33,7 +31,7 @@ public class Inventory {
             inventory += "None\n";
         } else {
             for(int i = 0; i < potions.size(); i++) {
-                inventory.append("[" + (i+1) + "] " + potions.get(i).getName() + "\n");
+                inventory += "[" + (i+1) + "] " + potions.get(i).getName() + "\n";
             }
         }
 
@@ -41,12 +39,11 @@ public class Inventory {
     }
 
     public String getInventoryString() {
-        String inventory = "";
-        inventory += "Weapons:\n";
+        String inventory = "Weapons:\n";
         if(weapons.isEmpty()) {
             inventory += "None\n";
         } else {
-            for (int i = 0; i < weapons.size(); i++) {
+            for(int i = 0; i < weapons.size(); i++) {
                 inventory += "[" + (i+1) + "] " + weapons.get(i).getName() + "\n";
             }
         }
@@ -55,7 +52,7 @@ public class Inventory {
         if(potions.isEmpty()) {
             inventory += "None\n";
         } else {
-            for (int i = 0; i < potions.size(); i++) {
+            for(int i = 0; i < potions.size(); i++) {
                 inventory += "[" + (i+1) + "] " + potions.get(i).getName() + "\n";
             }
         }

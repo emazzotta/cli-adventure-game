@@ -22,10 +22,10 @@ public enum Command {
     }
 
     public static String listAvailable() {
-        StringBuilder availableCommands = new StringBuilder();
+        String availableCommands = "";
         for(Command command : Command.values()) {
-            availableCommands.append(command.name() + "\n");
+            availableCommands += command.name() + "\n";
         }
-        return availableCommands.toString();
+        return availableCommands;
     }
 }
