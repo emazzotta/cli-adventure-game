@@ -3,7 +3,6 @@ package com.mazzotta.kuster.pointandclick.adventure.game.elements;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Player;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.exception.UserDiedException;
-import com.mazzotta.kuster.pointandclick.adventure.main.Game;
 
 public class UserState {
 
@@ -38,7 +37,7 @@ public class UserState {
 
     public void changeRoom() {
         if(currentRoom.hasNextRoom()) {
-            if (!currentRoom.hasUndefeatedMonster()) {
+            if(!currentRoom.hasUndefeatedMonster()) {
                 currentRoom = currentRoom.getNextRoom();
                 Queue.getInstance().addGameOutput("You have advanced to the next room.\nNew Room: " + currentRoom.getName());
             } else {
@@ -83,7 +82,7 @@ public class UserState {
         fightOutput.append(
                 "Player Health:\t" + player.getHealth() + "\n" +
                 "Monster Health:\t" + currentRoom.getMonster().getHealth() + "\n");
-        if (!currentRoom.getMonster().isAlive()) {
+        if(!currentRoom.getMonster().isAlive()) {
            fightOutput.append("You have defeated " + currentRoom.getMonster().getName() + "!\n" +
                     "You may advance to the next room.");
         }
