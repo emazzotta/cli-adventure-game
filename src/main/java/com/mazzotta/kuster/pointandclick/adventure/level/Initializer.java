@@ -3,7 +3,7 @@ package com.mazzotta.kuster.pointandclick.adventure.level;
 import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.Dungeon;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.Room;
-import com.mazzotta.kuster.pointandclick.adventure.game.elements.UserState;
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.State;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Monster;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Player;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Potion;
@@ -33,7 +33,7 @@ public class Initializer {
         addMonstersToRooms();
         History.getInstance().clearCommands();
         Game.showInitialText = true;
-        UserState.createInstance(player, dungeon);
+        State.createInstance(player, dungeon);
     }
 
     private void createPlayer() {

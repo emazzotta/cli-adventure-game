@@ -1,6 +1,6 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
-import com.mazzotta.kuster.pointandclick.adventure.game.elements.UserState;
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.State;
 
 import java.util.ArrayList;
 
@@ -17,8 +17,8 @@ public class Queue {
     }
 
     private Queue() {
-        pendingUserInput = new ArrayList<CommandAction>();
-        pendingGameOutput = new ArrayList<String>();
+        pendingUserInput = new ArrayList<>();
+        pendingGameOutput = new ArrayList<>();
     }
 
     public void clearUserInputCache() {
@@ -52,11 +52,11 @@ public class Queue {
     private String satistics() {
         return "###############################\n" +
                 "Statistics:\n" +
-                "Health: " + UserState.getInstance().getPlayer().getHealth() + "\n" +
-                "Attack Strength: " + UserState.getInstance().getPlayer().getAttackPoints() + "\n" +
-                "Current Weapon: " + UserState.getInstance().getPlayer().getEquippedWeapon().getName() + "\n" +
-                "Amount of Potions: " + UserState.getInstance().getPlayer().getInventory().getPotions().size() + "\n" +
-                "Current Room: " + UserState.getInstance().getCurrentRoom().getName() + "\n" +
+                "Health: " + State.getInstance().getPlayer().getHealth() + "\n" +
+                "Attack Strength: " + State.getInstance().getPlayer().getAttackPoints() + "\n" +
+                "Current Weapon: " + State.getInstance().getPlayer().getEquippedWeapon().getName() + "\n" +
+                "Amount of Potions: " + State.getInstance().getPlayer().getInventory().getPotions().size() + "\n" +
+                "Current Room: " + State.getInstance().getCurrentRoom().getName() + "\n" +
                 "###############################\n\n";
     }
 }

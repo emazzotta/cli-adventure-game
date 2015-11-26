@@ -1,7 +1,7 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
 
-import com.mazzotta.kuster.pointandclick.adventure.game.elements.UserState;
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.State;
 import com.mazzotta.kuster.pointandclick.adventure.level.Initializer;
 import com.mazzotta.kuster.pointandclick.adventure.level.Loader;
 import com.mazzotta.kuster.pointandclick.adventure.level.Saver;
@@ -51,7 +51,7 @@ public class CommandHandler {
     private static void handleOpenCommand(CommandAction commandAction) {
         switch(commandAction.getActionType()) {
             case DOOR:
-                UserState.getInstance().changeRoom();
+                State.getInstance().changeRoom();
                 return;
             default:
                 Queue.getInstance().addGameOutput("Invalid Open Action Type, try OPEN DOOR");
@@ -61,7 +61,7 @@ public class CommandHandler {
     private static void handleCollectCommand(CommandAction commandAction) {
         switch(commandAction.getActionType()) {
             case ITEMS:
-                UserState.getInstance().getPlayer().addToInventory(UserState.getInstance().getCurrentRoom().getItems());
+                State.getInstance().getPlayer().addToInventory(State.getInstance().getCurrentRoom().getItems());
                 return;
             default:
                 Queue.getInstance().addGameOutput("Invalid Collect Action Type, try COLLECT ITEMS");
@@ -81,10 +81,10 @@ public class CommandHandler {
     private static void handleInspectCommand(CommandAction commandAction) {
         switch(commandAction.getActionType()) {
             case INVENTORY:
-                UserState.getInstance().getPlayer().getInventory().showInventory();
+                State.getInstance().getPlayer().getInventory().showInventory();
                 return;
             case ROOM:
-                UserState.getInstance().getCurrentRoom().showRoomContent();
+                State.getInstance().getCurrentRoom().showRoomContent();
                 return;
             default:
                 Queue.getInstance().addGameOutput("Invalid Inspect Action Type, try INSPECT ROOM or INSPECT INVENTORY");
@@ -100,7 +100,7 @@ public class CommandHandler {
     }
 
     private static void handleAttackCommand() {
-        UserState.getInstance().attackMonster();
+        State.getInstance().attackMonster();
     }
 
     private static void handleHelpCommand() {
@@ -138,7 +138,7 @@ public class CommandHandler {
     private static void handleUsePotionActionType(CommandAction commandAction) {
         if(StringUtils.isNumeric(commandAction.getActionIdentifier().toString())) {
             int potionPosition = Integer.parseInt(commandAction.getActionIdentifier().toString());
-            UserState.getInstance().getPlayer().drinkPotion(potionPosition);
+            State.getInstance().getPlayer().drinkPotion(potionPosition);
         } else {
             Queue.getInstance().addGameOutput("Invalid Potion Position! Use command like: USE POTION 1");
         }

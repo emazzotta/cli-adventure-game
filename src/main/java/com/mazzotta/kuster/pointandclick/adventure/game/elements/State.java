@@ -4,25 +4,23 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Player;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.exception.UserDiedException;
 
-public class UserState {
+public class State {
 
-    private static UserState instance;
+    private static State instance;
     private Room currentRoom;
     private Player player;
-    private Dungeon dungeon;
 
-    public static UserState getInstance() {
+    public static State getInstance() {
         return instance;
     }
 
-    public static UserState createInstance(Player player, Dungeon dungeon) {
-        instance = new UserState(player, dungeon);
+    public static State createInstance(Player player, Dungeon dungeon) {
+        instance = new State(player, dungeon);
         return instance;
     }
 
-    private UserState(Player player, Dungeon dungeon) {
+    private State(Player player, Dungeon dungeon) {
         this.player = player;
-        this.dungeon = dungeon;
         this.currentRoom = dungeon.getRooms().get(0);
     }
 
@@ -38,10 +36,6 @@ public class UserState {
         else {
             Queue.getInstance().addGameOutput("There is no next room available!");
         }
-    }
-
-    public Dungeon getDungeon() {
-        return dungeon;
     }
 
     public Player getPlayer() {
