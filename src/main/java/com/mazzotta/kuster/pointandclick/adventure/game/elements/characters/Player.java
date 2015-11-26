@@ -2,7 +2,11 @@ package com.mazzotta.kuster.pointandclick.adventure.game.elements.characters;
 
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.Inventory;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.exception.UserDiedException;
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Item;
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Potion;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Weapon;
+
+import java.util.ArrayList;
 
 public class Player extends Character {
 
@@ -43,6 +47,17 @@ public class Player extends Character {
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public void addToInventory(ArrayList<Item> items) {
+        for(Item item : items) {
+            if (item instanceof Weapon) {
+                inventory.addWeapon((Weapon) item);
+            }
+            else if (item instanceof Potion) {
+                inventory.addPotion((Potion) item);
+            }
+        }
     }
 
     public String getName() {

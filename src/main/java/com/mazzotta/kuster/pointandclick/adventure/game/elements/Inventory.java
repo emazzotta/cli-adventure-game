@@ -24,7 +24,7 @@ public class Inventory {
             inventory.append(" -\n");
         } else {
             for (int i = 0; i < weapons.size(); i++) {
-                inventory.append("[" + i + "]\t" + weapons.get(i).getName());
+                inventory.append("[" + i + "]\t" + weapons.get(i).getName() + "\n");
             }
         }
 
@@ -33,7 +33,7 @@ public class Inventory {
             inventory.append(" -\n");
         } else {
             for (int i = 0; i < potions.size(); i++) {
-                inventory.append("[" + i + "]\t" + potions.get(i).getName());
+                inventory.append("[" + i + "]\t" + potions.get(i).getName() + "\n");
             }
         }
 

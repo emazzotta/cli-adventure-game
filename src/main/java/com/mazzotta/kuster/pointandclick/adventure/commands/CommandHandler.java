@@ -25,6 +25,7 @@ public class CommandHandler {
                handleOpenCommand();
                 return;
             case COLLECT:
+                handleCollectCommand();
                 return;
             case USE:
                 return;
@@ -105,6 +106,13 @@ public class CommandHandler {
             case ROOM:
                 UserState.getInstance().getCurrentRoom().showRoomContent();
                 break;
+        }
+    }
+
+    public void handleCollectCommand() {
+        switch (commandAction.getActionType()) {
+            case ITEMS:
+                UserState.getInstance().getPlayer().addToInventory(UserState.getInstance().getCurrentRoom().getItems());
         }
     }
 
