@@ -13,14 +13,13 @@ public class FileOperationUtil {
     }
 
     public static String listFilesForFolder(final File folder) {
-        StringBuilder potentialSaveGames = new StringBuilder();
+        String potentialSaveGames = "";
         for(final File file : folder.listFiles()) {
             if(isAPossibleSaveGame(file)) {
-                potentialSaveGames.append(file.getName() + "\n");
+                potentialSaveGames += file.getName() + "\n";
             }
         }
-
-        return potentialSaveGames.toString();
+        return potentialSaveGames;
     }
 
     private static boolean isAPossibleSaveGame(File fileEntry) {

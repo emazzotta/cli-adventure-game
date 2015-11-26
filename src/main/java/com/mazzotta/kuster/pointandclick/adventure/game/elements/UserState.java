@@ -64,28 +64,30 @@ public class UserState {
     public void showCurrentRoom() {
     }
 
-    // TODO maybe make something like a session for the fight so that no other actions like "OPEN DOOR" can be triggered
     public void attackMonster() {
-        StringBuilder fightOutput = new StringBuilder();
         currentRoom.getMonster().takeDamage(player.getAttackPoints());
-        fightOutput.append("You attacked " + currentRoom.getMonster().getName() +
-                " and inflicted " + player.getAttackPoints() + " damage!\n");
+
+        String fightOutput = "You attacked " + currentRoom.getMonster().getName() + " and inflicted " + player.getAttackPoints() + " damage!\n";
         if(currentRoom.getMonster().isAlive()) {
             try {
                 player.takeDamage(currentRoom.getMonster().getAttackPoints());
-                fightOutput.append(currentRoom.getMonster().getName() + " attacked you and inflicted " + currentRoom.getMonster().getAttackPoints() +
-                        " damage to you!\n");
+                fightOutput += currentRoom.getMonster().getName() +
+                        " attacked you and inflicted " +
+                        currentRoom.getMonster().getAttackPoints() +
+                        " damage to you!\n";
             } catch (UserDiedException e) {
                 //TODO handle exception
             }
         }
-        fightOutput.append(
-                "Player Health:\t" + player.getHealth() + "\n" +
-                "Monster Health:\t" + currentRoom.getMonster().getHealth() + "\n");
+        fightOutput += "Player Health: " +
+                player.getHealth() + "\n" +
+                "Monster Health: " +
+                currentRoom.getMonster().getHealth() + "\n";
         if(!currentRoom.getMonster().isAlive()) {
-           fightOutput.append("You have defeated " + currentRoom.getMonster().getName() + "!\n" +
-                    "You may advance to the next room.");
+           fightOutput += "You have defeated " +
+                   currentRoom.getMonster().getName() + "!\n" +
+                    "You may advance to the next room.";
         }
-        Queue.getInstance().addGameOutput(fightOutput.toString());
+        Queue.getInstance().addGameOutput(fightOutput);
     }
 }
