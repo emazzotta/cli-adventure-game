@@ -37,7 +37,7 @@ public class Inventory {
             }
         }
 
-        Queue.getInstance().addGameOutput(inventory.toString());
+        Queue.getInstance().addGameOutput(inventory);
     }
 
     public String getInventoryString() {
@@ -59,7 +59,7 @@ public class Inventory {
                 inventory += "[" + (i+1) + "] " + potions.get(i).getName() + "\n";
             }
         }
-        return inventory.toString();
+        return inventory;
     }
 
     public void addWeapon(Weapon weapon) {
