@@ -61,7 +61,7 @@ public class Room {
         if(!items.isEmpty()) {
             roomContent.append("Items:\n");
             for (int i = 0; i < items.size(); i++) {
-                roomContent.append("[" + i + "]\t" + items.get(i).getName() + "\n");
+                roomContent.append("[" + (i+1) + "] " + items.get(i).getName() + "\n");
             }
         } else {
             roomContent.append("There are no items in this room (anymore)");

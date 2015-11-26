@@ -40,6 +40,28 @@ public class Inventory {
         Queue.getInstance().addGameOutput(inventory.toString());
     }
 
+    public String getInventoryString() {
+        StringBuilder inventory = new StringBuilder();
+        inventory.append("Weapons:\n");
+        if(weapons.isEmpty()) {
+            inventory.append("None\n");
+        } else {
+            for (int i = 0; i < weapons.size(); i++) {
+                inventory.append("[" + (i+1) + "] " + weapons.get(i).getName() + "\n");
+            }
+        }
+
+        inventory.append("\nPotions:\n");
+        if(potions.isEmpty()) {
+            inventory.append("None\n");
+        } else {
+            for (int i = 0; i < potions.size(); i++) {
+                inventory.append("[" + (i+1) + "] " + potions.get(i).getName() + "\n");
+            }
+        }
+        return inventory.toString();
+    }
+
     public void addWeapon(Weapon weapon) {
         weapons.add(weapon);
     }
@@ -50,13 +72,5 @@ public class Inventory {
 
     public ArrayList<Potion> getPotions() {
         return potions;
-    }
-
-    public void discardWeapon(int index) {
-        weapons.remove(index);
-    }
-
-    public void discardPotion(int index) {
-        potions.remove(index);
     }
 }
