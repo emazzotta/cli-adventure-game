@@ -36,8 +36,8 @@ public class Queue {
     public void addUserInput(CommandAction userInput) {
         pendingUserInput.add(userInput);
     }
+
     public void addGameOutput(String gameOutput) {
-        System.out.println(gameOutput);
         pendingGameOutput.add(statistics() + gameOutput);
     }
 

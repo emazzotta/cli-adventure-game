@@ -11,8 +11,6 @@ public class CommandHandler {
 
     public static void execute(CommandAction commandAction) {
         switch(commandAction.getCommand()) {
-            default:
-                System.out.println("Executing [Command = " + commandAction.getCommand() + "]");
             case OPEN:
                 handleOpenCommand(commandAction);
                 return;

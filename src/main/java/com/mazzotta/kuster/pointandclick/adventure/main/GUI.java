@@ -43,8 +43,6 @@ public class GUI extends JFrame {
 
     public void updateGUI() {
         gameOutput.setText("");
-        System.out.println("Input: " + Queue.getInstance().getPendingUserInput());
-        System.out.println("Output: " + Queue.getInstance().getPendingGameOutput());
         for(String output : Queue.getInstance().getPendingGameOutput()) {
             gameOutput.append(output + "\n");
         }
@@ -54,7 +52,6 @@ public class GUI extends JFrame {
         public void actionPerformed(ActionEvent actionEvent) {
         InputParser inputParser = new InputParser();
         try {
-            System.out.println("ActionCommand from User input: " + actionEvent.getActionCommand());
             inputParser.createCommandActionFrom(actionEvent.getActionCommand());
         } catch (InvalidUserInputException e) {
             inputParser.createInvalidCommandActionFrom(actionEvent.getActionCommand());
