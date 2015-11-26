@@ -17,23 +17,23 @@ public class Inventory {
     }
 
     public void showInventory() {
-        StringBuilder inventory = new StringBuilder();
-        inventory.append("Inventory:\n" +
-                "\nWeapons:\n");
+        String inventory = "";
+        inventory += "Inventory:\n" +
+                "\nWeapons:\n";
         if(weapons.isEmpty()) {
-            inventory.append("None\n");
+            inventory += "None\n";
         } else {
             for (int i = 0; i < weapons.size(); i++) {
-                inventory.append("[" + (i+1) + "] " + weapons.get(i).getName() + "\n");
+                inventory += "[" + (i+1) + "] " + weapons.get(i).getName() + "\n";
             }
         }
 
-        inventory.append("\nPotions:\n");
+        inventory += "\nPotions:\n";
         if(potions.isEmpty()) {
-            inventory.append("None\n");
+            inventory += "None\n";
         } else {
             for (int i = 0; i < potions.size(); i++) {
-                inventory.append("[" + (i+1) + "] " + potions.get(i).getName() + "\n");
+                inventory += "[" + (i+1) + "] " + potions.get(i).getName() + "\n";
             }
         }
 
@@ -41,22 +41,22 @@ public class Inventory {
     }
 
     public String getInventoryString() {
-        StringBuilder inventory = new StringBuilder();
-        inventory.append("Weapons:\n");
+        String inventory = "";
+        inventory += "Weapons:\n";
         if(weapons.isEmpty()) {
-            inventory.append("None\n");
+            inventory += "None\n";
         } else {
             for (int i = 0; i < weapons.size(); i++) {
-                inventory.append("[" + (i+1) + "] " + weapons.get(i).getName() + "\n");
+                inventory += "[" + (i+1) + "] " + weapons.get(i).getName() + "\n";
             }
         }
 
-        inventory.append("\nPotions:\n");
+        inventory += "\nPotions:\n";
         if(potions.isEmpty()) {
-            inventory.append("None\n");
+            inventory += "None\n";
         } else {
             for (int i = 0; i < potions.size(); i++) {
-                inventory.append("[" + (i+1) + "] " + potions.get(i).getName() + "\n");
+                inventory += "[" + (i+1) + "] " + potions.get(i).getName() + "\n";
             }
         }
         return inventory.toString();
