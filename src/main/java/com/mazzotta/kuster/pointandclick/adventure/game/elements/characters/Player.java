@@ -72,8 +72,8 @@ public class Player extends Character {
                 inventory.addPotion((Potion) item);
             }
         }
-        Queue.getInstance().addGameOutput("You have collected this room's items\n" +
-                "\nNew Inventory:\n" +
+        Queue.getInstance().addGameOutput("You have collected this room's items\n\n" +
+                "New Inventory:\n" +
                 inventory.getInventoryString());
     }
 

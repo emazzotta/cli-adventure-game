@@ -58,15 +58,15 @@ public class Initializer {
         Room room2 = new Room("Room 2", room3);
         Room room1 = new Room("Starting Room", room2);
 
-        dungeon.getRooms().add(room1);
-        dungeon.getRooms().add(room2);
-        dungeon.getRooms().add(room3);
-        dungeon.getRooms().add(room4);
-        dungeon.getRooms().add(room5);
-        dungeon.getRooms().add(room6);
-        dungeon.getRooms().add(room7);
-        dungeon.getRooms().add(room8);
-        dungeon.getRooms().add(room9);
+        dungeon.addRoom(room1);
+        dungeon.addRoom(room2);
+        dungeon.addRoom(room3);
+        dungeon.addRoom(room4);
+        dungeon.addRoom(room5);
+        dungeon.addRoom(room6);
+        dungeon.addRoom(room7);
+        dungeon.addRoom(room8);
+        dungeon.addRoom(room9);
     }
 
     private void addItemsToRooms() {

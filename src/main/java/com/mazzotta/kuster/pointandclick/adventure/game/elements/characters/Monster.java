@@ -25,10 +25,6 @@ public class Monster extends Character {
     }
 
     public void takeDamage(int damagePoints) {
-        if(health - damagePoints <= 0) {
-            System.out.printf("Monster is dead");
-            // TODO change status of monster
-        }
         reduceHealthPointsBy(damagePoints);
     }
 

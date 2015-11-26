@@ -7,7 +7,7 @@ public class Dungeon {
     private ArrayList<Room> rooms;
 
     public Dungeon() {
-        rooms = new ArrayList<Room>();
+        rooms = new ArrayList<>();
     }
 
     public void addRoom(Room room) {
