@@ -76,6 +76,7 @@ public class State {
             if (!currentRoom.getMonster().isAlive()) {
                 fightOutput += "\nYou have defeated ";
                 fightOutput += currentRoom.getMonster().getName() + "!\n";
+                fightOutput += "Do you think he dropped any loot...?\n";
                 dropMonsterLoot();
             }
             Queue.getInstance().addGameOutput(fightOutput);

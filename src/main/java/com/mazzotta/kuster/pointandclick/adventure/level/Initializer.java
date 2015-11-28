@@ -38,7 +38,7 @@ public class Initializer {
 
     private void createPlayer() {
         Weapon weakSword = new Weapon("Weak Sword", 50);
-        Potion healthPotion25 = new Potion("Health +25", 25);
+        Potion healthPotion25 = new Potion(25);
 
         player = new Player(500, weakSword);
         player.getInventory().addWeapon(weakSword);
@@ -74,9 +74,9 @@ public class Initializer {
         Weapon longSword = new Weapon("Long Sword", 200);
         Weapon masterSword = new Weapon("Master Sword", 500);
 
-        Potion healthPotion50 = new Potion("Health +50", 50);
-        Potion healthPotion100 = new Potion("Health +100", 100);
-        Potion healthPotion150 = new Potion("Health +150", 150);
+        Potion healthPotion50 = new Potion(50);
+        Potion healthPotion100 = new Potion(100);
+        Potion healthPotion150 = new Potion(150);
 
         dungeon.getRooms().get(1).addItem(shortSword);
         dungeon.getRooms().get(2).addItem(healthPotion50);
@@ -87,9 +87,9 @@ public class Initializer {
     }
 
     private void addMonstersToRooms() {
-        Monster monsterEasy = new Monster("Bowaa", 12, 50, new Potion("Health +10", 10));
+        Monster monsterEasy = new Monster("Bowaa", 12, 50, new Potion(10));
         Monster monsterMedium = new Monster("Zazinzongi", 40, 250, new Weapon("Crazy Thing", 200));
-        Monster monsterHard = new Monster("ARGHHAKASH", 80, 500, new Potion("Health +200", 200), new Weapon("The Force With You", 250));
+        Monster monsterHard = new Monster("ARGHHAKASH", 80, 500, new Potion(200), new Weapon("The Force With You", 250));
         Monster monsterEndbaawwws = new Monster("BLOOOAAATTTOOON", 150, 1000, new Weapon("Over 9000!", 9001));
 
         dungeon.getRooms().get(3).setMonster(monsterEasy);

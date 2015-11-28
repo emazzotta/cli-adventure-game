@@ -65,16 +65,22 @@ public class Player extends Character {
     }
 
     public void addToInventory(ArrayList<Item> items) {
-        for(Item item : items) {
-            if(item instanceof Weapon) {
-                inventory.addWeapon((Weapon) item);
-            } else if(item instanceof Potion) {
-                inventory.addPotion((Potion) item);
+        if (items.size() == 0) {
+            Queue.getInstance().addGameOutput("No new items were collected.\n\n" +
+                    "Current Inventory:\n" +
+                    inventory.getInventoryString());
+        } else {
+            for (Item item : items) {
+                if (item instanceof Weapon) {
+                    inventory.addWeapon((Weapon) item);
+                } else if (item instanceof Potion) {
+                    inventory.addPotion((Potion) item);
+                }
             }
+            Queue.getInstance().addGameOutput("You have collected this room's items\n\n" +
+                    "New Inventory:\n" +
+                    inventory.getInventoryString());
         }
-        Queue.getInstance().addGameOutput("You have collected this room's items\n\n" +
-                "New Inventory:\n" +
-                inventory.getInventoryString());
     }
 
     public int getHealth() {
