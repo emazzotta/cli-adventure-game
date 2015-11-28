@@ -3,6 +3,7 @@ package com.mazzotta.kuster.pointandclick.adventure.game.elements;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Player;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.exception.UserDiedException;
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Item;
 
 public class State {
 
@@ -28,13 +29,16 @@ public class State {
         if(currentRoom.hasNextRoom()) {
             if(!currentRoom.hasUndefeatedMonster()) {
                 currentRoom = currentRoom.getNextRoom();
-                Queue.getInstance().addGameOutput("You have advanced to the next room.\nNew Room: " + currentRoom.getName());
+                Queue.getInstance().addGameOutput("You have advanced to the next room.\n" + getCurrentRoom().getRoomContent());
             } else {
                 Queue.getInstance().addGameOutput("WARNING! You cannot advance to the next room before you have defeated: " + currentRoom.getMonster().getName() + "!!");
             }
         }
         else {
-            Queue.getInstance().addGameOutput("There is no next room available!");
+            Queue.getInstance().addGameOutput("WOHOOO!! Congratulations! You made it all the way through!!\n" +
+                    "You know what you get? (Scroll down to find out...)" +
+                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou get nothing.\n" +
+                    "But thanks for playing!");
         }
     }
 
@@ -72,11 +76,17 @@ public class State {
             if (!currentRoom.getMonster().isAlive()) {
                 fightOutput += "\nYou have defeated ";
                 fightOutput += currentRoom.getMonster().getName() + "!\n";
-                fightOutput += "You may advance to the next room.";
+                dropMonsterLoot();
             }
             Queue.getInstance().addGameOutput(fightOutput);
         } else {
             Queue.getInstance().addGameOutput("What are you trying to attack? There's noting here...");
+        }
+    }
+
+    private void dropMonsterLoot() {
+        for (Item monsterLoot : getCurrentRoom().getMonster().getLoot()) {
+            getCurrentRoom().addItem(monsterLoot);
         }
     }
 }

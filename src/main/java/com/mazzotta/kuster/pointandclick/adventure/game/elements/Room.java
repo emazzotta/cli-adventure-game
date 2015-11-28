@@ -1,6 +1,5 @@
 package com.mazzotta.kuster.pointandclick.adventure.game.elements;
 
-import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.characters.Monster;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Item;
 
@@ -51,8 +50,8 @@ public class Room {
         return monster != null;
     }
 
-    public void showRoomContent() {
-        String roomContent = "Room:" + name + "\n";
+    public String getRoomContent() {
+        String roomContent = "Room: " + name + "\n";
         if(hasMonster()) {
             roomContent += "Monster: " + monster.getName() + "\n";
             roomContent += "Alive: " + monster.isAlive() + "\n";
@@ -65,7 +64,7 @@ public class Room {
         } else {
             roomContent += "There are no items in this room (anymore)";
         }
-        Queue.getInstance().addGameOutput(roomContent);
+        return roomContent;
     }
 
     public boolean hasUndefeatedMonster() {

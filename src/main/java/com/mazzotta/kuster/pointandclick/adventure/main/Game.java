@@ -2,7 +2,6 @@ package com.mazzotta.kuster.pointandclick.adventure.main;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
 import com.mazzotta.kuster.pointandclick.adventure.commands.CommandHandler;
-import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.level.Initializer;
 
@@ -43,7 +42,7 @@ public class Game {
                             CommandAction commandAction = Queue.getInstance().getPendingUserInput().get(0);
                             Queue.getInstance().getPendingUserInput().remove(0);
                             Queue.getInstance().clearGameOutputCache();
-                            handleNewQueueItem(commandAction);
+                            CommandHandler.execute(commandAction);
                             gui.updateGUI();
                         }
                     } catch (InterruptedException e) {
@@ -52,11 +51,6 @@ public class Game {
                 }
             }
         };
-    }
-
-    public static void handleNewQueueItem(CommandAction commandAction) {
-        History.getInstance().addEnteredCommand(commandAction);
-        CommandHandler.execute(commandAction);
     }
 
     private String infoText() {

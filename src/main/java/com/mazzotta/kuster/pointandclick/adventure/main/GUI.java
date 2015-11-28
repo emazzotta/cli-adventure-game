@@ -1,12 +1,18 @@
 package com.mazzotta.kuster.pointandclick.adventure.main;
 
+import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
+import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputParser;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.InvalidUserInputException;
+import com.mazzotta.kuster.pointandclick.adventure.game.elements.State;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 
 public class GUI extends JFrame {
@@ -36,6 +42,7 @@ public class GUI extends JFrame {
         frame.getContentPane().add(userInput, BorderLayout.SOUTH);
 
         userInput.addActionListener(action);
+        userInput.addKeyListener(keyListener);
 
         frame.setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -43,22 +50,72 @@ public class GUI extends JFrame {
 
     public void updateGUI() {
         gameOutput.setText("");
-        for(String output : Queue.getInstance().getPendingGameOutput()) {
-            gameOutput.append(output + "\n");
+        gameOutput.append(statistics());
+        for (String output : Queue.getInstance().getPendingGameOutput()) {
+            gameOutput.append(output);
+            gameOutput.append("\n");
         }
+    }
+
+    private String statistics() {
+        return "###############################\n" +
+                "Statistics:\n" +
+                "Health: " + State.getInstance().getPlayer().getHealth() + "\n" +
+                "Attack Strength: " + State.getInstance().getPlayer().getAttackPoints() + "\n" +
+                "Current Weapon: " + State.getInstance().getPlayer().getEquippedWeapon().getName() + "\n" +
+                "Amount of Potions: " + State.getInstance().getPlayer().getInventory().getPotions().size() + "\n" +
+                "Current Room: " + State.getInstance().getCurrentRoom().getName() + "\n" +
+                "###############################\n\n";
     }
 
     Action action = new AbstractAction() {
         public void actionPerformed(ActionEvent actionEvent) {
-        InputParser inputParser = new InputParser();
-        try {
-            inputParser.createCommandActionFrom(actionEvent.getActionCommand());
-        } catch (InvalidUserInputException e) {
-            inputParser.createInvalidCommandActionFrom(actionEvent.getActionCommand());
-            e.printStackTrace();
+            InputParser inputParser = new InputParser();
+            try {
+                inputParser.createCommandActionFrom(actionEvent.getActionCommand());
+            } catch (InvalidUserInputException e) {
+                inputParser.createInvalidCommandActionFrom(actionEvent.getActionCommand());
+                e.printStackTrace();
+            }
+            Queue.getInstance().addUserInput(inputParser.getCommandAction());
+            userInput.setText("");
         }
-        Queue.getInstance().addUserInput(inputParser.getCommandAction());
-        userInput.setText("");
+    };
+
+    KeyListener keyListener = new KeyListener() {
+        int commandIndex = 0;
+
+        public void keyPressed(KeyEvent keyEvent) {
+            switch (KeyEvent.getKeyText(keyEvent.getKeyCode())) {
+                case "↑":
+                    try {
+                        commandIndex++;
+                        setInputFieldToLastCommandBasedOnCurrentIndex();
+                    } catch (Exception e) {
+                        commandIndex--;
+                        setInputFieldToLastCommandBasedOnCurrentIndex();
+                    }
+                    return;
+                case "↓":
+                    try {
+                        commandIndex--;
+                        setInputFieldToLastCommandBasedOnCurrentIndex();
+                    } catch (Exception e) {
+                        commandIndex++;
+                        setInputFieldToLastCommandBasedOnCurrentIndex();
+                    }return;
+                case "⏎":
+                    commandIndex = 0;
+            }
+        }
+
+        public void keyReleased(KeyEvent keyEvent) {}
+
+        public void keyTyped(KeyEvent keyEvent) {}
+
+        private void setInputFieldToLastCommandBasedOnCurrentIndex() {
+            ArrayList<CommandAction> enteredCommands = History.getInstance().getEnteredCommands();
+            userInput.setText(enteredCommands.get(enteredCommands.size()-commandIndex).toString());
         }
     };
 }

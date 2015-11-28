@@ -1,7 +1,5 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
-import com.mazzotta.kuster.pointandclick.adventure.game.elements.State;
-
 import java.util.ArrayList;
 
 public class Queue {
@@ -38,17 +36,8 @@ public class Queue {
     }
 
     public void addGameOutput(String gameOutput) {
-        pendingGameOutput.add(statistics() + gameOutput);
+        pendingGameOutput.add(gameOutput);
     }
 
-    private String statistics() {
-        return "###############################\n" +
-                "Statistics:\n" +
-                "Health: " + State.getInstance().getPlayer().getHealth() + "\n" +
-                "Attack Strength: " + State.getInstance().getPlayer().getAttackPoints() + "\n" +
-                "Current Weapon: " + State.getInstance().getPlayer().getEquippedWeapon().getName() + "\n" +
-                "Amount of Potions: " + State.getInstance().getPlayer().getInventory().getPotions().size() + "\n" +
-                "Current Room: " + State.getInstance().getCurrentRoom().getName() + "\n" +
-                "###############################\n\n";
-    }
+
 }

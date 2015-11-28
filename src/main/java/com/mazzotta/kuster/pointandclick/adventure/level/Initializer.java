@@ -78,7 +78,7 @@ public class Initializer {
         Potion healthPotion100 = new Potion("Health +100", 100);
         Potion healthPotion150 = new Potion("Health +150", 150);
 
-        dungeon.getRooms().get(0).addItem(shortSword);
+        dungeon.getRooms().get(1).addItem(shortSword);
         dungeon.getRooms().get(2).addItem(healthPotion50);
         dungeon.getRooms().get(2).addItem(healthPotion100);
         dungeon.getRooms().get(6).addItem(longSword);
@@ -87,10 +87,10 @@ public class Initializer {
     }
 
     private void addMonstersToRooms() {
-        Monster monsterEasy = new Monster("Bowaa", 12, 50);
-        Monster monsterMedium = new Monster("Zazinzongi", 12, 250);
-        Monster monsterHard = new Monster("ARGHHAKASH", 12, 500);
-        Monster monsterEndbaawwws = new Monster("BLOOOAAATTTOOON", 12, 1000);
+        Monster monsterEasy = new Monster("Bowaa", 12, 50, new Potion("Health +10", 10));
+        Monster monsterMedium = new Monster("Zazinzongi", 40, 250, new Weapon("Crazy Thing", 200));
+        Monster monsterHard = new Monster("ARGHHAKASH", 80, 500, new Potion("Health +200", 200), new Weapon("The Force With You", 250));
+        Monster monsterEndbaawwws = new Monster("BLOOOAAATTTOOON", 150, 1000, new Weapon("Over 9000!", 9001));
 
         dungeon.getRooms().get(3).setMonster(monsterEasy);
         dungeon.getRooms().get(5).setMonster(monsterMedium);

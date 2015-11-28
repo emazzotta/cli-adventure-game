@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 public class CommandHandler {
 
     public static void execute(CommandAction commandAction) {
+        History.getInstance().addEnteredCommand(commandAction);
         switch(commandAction.getCommand()) {
             case OPEN:
                 handleOpenCommand(commandAction);
@@ -86,7 +87,8 @@ public class CommandHandler {
                 State.getInstance().getPlayer().getInventory().showInventory();
                 return;
             case ROOM:
-                State.getInstance().getCurrentRoom().showRoomContent();
+                String roomContent = State.getInstance().getCurrentRoom().getRoomContent();
+                Queue.getInstance().addGameOutput(roomContent);
                 return;
             default:
                 Queue.getInstance().addGameOutput("Invalid Inspect Action Type, try INSPECT ROOM or INSPECT INVENTORY");

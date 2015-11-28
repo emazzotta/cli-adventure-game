@@ -1,9 +1,11 @@
 package com.mazzotta.kuster.pointandclick.adventure.level;
 
-import com.google.gson.*;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Command;
 import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
-import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import org.apache.commons.io.FileUtils;
 
@@ -14,19 +16,13 @@ import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil
 
 public class Loader {
 
-    Gson gson;
-
-    public Loader() {
-        gson = new GsonBuilder().create();
-    }
-
     public void loadFromJsonFile(String filename) {
         try {
             String loadedJson = FileUtils.readFileToString(getSavegameFile(filename));
             JsonArray commandsAsJson = getStringAsJsonArray(loadedJson);
             resumeGameFromCommands(commandsAsJson);
         } catch (IOException e) {
-            Queue.getInstance().addGameOutput("" +
+            Queue.getInstance().addGameOutput(
                     "No savegame with the name [" + filename + "] was found!\n\n" +
                     "Valid savegames are:\n" +
                     getPotentialSavegamesForFolder(getSavegameFolder()));
@@ -35,17 +31,15 @@ public class Loader {
 
     private void resumeGameFromCommands(JsonArray commandsAsJson) {
         Initializer.getInstance().initialise();
-
-        for(CommandAction commandAction : getCommandActions(commandsAsJson)) {
-            History.getInstance().addEnteredCommand(commandAction);
+        for(CommandAction commandAction : getCommandActionsFrom(commandsAsJson)) {
             Queue.getInstance().addUserInput(commandAction);
         }
     }
 
-    private ArrayList<CommandAction> getCommandActions(JsonArray commandsAsJson) {
+    private ArrayList<CommandAction> getCommandActionsFrom(JsonArray commandsAsJson) {
         ArrayList<CommandAction> commandActions = new ArrayList<>();
         for(JsonElement commandAsJson: commandsAsJson) {
-            CommandAction commandAction = gson.fromJson(commandAsJson , CommandAction.class);
+            CommandAction commandAction = new GsonBuilder().create().fromJson(commandAsJson , CommandAction.class);
             if(!isASaveOrLoadCommand(commandAction)) {
                 commandActions.add(commandAction);
             }
