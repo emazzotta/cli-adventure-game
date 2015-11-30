@@ -34,6 +34,9 @@ public class CommandAction {
     }
 
     public String toString() {
-        return command + " " + actionType + " " + actionIdentifier;
+        String commandAction = command == Command.NONE ? "" : command + " ";
+        commandAction += actionType == ActionType.NONE ? "" : actionType + " ";
+        commandAction += actionIdentifier;
+        return commandAction;
     }
 }
