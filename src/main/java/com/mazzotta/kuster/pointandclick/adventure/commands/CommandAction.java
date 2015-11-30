@@ -34,9 +34,9 @@ public class CommandAction {
     }
 
     public String toString() {
-        String commandAction = command == Command.NONE ? "" : command + " ";
-        commandAction += actionType == ActionType.NONE ? "" : actionType + " ";
-        commandAction += actionIdentifier;
+        String commandAction = command == Command.NONE ? "" : "" + command;
+        commandAction += actionType == ActionType.NONE ? "" : " " + actionType;
+        commandAction += actionIdentifier.toString().equals("") ? "" : " " + actionIdentifier;
         return commandAction;
     }
 }
