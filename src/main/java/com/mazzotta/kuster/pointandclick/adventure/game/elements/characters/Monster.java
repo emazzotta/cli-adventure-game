@@ -5,7 +5,7 @@ import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Item;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Monster extends Character {
+public class Monster {
 
     private final String name;
     private final int attackPoints;

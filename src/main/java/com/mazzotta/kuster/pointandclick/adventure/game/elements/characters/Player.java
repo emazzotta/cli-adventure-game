@@ -9,7 +9,7 @@ import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Weapon;
 
 import java.util.ArrayList;
 
-public class Player extends Character {
+public class Player {
 
     private Weapon equippedWeapon;
     private Inventory inventory;
