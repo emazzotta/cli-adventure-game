@@ -1,6 +1,6 @@
 package level;
 
-import com.mazzotta.kuster.pointandclick.adventure.commands.History;
+import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.level.Loader;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
@@ -22,14 +22,14 @@ public class LoaderTest {
 
     @Test
     public void testThatSavedHistoryCanBeLoaded() throws IOException {
-        assertThatTheAmountOfCommandsInHistoryIs(0);
-        writeTwoCommandsToTestFile("[{\"command\":\"COLLECT\",\"actionType\":\"POTION\",\"actionIdentifier\":\"ALL\"},{\"command\":\"SHOOT\",\"actionType\":\"ENEMY\",\"actionIdentifier\":\"RED\"}]");
+        assertThatTheAmountOfCommandsInPendingUserInputIs(0);
+        writeTwoCommandsToTestFile("[{\"command\":\"OPEN\",\"actionType\":\"DOOR\",\"actionIdentifier\":{\"identifierId\":\"\"}},{\"command\":\"COLLECT\",\"actionType\":\"ITEMS\",\"actionIdentifier\":{\"identifierId\":\"\"}}]");
         loader.loadFromJsonFile("test");
-        assertThatTheAmountOfCommandsInHistoryIs(2);
+        assertThatTheAmountOfCommandsInPendingUserInputIs(2);
     }
 
-    private void assertThatTheAmountOfCommandsInHistoryIs(int expectedAmount) {
-        assertEquals(expectedAmount, History.getInstance().getEnteredCommands().size());
+    private void assertThatTheAmountOfCommandsInPendingUserInputIs(int expectedAmount) {
+        assertEquals(expectedAmount, Queue.getInstance().getPendingUserInput().size());
     }
 
     private void writeTwoCommandsToTestFile(String dataToWrite) throws IOException {
