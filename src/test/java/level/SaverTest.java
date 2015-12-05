@@ -20,22 +20,22 @@ public class SaverTest {
     @Before
     public void setup() throws InvalidUserInputException {
         saver = new Saver();
+        History.getInstance().addEnteredCommand(getOpenCommand());
         History.getInstance().addEnteredCommand(getCollectCommand());
-        History.getInstance().addEnteredCommand(getShootCommand());
     }
 
     @Test
     public void testThatCurrentHistoryCanBeSaved() throws IOException {
-        String expectedString = "[{\"command\":\"COLLECT\",\"actionType\":\"POTION\",\"actionIdentifier\":\"ALL\"},{\"command\":\"SHOOT\",\"actionType\":\"ENEMY\",\"actionIdentifier\":\"RED\"}]";
+        String expectedString = "[{\"command\":\"OPEN\",\"actionType\":\"DOOR\",\"actionIdentifier\":{\"identifierId\":\"\"}},{\"command\":\"COLLECT\",\"actionType\":\"ITEMS\",\"actionIdentifier\":{\"identifierId\":\"\"}}]";
         saver.saveAs("test");
         assertEquals(expectedString, FileUtils.readFileToString(getSavegameFile("test")));
     }
 
-    public CommandAction getShootCommand() throws InvalidUserInputException {
-        return new CommandAction(new String[]{"SHOOT", "ENEMY", "RED"});
+    public CommandAction getOpenCommand() throws InvalidUserInputException {
+        return new CommandAction(new String[]{"OPEN", "DOOR", ""});
     }
 
     public CommandAction getCollectCommand() throws InvalidUserInputException {
-        return new CommandAction(new String[]{"COLLECT", "POTION", "ALL"});
+        return new CommandAction(new String[]{"COLLECT", "ITEMS", ""});
     }
 }
