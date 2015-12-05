@@ -51,35 +51,36 @@ public class State {
     }
 
     public void attackMonster() {
+        StringBuilder fightOutput = new StringBuilder();
         if(currentRoom.hasUndefeatedMonster()) {
             currentRoom.getMonster().takeDamage(player.getAttackPoints());
-            String fightOutput = "You attacked ";
-            fightOutput += currentRoom.getMonster().getName();
-            fightOutput += " and inflicted ";
-            fightOutput += player.getAttackPoints();
-            fightOutput += " damage!\n";
+            fightOutput.append("You attacked ");
+            fightOutput.append(currentRoom.getMonster().getName());
+            fightOutput.append(" and inflicted ");
+            fightOutput.append(player.getAttackPoints());
+            fightOutput.append(" damage!\n");
             if (currentRoom.getMonster().isAlive()) {
                 try {
                     player.takeDamage(currentRoom.getMonster().getAttackPoints());
-                    fightOutput += currentRoom.getMonster().getName();
-                    fightOutput += " attacked you and inflicted ";
-                    fightOutput += currentRoom.getMonster().getAttackPoints();
-                    fightOutput += " damage to you!\n";
+                    fightOutput.append(currentRoom.getMonster().getName());
+                    fightOutput.append(" attacked you and inflicted ");
+                    fightOutput.append(currentRoom.getMonster().getAttackPoints());
+                    fightOutput.append(" damage to you!\n");
                 } catch (UserDiedException e) {
                     //TODO handle exception
                 }
             }
-            fightOutput += "Player Health: ";
-            fightOutput += player.getHealth();
-            fightOutput += "\nMonster Health: ";
-            fightOutput += currentRoom.getMonster().getHealth();
+            fightOutput.append("Player Health: ");
+            fightOutput.append(player.getHealth());
+            fightOutput.append("\nMonster Health: ");
+            fightOutput.append(currentRoom.getMonster().getHealth());
             if (!currentRoom.getMonster().isAlive()) {
-                fightOutput += "\nYou have defeated ";
-                fightOutput += currentRoom.getMonster().getName() + "!\n";
-                fightOutput += "Do you think he dropped any loot...?\n";
+                fightOutput.append("\nYou have defeated ");
+                fightOutput.append(currentRoom.getMonster().getName());
+                fightOutput.append("!\nDo you think he dropped any loot...?\n");
                 dropMonsterLoot();
             }
-            Queue.getInstance().addGameOutput(fightOutput);
+            Queue.getInstance().addGameOutput(fightOutput.toString());
         } else {
             Queue.getInstance().addGameOutput("What are you trying to attack? There's noting here...");
         }
