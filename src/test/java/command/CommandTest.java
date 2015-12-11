@@ -21,6 +21,4 @@ public class CommandTest {
     public void convertInvalidCommandTest() {
         Assert.assertEquals(Command.NONE, Command.convertToCommand("InvalidCommandStatement"));
     }
-
-
 }
