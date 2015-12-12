@@ -1,24 +1,20 @@
 package command;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.Command;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class CommandTest {
 
 
-    @Before
-    public void setup() {
+    @Test
+    public void testThatHelpCommandIsRecognizedCorrectly() {
+        assertEquals(Command.HELP, Command.convertToCommand("Help"));
     }
 
     @Test
-    public void convertToCommandTest() {
-        Assert.assertEquals(Command.HELP, Command.convertToCommand("Help"));
-    }
-
-    @Test
-    public void convertInvalidCommandTest() {
-        Assert.assertEquals(Command.NONE, Command.convertToCommand("InvalidCommandStatement"));
+    public void testThatAnInvalidCommandStatementIsConvertedToNone() {
+        assertEquals(Command.NONE, Command.convertToCommand("InvalidCommandStatement"));
     }
 }
