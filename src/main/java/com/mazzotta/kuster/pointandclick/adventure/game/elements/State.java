@@ -70,7 +70,7 @@ public class State {
         if (currentRoom.getMonster().isAlive()) {
             fightOutput += monsterHitsPlayer();
         } else {
-            fightOutput += getMonsterDefeatedMessage();
+            fightOutput += getMonsterWasDefeatedMessage();
             dropMonsterLoot();
         }
         Queue.getInstance().addGameOutput(fightOutput);
@@ -78,23 +78,23 @@ public class State {
 
     private String monsterHitsPlayer() throws UserDiedException {
         player.takeDamage(currentRoom.getMonster().getAttackPoints());
-        return getMonsterAttackedMessage();
+        return getMonsterHasAttackedMessage();
     }
 
     private String playerHitsMonster() {
         currentRoom.getMonster().takeDamage(player.getAttackPoints());
-        return getPlayerAttackedMessage();
+        return getPlayerHasAttackedMessage();
     }
 
-    private String getMonsterDefeatedMessage() {
+    private String getMonsterWasDefeatedMessage() {
         return "\nYou have defeated " + currentRoom.getMonster().getName() + "!\nDo you think he dropped any loot...?\n";
     }
 
-    private String getMonsterAttackedMessage() {
+    private String getMonsterHasAttackedMessage() {
         return currentRoom.getMonster().getName() + " attacked you and inflicted " + currentRoom.getMonster().getAttackPoints() + " damage to you!\n\nMonster Health: " + currentRoom.getMonster().getHealth();
     }
 
-    private String getPlayerAttackedMessage() {
+    private String getPlayerHasAttackedMessage() {
         return "You attacked " + currentRoom.getMonster().getName() + " and inflicted " + player.getAttackPoints() + " damage!\n";
     }
 
