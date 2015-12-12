@@ -103,7 +103,8 @@ public class GUI extends JFrame {
                     } catch (Exception e) {
                         commandIndex++;
                         setInputFieldToLastCommandBasedOnCurrentIndex();
-                    }return;
+                    }
+                    return;
                 case "⏎":
                     commandIndex = 0;
             }
