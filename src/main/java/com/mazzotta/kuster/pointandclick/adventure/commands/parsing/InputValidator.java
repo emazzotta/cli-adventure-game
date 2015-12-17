@@ -9,7 +9,7 @@ public class InputValidator {
     public static void validateCommandActionFragments(String commandActionFragments[]) throws InvalidUserInputException {
         validateLength(commandActionFragments);
         validateCommand(commandActionFragments[0]);
-        if (commandActionFragments.length >= 2) {
+        if (commandActionFragments.length > 1) {
             validateActionType(commandActionFragments[1]);
         }
     }
