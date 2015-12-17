@@ -82,6 +82,7 @@ public class GUI extends JFrame {
         public void keyPressed(KeyEvent keyEvent) {
             switch (KeyEvent.getKeyText(keyEvent.getKeyCode())) {
                 case "↑":
+                case "Up":
                     try {
                         commandIndex++;
                         setInputFieldToLastCommandBasedOnCurrentIndex();
@@ -91,6 +92,7 @@ public class GUI extends JFrame {
                     }
                     return;
                 case "↓":
+                case "Down":
                     try {
                         commandIndex--;
                         setInputFieldToLastCommandBasedOnCurrentIndex();
@@ -100,6 +102,7 @@ public class GUI extends JFrame {
                     }
                     return;
                 case "⏎":
+                case "Enter":
                     commandIndex = 0;
             }
         }
