@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.getSavegameFile;
 import static org.junit.Assert.assertEquals;
@@ -32,10 +33,16 @@ public class SaverTest {
     }
 
     public CommandAction getOpenCommand() throws InvalidUserInputException {
-        return new CommandAction(new String[]{"OPEN", "DOOR", ""});
+        ArrayList<String> openCommand = new ArrayList<>();
+        openCommand.add("OPEN");
+        openCommand.add("DOOR");
+        return new CommandAction(openCommand);
     }
 
     public CommandAction getCollectCommand() throws InvalidUserInputException {
-        return new CommandAction(new String[]{"COLLECT", "ITEMS", ""});
+        ArrayList<String> collectCommand = new ArrayList<>();
+        collectCommand.add("COLLECT");
+        collectCommand.add("ITEMS");
+        return new CommandAction(collectCommand);
     }
 }

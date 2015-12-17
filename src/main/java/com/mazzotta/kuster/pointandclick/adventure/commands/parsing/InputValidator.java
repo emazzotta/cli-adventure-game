@@ -4,18 +4,20 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.ActionType;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Command;
 import com.mazzotta.kuster.pointandclick.adventure.exceptions.InvalidUserInputException;
 
+import java.util.ArrayList;
+
 public class InputValidator {
 
-    public static void validateCommandActionFragments(String commandActionFragments[]) throws InvalidUserInputException {
+    public static void validateCommandActionFragments(ArrayList<String> commandActionFragments) throws InvalidUserInputException {
         validateLength(commandActionFragments);
-        validateCommand(commandActionFragments[0]);
-        if (commandActionFragments.length > 1) {
-            validateActionType(commandActionFragments[1]);
+        validateCommand(commandActionFragments.get(0));
+        if (commandActionFragments.size() > 1) {
+            validateActionType(commandActionFragments.get(1));
         }
     }
 
-    public static void validateLength(String[] commandActionFragments) throws InvalidUserInputException {
-        if (commandActionFragments.length < 1) {
+    public static void validateLength(ArrayList<String> commandActionFragments) throws InvalidUserInputException {
+        if (commandActionFragments.size() < 1) {
             throw new InvalidUserInputException("Try entering commands in this pattern: SHOOT ENEMY SLIMEMONSTER");
         }
     }
@@ -33,6 +35,4 @@ public class InputValidator {
             throw new InvalidUserInputException("The action type [" + actionType + "] does not exist");
         }
     }
-
-
 }

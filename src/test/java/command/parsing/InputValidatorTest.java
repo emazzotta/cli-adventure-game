@@ -4,23 +4,36 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputValidat
 import com.mazzotta.kuster.pointandclick.adventure.exceptions.InvalidUserInputException;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class InputValidatorTest {
 
     @Test
     public void testThatValidateActionFragmentsSucceedsWithCorrectCommands() throws InvalidUserInputException {
-        InputValidator.validateCommandActionFragments(new String[]{"help"});
-        InputValidator.validateCommandActionFragments(new String[]{"collect",  "items"});
-        InputValidator.validateCommandActionFragments(new String[]{"use", "weapon",  "1"});
+        ArrayList<String> commandAction = new ArrayList<>();
+        commandAction.add("collect");
+        InputValidator.validateCommandActionFragments(commandAction);
+        commandAction.add("items");
+        InputValidator.validateCommandActionFragments(commandAction);
+        commandAction.add("1");
+        InputValidator.validateCommandActionFragments(commandAction);
     }
 
     @Test
     public void testThatValidateActionFragmentsCanHandleCommandsThatAreTooLong() throws InvalidUserInputException {
-        InputValidator.validateCommandActionFragments(new String[]{"collect", "items", "1", "2", "3"});
+        ArrayList<String> commandAction = new ArrayList<>();
+        commandAction.add("collect");
+        commandAction.add("items");
+        commandAction.add("1");
+        commandAction.add("2");
+        commandAction.add("3");
+        InputValidator.validateCommandActionFragments(commandAction);
     }
 
     @Test(expected = InvalidUserInputException.class)
     public void testThatValidateLengthComplainsIfTheCommandIsEmpty() throws InvalidUserInputException {
-        InputValidator.validateLength(new String[]{});
+        ArrayList<String> commandAction = new ArrayList<>();
+        InputValidator.validateLength(commandAction);
     }
 
     @Test

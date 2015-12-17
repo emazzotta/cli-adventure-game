@@ -1,24 +1,20 @@
 package com.mazzotta.kuster.pointandclick.adventure.commands;
 
+import java.util.ArrayList;
+
 public class CommandAction {
 
     private Command command;
     private ActionType actionType;
     private ActionIdentifier actionIdentifier;
 
-    public CommandAction(String commandActionFragments[]) {
-        command = Command.convertToCommand(commandActionFragments[0]);
-
-        if(commandActionFragments.length >= 2) {
-            actionType = ActionType.convertToActionType(commandActionFragments[1]);
-        } else {
-            actionType = ActionType.NONE;
-        }
-        if(commandActionFragments.length >= 3) {
-            actionIdentifier = new ActionIdentifier(commandActionFragments[2]);
-        } else {
-            actionIdentifier = new ActionIdentifier("");
-        }
+    public CommandAction(ArrayList<String> commandActionFragments) {
+        commandActionFragments.add("");
+        commandActionFragments.add("");
+        commandActionFragments.add("");
+        command = Command.convertToCommand(commandActionFragments.get(0));
+        actionType = ActionType.convertToActionType(commandActionFragments.get(1));
+        actionIdentifier = new ActionIdentifier(commandActionFragments.get(2));
     }
 
     public Command getCommand() {
