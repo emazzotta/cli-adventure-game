@@ -88,7 +88,7 @@ public class Initializer {
 
     private void addMonstersToRooms() {
         Monster monsterEasy = new Monster("Bowaa", 12, 50, new Potion(10));
-        Monster monsterMedium = new Monster("Zazinzongi", 40, 250, new Weapon("Crazy Thing", 200));
+        Monster monsterMedium = new Monster("Zazinzongi", 40, 250, new Weapon("Crazy Sword", 200));
         Monster monsterHard = new Monster("ARGHHAKASH", 80, 500, new Potion(200), new Weapon("The Force With You", 250));
         Monster monsterEndbaawwws = new Monster("BLOOOAAATTTOOON", 150, 1000, new Weapon("Over 9000!", 9001));
 
