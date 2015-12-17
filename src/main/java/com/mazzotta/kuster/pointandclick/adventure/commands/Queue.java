@@ -38,6 +38,4 @@ public class Queue {
     public void addGameOutput(String gameOutput) {
         pendingGameOutput.add(gameOutput);
     }
-
-
 }

@@ -14,7 +14,7 @@ public class History {
     }
 
     private History() {
-        enteredCommands = new ArrayList<CommandAction>();
+        enteredCommands = new ArrayList<>();
     }
 
     public ArrayList<CommandAction> getEnteredCommands() {

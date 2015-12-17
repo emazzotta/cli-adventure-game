@@ -5,23 +5,13 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.In
 
 public class InputParser {
 
-    private CommandAction commandAction;
-
-    public InputParser() {
-    }
-
-    public void createCommandActionFrom(String userInput) throws InvalidUserInputException {
+    public CommandAction getCommandActionFrom(String userInput) {
         String commandActionFragments[] = userInput.split("\\s+");
-        InputValidator.validateCommandActionFragments(commandActionFragments);
-        commandAction = new CommandAction(commandActionFragments);
-    }
-
-    public void createInvalidCommandActionFrom(String userInput) {
-        String commandActionFragments[] = userInput.split("\\s+");
-        commandAction = new CommandAction(commandActionFragments);
-    }
-
-    public CommandAction getCommandAction() {
-        return commandAction;
+        try {
+            InputValidator.validateCommandActionFragments(commandActionFragments);
+        } catch (InvalidUserInputException e) {
+            e.printStackTrace();
+        }
+        return new CommandAction(commandActionFragments);
     }
 }

@@ -4,7 +4,6 @@ import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
 import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputParser;
-import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.InvalidUserInputException;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.State;
 
 import javax.swing.*;
@@ -70,14 +69,8 @@ public class GUI extends JFrame {
 
     Action action = new AbstractAction() {
         public void actionPerformed(ActionEvent actionEvent) {
-            InputParser inputParser = new InputParser();
-            try {
-                inputParser.createCommandActionFrom(actionEvent.getActionCommand());
-            } catch (InvalidUserInputException e) {
-                inputParser.createInvalidCommandActionFrom(actionEvent.getActionCommand());
-                e.printStackTrace();
-            }
-            Queue.getInstance().addUserInput(inputParser.getCommandAction());
+            CommandAction commandAction = new InputParser().getCommandActionFrom(actionEvent.getActionCommand());
+            Queue.getInstance().addUserInput(commandAction);
             userInput.setText("");
         }
     };
