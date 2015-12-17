@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.getSavegameFile;
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class LoaderTest {
 
