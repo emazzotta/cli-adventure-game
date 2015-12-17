@@ -1,8 +1,8 @@
 package com.mazzotta.kuster.pointandclick.adventure.game.elements.characters;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.Queue;
+import com.mazzotta.kuster.pointandclick.adventure.exceptions.UserDiedException;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.Inventory;
-import com.mazzotta.kuster.pointandclick.adventure.game.elements.exception.UserDiedException;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Item;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Potion;
 import com.mazzotta.kuster.pointandclick.adventure.game.elements.items.Weapon;

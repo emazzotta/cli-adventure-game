@@ -1,4 +1,4 @@
-package com.mazzotta.kuster.pointandclick.adventure.game.elements.exception;
+package com.mazzotta.kuster.pointandclick.adventure.exceptions;
 
 public class UserDiedException extends Exception {
     public UserDiedException(String message)

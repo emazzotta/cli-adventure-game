@@ -1,7 +1,7 @@
 package command.parsing;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.InputValidator;
-import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.InvalidUserInputException;
+import com.mazzotta.kuster.pointandclick.adventure.exceptions.InvalidUserInputException;
 import org.junit.Test;
 
 public class InputValidatorTest {
