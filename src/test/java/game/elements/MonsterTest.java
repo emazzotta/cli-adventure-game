@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class testMonster {
+public class MonsterTest {
 
     Monster monster;
 
