@@ -9,36 +9,30 @@ public class InputValidator {
     public static void validateCommandActionFragments(String commandActionFragments[]) throws InvalidUserInputException {
         validateLength(commandActionFragments);
         validateCommand(commandActionFragments[0]);
-        if(commandActionFragments.length >= 2) {
+        if (commandActionFragments.length >= 2) {
             validateActionType(commandActionFragments[1]);
-        }
-        if(commandActionFragments.length >= 3) {
-            validateActionIdentifier(commandActionFragments[2]);
         }
     }
 
     public static void validateLength(String[] commandActionFragments) throws InvalidUserInputException {
-        if(commandActionFragments.length < 1) {
+        if (commandActionFragments.length < 1) {
             throw new InvalidUserInputException("Try entering commands in this pattern: SHOOT ENEMY SLIMEMONSTER");
         }
     }
 
     public static void validateCommand(String command) throws InvalidUserInputException {
         command = command.toUpperCase();
-        if(!Command.contains(command)) {
+        if (!Command.contains(command)) {
             throw new InvalidUserInputException("The command [" + command + "] does not exist");
         }
     }
 
     public static void validateActionType(String actionType) throws InvalidUserInputException {
         actionType = actionType.toUpperCase();
-        if(!ActionType.contains(actionType)) {
+        if (!ActionType.contains(actionType)) {
             throw new InvalidUserInputException("The action type [" + actionType + "] does not exist");
         }
     }
 
-    public static void validateActionIdentifier(String actionIdentifier) throws InvalidUserInputException {
-        actionIdentifier = actionIdentifier.toUpperCase();
-        //TODO might need further validation.
-    }
+
 }
