@@ -19,7 +19,6 @@ public class GUI extends JFrame {
     private JTextArea gameOutput;
     private JTextField userInput;
 
-
     public GUI() {
         initUI();
     }
@@ -48,7 +47,7 @@ public class GUI extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    public void updateGUI() {
+    public void updateGUIText() {
         gameOutput.setText("");
         gameOutput.append(statistics());
         for (String output : Queue.getInstance().getPendingGameOutput()) {

@@ -35,7 +35,7 @@ public class Game {
                         if(showInitialText) {
                             showInitialText = false;
                             Queue.getInstance().addGameOutput(infoText());
-                            gui.updateGUI();
+                            gui.updateGUIText();
                             Queue.getInstance().clearGameOutputCache();
                         }
                         if(Queue.getInstance().getPendingUserInput().size() > 0) {
@@ -43,7 +43,7 @@ public class Game {
                             Queue.getInstance().getPendingUserInput().remove(0);
                             Queue.getInstance().clearGameOutputCache();
                             CommandHandler.execute(commandAction);
-                            gui.updateGUI();
+                            gui.updateGUIText();
                         }
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
