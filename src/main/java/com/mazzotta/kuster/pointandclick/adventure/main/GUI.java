@@ -13,16 +13,25 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-
+/**
+ * Initializes and updates the GUI.
+ * Handles input user input actions.
+ *
+ * @author Kuster & Mazzotta
+ */
 public class GUI extends JFrame {
 
     private JTextArea gameOutput;
     private JTextField userInput;
 
+
     public GUI() {
         initUI();
     }
 
+    /**
+     * Initializes the user interface.
+     */
     private void initUI() {
         JFrame frame = new JFrame("Point & Click by Emanuele & Leandro");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -47,6 +56,9 @@ public class GUI extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Updates the GUI with all pending game outputs
+     */
     public void updateGUI() {
         gameOutput.setText("");
         gameOutput.append(statistics());
@@ -56,6 +68,10 @@ public class GUI extends JFrame {
         }
     }
 
+    /**
+     * Creates a string with the game statistics.
+     * @return A String holding all game statistic information.
+     */
     private String statistics() {
         return "###############################\n" +
                 "Statistics:\n" +
@@ -67,6 +83,9 @@ public class GUI extends JFrame {
                 "###############################\n\n";
     }
 
+    /**
+     * The Action.
+     */
     Action action = new AbstractAction() {
         public void actionPerformed(ActionEvent actionEvent) {
             CommandAction commandAction = new InputParser().getCommandActionFrom(actionEvent.getActionCommand());
@@ -75,6 +94,9 @@ public class GUI extends JFrame {
         }
     };
 
+    /**
+     * The Key listener.
+     */
     KeyListener keyListener = new KeyListener() {
         int commandIndex = 0;
 
@@ -98,7 +120,7 @@ public class GUI extends JFrame {
                         setInputFieldToLastCommandBasedOnCurrentIndex();
                     }
                     return;
-                case "⏎":
+                case  "⏎":
                     commandIndex = 0;
             }
         }
