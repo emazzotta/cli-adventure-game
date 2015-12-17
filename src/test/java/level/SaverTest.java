@@ -1,6 +1,7 @@
 package level;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
+import com.mazzotta.kuster.pointandclick.adventure.commands.CommandActionBuilder;
 import com.mazzotta.kuster.pointandclick.adventure.commands.History;
 import com.mazzotta.kuster.pointandclick.adventure.exceptions.InvalidUserInputException;
 import com.mazzotta.kuster.pointandclick.adventure.level.Saver;
@@ -9,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil.getSavegameFile;
 import static org.junit.Assert.assertEquals;
@@ -33,16 +33,16 @@ public class SaverTest {
     }
 
     public CommandAction getOpenCommand() throws InvalidUserInputException {
-        ArrayList<String> openCommand = new ArrayList<>();
-        openCommand.add("OPEN");
-        openCommand.add("DOOR");
-        return new CommandAction(openCommand);
+        CommandActionBuilder openCommand = new CommandActionBuilder();
+        openCommand.setCommand("OPEN");
+        openCommand.setActionType("DOOR");
+        return openCommand.build();
     }
 
     public CommandAction getCollectCommand() throws InvalidUserInputException {
-        ArrayList<String> collectCommand = new ArrayList<>();
-        collectCommand.add("COLLECT");
-        collectCommand.add("ITEMS");
-        return new CommandAction(collectCommand);
+        CommandActionBuilder collectCommand = new CommandActionBuilder();
+        collectCommand.setCommand("COLLECT");
+        collectCommand.setActionType("ITEMS");
+        return collectCommand.build();
     }
 }

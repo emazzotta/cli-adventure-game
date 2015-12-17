@@ -17,6 +17,12 @@ public class CommandAction {
         actionIdentifier = new ActionIdentifier(commandActionFragments.get(2));
     }
 
+    public CommandAction(Command command, ActionType actionType, ActionIdentifier actionIdentifier) {
+        this.command = command;
+        this.actionType = actionType;
+        this.actionIdentifier = actionIdentifier;
+    }
+
     public Command getCommand() {
         return command;
     }

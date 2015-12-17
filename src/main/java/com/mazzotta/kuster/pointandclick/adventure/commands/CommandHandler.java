@@ -5,7 +5,6 @@ import com.mazzotta.kuster.pointandclick.adventure.game.elements.State;
 import com.mazzotta.kuster.pointandclick.adventure.level.Initializer;
 import com.mazzotta.kuster.pointandclick.adventure.level.Loader;
 import com.mazzotta.kuster.pointandclick.adventure.level.Saver;
-import com.mazzotta.kuster.pointandclick.adventure.main.Game;
 import org.apache.commons.lang3.StringUtils;
 
 public class CommandHandler {
