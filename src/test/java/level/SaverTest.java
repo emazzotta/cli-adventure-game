@@ -2,7 +2,7 @@ package level;
 
 import com.mazzotta.kuster.pointandclick.adventure.commands.CommandAction;
 import com.mazzotta.kuster.pointandclick.adventure.commands.History;
-import com.mazzotta.kuster.pointandclick.adventure.commands.parsing.exception.InvalidUserInputException;
+import com.mazzotta.kuster.pointandclick.adventure.exceptions.InvalidUserInputException;
 import com.mazzotta.kuster.pointandclick.adventure.level.Saver;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
