@@ -1,3 +1,4 @@
 .idea
 shippable
 target
+*.DS_Store*
