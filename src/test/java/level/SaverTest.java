@@ -33,16 +33,10 @@ public class SaverTest {
     }
 
     public CommandAction getOpenCommand() throws InvalidUserInputException {
-        CommandActionBuilder openCommand = new CommandActionBuilder();
-        openCommand.setCommand("OPEN");
-        openCommand.setActionType("DOOR");
-        return openCommand.build();
+        return new CommandActionBuilder().setCommand("OPEN").setActionType("DOOR").build();
     }
 
     public CommandAction getCollectCommand() throws InvalidUserInputException {
-        CommandActionBuilder collectCommand = new CommandActionBuilder();
-        collectCommand.setCommand("COLLECT");
-        collectCommand.setActionType("ITEMS");
-        return collectCommand.build();
+        return new CommandActionBuilder().setCommand("COLLECT").setActionType("ITEMS").build();
     }
 }
