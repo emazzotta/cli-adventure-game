@@ -4,16 +4,9 @@ jdk:
   - "oraclejdk8"
 
 before_script:
-  - "sh bitbucket_ci.sh INPROGRESS"
   - "mkdir -p shippable/testresults"
   - "mkdir -p shippable/codecoverage"
 
 script:
   - "mvn clean cobertura:cobertura"
   - "mvn test"
-
-after_success:
-  - "sh bitbucket_ci.sh SUCCESSFUL"
-
-after_failure:
-  - "sh bitbucket_ci.sh FAILED"
