@@ -1,21 +1,20 @@
-# Point&Click Adventure #
+# Point&Click Adventure 
 
 ![build status](https://img.shields.io/shippable/565af52a1895ca4474248530.svg)
 
-### What is this repository for? ###
+A click and point (more a type and type) adventure for university.
 
-* A click and point (more a type and type) adventure for university.
+## Getting Started
 
-### How do I get set up? ###
+Run the [Game class](./src/main/java/com/mazzotta/kuster/pointandclick/adventure/main/Game.java) to start the game
 
-* It's a maven project... nothing special, it should work out of the box
-* Run the Game class to start the game
+## Contribution Guidelines 
 
-### Contribution guidelines ###
+* Red (write a failing test)
+* Green (make the test pass)
+* Refactor (make the code sexy)
 
-* Writing tests
+## Authors 
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+[Emanuele Mazzotta](mailto:hello@mazzotta.me) 
+Leandro Kuster
