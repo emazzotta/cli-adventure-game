@@ -18,3 +18,7 @@ Run the [Game class](./src/main/java/com/mazzotta/kuster/pointandclick/adventure
 
 [Emanuele Mazzotta](mailto:hello@mazzotta.me) 
 Leandro Kuster
+
+## License
+
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
