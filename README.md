@@ -1,6 +1,6 @@
 # Point&Click Adventure 
 
-![build status](https://img.shields.io/shippable/565af52a1895ca4474248530.svg)
+[![Build Status](https://travis-ci.org/emazzotta/cli-adventure-game.svg?branch=master)](https://travis-ci.org/emazzotta/cli-adventure-game)
 
 A click and point (more a type and type) adventure for university.
 
