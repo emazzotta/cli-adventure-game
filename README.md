@@ -1,6 +1,4 @@
-# Point&Click Adventure 
-
-[![Build Status](https://travis-ci.org/emazzotta/cli-adventure-game.svg?branch=master)](https://travis-ci.org/emazzotta/cli-adventure-game)
+# Point&Click Adventure [![Build Status](https://travis-ci.org/emazzotta/cli-adventure-game.svg?branch=master)](https://travis-ci.org/emazzotta/cli-adventure-game)
 
 A click and point (more a type and type) adventure for university.
 
@@ -16,9 +14,9 @@ Run the [Game class](./src/main/java/com/mazzotta/kuster/pointandclick/adventure
 
 ## Authors 
 
-[Emanuele Mazzotta](mailto:hello@mazzotta.me) 
+[Emanuele Mazzotta](mailto:hello@mazzotta.me)  
 Leandro Kuster
 
 ## License
 
-See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
+[MIT License](LICENSE.md) © Emanuele Mazzotta, Leandro Kuster
