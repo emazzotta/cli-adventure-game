@@ -39,7 +39,10 @@ public class CommandHandler {
             case HISTORY:
                 handleHistoryCommand();
                 return;
-            case RESET:
+            case EXIT:
+                handleExitCommand();
+                return;
+           case RESET:
                 handleResetCommand();
                 return;
             case NONE:
@@ -96,11 +99,14 @@ public class CommandHandler {
     }
 
     private static void handleSaveCommand(CommandAction commandAction) {
-        new Saver().saveAs(commandAction.getActionIdentifier().getIdentifierId());
+        String saveGameName = commandAction.getActionIdentifier().getIdentifierId();
+
+        new Saver().saveAs(saveGameName);
     }
 
     private static void handleLoadCommand(CommandAction commandAction) {
-        new Loader().loadFromJsonFile(commandAction.getActionIdentifier().getIdentifierId());
+        String loadGameName = commandAction.getActionIdentifier().getIdentifierId();
+        new Loader().loadFromJsonFile(loadGameName);
     }
 
     private static void handleAttackCommand() {
@@ -121,10 +127,11 @@ public class CommandHandler {
                 "RESET - Restart the game\n" +
                 "HISTORY - Show history of typed commands\n" +
                 "SAVE GAME 'save_filename' - Save the game\n" +
-                "SAVE - Quick save, the name of the file will be empty\n" +
+                "SAVE GAME / SAVE - Quick save, the name of the file will quicksave.json\n" +
                 "LOAD GAME 'save_filename' - Load the game\n" +
-                "LOAD - Load the quick save\n" +
+                "LOAD GAME / LOAD - Load the quick save\n" +
                 "HELP - Show this help\n\n" +
+                "EXIT - Exit the game\n\n" +
                 "Now go ahead and beat the monsters!");
     }
 
@@ -134,6 +141,10 @@ public class CommandHandler {
 
     private static void handleResetCommand() {
         Initializer.getInstance().initialise();
+    }
+
+    private static void handleExitCommand() {
+        System.exit(0);
     }
 
     private static void handleNoneCommand() {

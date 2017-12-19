@@ -4,7 +4,7 @@ public class ActionIdentifier {
 
     private String identifierId;
 
-    public ActionIdentifier(String identifierId) {
+    ActionIdentifier(String identifierId) {
         this.identifierId = identifierId;
     }
 
