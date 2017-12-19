@@ -12,18 +12,18 @@ public class FileOperationUtil {
     }
 
     public static String getPotentialSavegamesForFolder(String folder) {
-        String potentialSavegames = "";
+        StringBuilder potentialSavegames = new StringBuilder();
         File[] listOfFiles = new File(folder).listFiles();
 
         if(listOfFiles != null) {
             for (File file : listOfFiles) {
                 if (isAPossibleSavegame(file)) {
-                    potentialSavegames += file.getName() + "\n";
+                    potentialSavegames.append(file.getName()).append("\n");
                 }
             }
         }
 
-        return potentialSavegames;
+        return potentialSavegames.toString();
     }
 
     private static boolean isAPossibleSavegame(File fileEntry) {

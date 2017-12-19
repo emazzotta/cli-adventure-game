@@ -12,13 +12,14 @@ import java.io.IOException;
 
 public class Saver {
 
-    Gson gson;
+    private Gson gson;
 
     public Saver() {
         gson = new GsonBuilder().create();
     }
 
     public void saveAs(String filename) {
+        filename = filename.equals("") ? "quicksave" : filename;
         File savePath = FileOperationUtil.getSavegameFile(filename);
         String saveDataString = gson.toJson(History.getInstance().getEnteredCommands());
 

@@ -17,6 +17,7 @@ import static com.mazzotta.kuster.pointandclick.adventure.util.FileOperationUtil
 public class Loader {
 
     public void loadFromJsonFile(String filename) {
+        filename = filename.equals("") ? "quicksave" : filename;
         try {
             String loadedJson = FileUtils.readFileToString(getSavegameFile(filename));
             JsonArray commandsAsJson = getStringAsJsonArray(loadedJson);
