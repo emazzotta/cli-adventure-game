@@ -51,20 +51,20 @@ public class Room {
     }
 
     public String getRoomContent() {
-        String roomContent = "Room: " + name + "\n";
+        StringBuilder roomContent = new StringBuilder("Room: " + name + "\n");
         if(hasMonster()) {
-            roomContent += "Monster: " + monster.getName() + "\n";
-            roomContent += "Alive: " + monster.isAlive() + "\n";
+            roomContent.append("Monster: ").append(monster.getName()).append("\n");
+            roomContent.append("Alive: ").append(monster.isAlive()).append("\n");
         }
         if(!items.isEmpty()) {
-            roomContent += "Items:\n";
+            roomContent.append("Items:\n");
             for(int i = 0; i < items.size(); i++) {
-                roomContent += "[" + (i+1) + "] " + items.get(i).getName() + "\n";
+                roomContent.append("[").append(i + 1).append("] ").append(items.get(i).getName()).append("\n");
             }
         } else {
-            roomContent += "There are no items in this room (anymore)";
+            roomContent.append("There are no items in this room (anymore)");
         }
-        return roomContent;
+        return roomContent.toString();
     }
 
     public boolean hasUndefeatedMonster() {
