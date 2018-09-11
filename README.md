@@ -1,7 +1,8 @@
 [![Build Status](https://travis-ci.org/emazzotta/cli-adventure-game.svg?branch=master)](https://travis-ci.org/emazzotta/cli-adventure-game)
+[![Code Coverage](https://codecov.io/gh/emazzotta/cli-adventure-game/branch/master/graph/badge.svg)](https://travis-ci.org/emazzotta/cli-adventure-game)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat)](LICENSE.md)
 
-# Point&Click Adventure 
+# Point & Click Adventure 
 
 A click and point (more a type and type) adventure for university.
 
