@@ -18,10 +18,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build & Test
+      - name: Setup Java
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
+
+      - name: Build & Test
         run: |
           mvn clean cobertura:cobertura
           bash <(curl -s https://codecov.io/bash)
