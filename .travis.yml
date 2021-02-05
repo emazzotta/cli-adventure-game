@@ -1,7 +1,0 @@
-language: java
-jdk:
-  - "oraclejdk8"
-script:
-  - mvn clean cobertura:cobertura
-  - bash <(curl -s https://codecov.io/bash) -e TRAVIS_JDK_VERSION
-  - mvn test
