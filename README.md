@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/emazzotta/cli-adventure-game.svg?branch=master)](https://travis-ci.org/emazzotta/cli-adventure-game)
-[![Code Coverage](https://codecov.io/gh/emazzotta/cli-adventure-game/branch/master/graph/badge.svg)](https://travis-ci.org/emazzotta/cli-adventure-game)
+[![Build Status](https://github.com/emazzotta/cli-adventure-game/workflows/Build%20&%20Test/badge.svg)](https://github.com/emazzotta/cli-adventure-game/actions)
+[![Code Coverage](https://codecov.io/gh/emazzotta/cli-adventure-game/branch/master/graph/badge.svg)](https://github.com/emazzotta/cli-adventure-game/actions)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat)](LICENSE.md)
 
 # Point & Click Adventure 
