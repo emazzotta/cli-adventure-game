@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>groupId</groupId>
-    <artifactId>point_and_click_adventure</artifactId>
+    <artifactId>point.and.click.adventure</artifactId>
     <version>1.0</version>
     <build>
         <plugins>
